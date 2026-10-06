@@ -96,7 +96,7 @@
       <span class="inline-block w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
       <span class="font-bold tracking-widest uppercase text-[10px] text-zinc-300">Client Presentation Mode</span>
       <span class="text-zinc-700">|</span>
-      <span class="text-[11px] font-mono text-amber-300">MONOGRAPH Atelier v3.5</span>
+      <span class="text-[11px] font-mono text-amber-300">MONOGRAPH Atelier v4.0</span>
     </div>
     
     <!-- Quick Flow Links for Client Presentation -->
@@ -121,13 +121,13 @@
   </div>
 
   <!-- ========================================================================= -->
-  <!-- MAIN NAVBAR -->
+  <!-- MAIN NAVBAR (STICKY HEADER WITH ZERO-GAP HOVER & CLICK-LOCK DROPDOWNS) -->
   <!-- ========================================================================= -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-zinc-200/80 w-full max-w-full">
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-zinc-200/80 shadow-sm w-full max-w-full">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20 gap-4">
         
-        <!-- Left Logo & Mobile Toggle -->
+        <!-- Left Logo & Mobile Drawer Trigger -->
         <div class="flex items-center space-x-3 shrink-0">
           <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-zinc-800 hover:bg-zinc-100 transition focus:outline-none" aria-label="Toggle Navigation">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -146,70 +146,78 @@
           </div>
         </div>
 
-        <!-- Center Desktop Nav Lists -->
+        <!-- Center Desktop Nav Lists (Click-to-Stick & Continuous Hover Dropdowns) -->
         <nav class="hidden lg:flex items-center space-x-1 xl:space-x-3">
           <a href="#" onclick="switchView('home'); return false;" class="desktop-nav-link text-zinc-950 font-bold bg-zinc-100/80">Storefront Home</a>
           
-          <!-- Dropdown List 1: Shop Categories -->
-          <div class="relative group">
-            <button class="desktop-nav-link flex items-center space-x-1">
+          <!-- Dropdown List 1: Shop Collections -->
+          <div class="relative group nav-dropdown-container">
+            <button onclick="toggleNavDropdown('menuCollections', event)" class="desktop-nav-link flex items-center space-x-1">
               <span>Shop Collections</span>
               <svg class="w-3.5 h-3.5 text-zinc-400 group-hover:text-zinc-900 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
-            <div class="absolute top-full left-0 w-64 bg-white border border-zinc-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all transform group-hover:translate-y-2 p-3 space-y-1 z-50">
-              <div class="px-3 py-1.5 text-[9px] font-extrabold uppercase tracking-widest text-zinc-400 border-b border-zinc-100 mb-1">Catalog Categories</div>
-              <a href="#" onclick="switchView('catalog'); return false;" class="flex items-center justify-between px-3 py-2 text-xs text-zinc-800 hover:bg-zinc-100 rounded-lg transition font-medium">
-                <span class="flex items-center space-x-2">
-                  <svg class="w-3.5 h-3.5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                  <span>Archival Notebooks</span>
-                </span>
-                <span class="text-[10px] text-zinc-400 font-mono font-bold">42</span>
-              </a>
-              <a href="#" onclick="switchView('catalog'); return false;" class="flex items-center justify-between px-3 py-2 text-xs text-zinc-800 hover:bg-zinc-100 rounded-lg transition font-medium">
-                <span class="flex items-center space-x-2">
-                  <svg class="w-3.5 h-3.5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
-                  <span>Fountain & Fine Pens</span>
-                </span>
-                <span class="text-[10px] text-zinc-400 font-mono font-bold">86</span>
-              </a>
-              <a href="#" onclick="switchView('catalog'); return false;" class="flex items-center justify-between px-3 py-2 text-xs text-zinc-800 hover:bg-zinc-100 rounded-lg transition font-medium">
-                <span class="flex items-center space-x-2">
-                  <svg class="w-3.5 h-3.5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                  <span>Aesthetic Desk Items</span>
-                </span>
-                <span class="text-[10px] text-zinc-400 font-mono font-bold">50</span>
-              </a>
-              <a href="#" onclick="switchView('catalog'); return false;" class="flex items-center justify-between px-3 py-2 text-xs text-zinc-800 hover:bg-zinc-100 rounded-lg transition font-medium">
-                <span class="flex items-center space-x-2">
-                  <svg class="w-3.5 h-3.5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
-                  <span>Curated Gift Sets</span>
-                </span>
-                <span class="text-[10px] text-zinc-400 font-mono font-bold">24</span>
-              </a>
+
+            <!-- Zero-gap wrapper for smooth continuous hover + click stickiness -->
+            <div id="menuCollections" class="nav-dropdown-menu absolute top-full left-0 pt-2 w-64 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+              <div class="bg-white border border-zinc-200 rounded-2xl shadow-2xl p-3 space-y-1">
+                <div class="px-3 py-1.5 text-[9px] font-extrabold uppercase tracking-widest text-zinc-400 border-b border-zinc-100 mb-1">Catalog Categories</div>
+                <a href="#" onclick="switchView('catalog'); closeAllNavDropdowns(); return false;" class="flex items-center justify-between px-3 py-2 text-xs text-zinc-800 hover:bg-zinc-100 rounded-lg transition font-medium">
+                  <span class="flex items-center space-x-2">
+                    <svg class="w-3.5 h-3.5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    <span>Archival Notebooks</span>
+                  </span>
+                  <span class="text-[10px] text-zinc-400 font-mono font-bold">42</span>
+                </a>
+                <a href="#" onclick="switchView('catalog'); closeAllNavDropdowns(); return false;" class="flex items-center justify-between px-3 py-2 text-xs text-zinc-800 hover:bg-zinc-100 rounded-lg transition font-medium">
+                  <span class="flex items-center space-x-2">
+                    <svg class="w-3.5 h-3.5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                    <span>Fountain & Fine Pens</span>
+                  </span>
+                  <span class="text-[10px] text-zinc-400 font-mono font-bold">86</span>
+                </a>
+                <a href="#" onclick="switchView('catalog'); closeAllNavDropdowns(); return false;" class="flex items-center justify-between px-3 py-2 text-xs text-zinc-800 hover:bg-zinc-100 rounded-lg transition font-medium">
+                  <span class="flex items-center space-x-2">
+                    <svg class="w-3.5 h-3.5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <span>Aesthetic Desk Items</span>
+                  </span>
+                  <span class="text-[10px] text-zinc-400 font-mono font-bold">50</span>
+                </a>
+                <a href="#" onclick="switchView('catalog'); closeAllNavDropdowns(); return false;" class="flex items-center justify-between px-3 py-2 text-xs text-zinc-800 hover:bg-zinc-100 rounded-lg transition font-medium">
+                  <span class="flex items-center space-x-2">
+                    <svg class="w-3.5 h-3.5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                    <span>Curated Gift Sets</span>
+                  </span>
+                  <span class="text-[10px] text-zinc-400 font-mono font-bold">24</span>
+                </a>
+              </div>
             </div>
           </div>
 
           <!-- Dropdown List 2: Discovery & Interactive Features -->
-          <div class="relative group">
-            <button class="desktop-nav-link flex items-center space-x-1 text-amber-800">
+          <div class="relative group nav-dropdown-container">
+            <button onclick="toggleNavDropdown('menuFeatures', event)" class="desktop-nav-link flex items-center space-x-1 text-amber-800">
               <svg class="w-3.5 h-3.5 text-amber-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5a2.5 2.5 0 002.5-2.5V11a2 2 0 012-2h1.065M12 2a10 10 0 100 20 10 10 0 000-20z"></path></svg>
               <span>Features & Tools</span>
               <svg class="w-3.5 h-3.5 text-zinc-400 group-hover:text-zinc-900 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
-            <div class="absolute top-full left-0 w-64 bg-white border border-zinc-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all transform group-hover:translate-y-2 p-3 space-y-1 z-50">
-              <div class="px-3 py-1.5 text-[9px] font-extrabold uppercase tracking-widest text-zinc-400 border-b border-zinc-100 mb-1">Interactive Features</div>
-              <a href="#" onclick="scrollToSection('internationalSection'); return false;" class="flex items-center space-x-2 px-3 py-2 text-xs text-zinc-800 hover:bg-zinc-100 rounded-lg transition font-medium">
-                <svg class="w-3.5 h-3.5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5a2.5 2.5 0 002.5-2.5V11a2 2 0 012-2h1.065M12 2a10 10 0 100 20 10 10 0 000-20z"></path></svg>
-                <span>International Finds (Japan, Korea)</span>
-              </a>
-              <a href="#" onclick="scrollToSection('kitBuilderSection'); return false;" class="flex items-center space-x-2 px-3 py-2 text-xs text-zinc-800 hover:bg-zinc-100 rounded-lg transition font-medium">
-                <svg class="w-3.5 h-3.5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                <span>Build Your Atelier Kit</span>
-              </a>
-              <a href="#" onclick="scrollToSection('giftFinderSection'); return false;" class="flex items-center space-x-2 px-3 py-2 text-xs text-zinc-800 hover:bg-zinc-100 rounded-lg transition font-medium">
-                <svg class="w-3.5 h-3.5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
-                <span>Stationery Gift Finder</span>
-              </a>
+
+            <!-- Zero-gap wrapper for smooth continuous hover + click stickiness -->
+            <div id="menuFeatures" class="nav-dropdown-menu absolute top-full left-0 pt-2 w-64 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+              <div class="bg-white border border-zinc-200 rounded-2xl shadow-2xl p-3 space-y-1">
+                <div class="px-3 py-1.5 text-[9px] font-extrabold uppercase tracking-widest text-zinc-400 border-b border-zinc-100 mb-1">Interactive Features</div>
+                <a href="#" onclick="scrollToSection('internationalSection'); closeAllNavDropdowns(); return false;" class="flex items-center space-x-2 px-3 py-2 text-xs text-zinc-800 hover:bg-zinc-100 rounded-lg transition font-medium">
+                  <svg class="w-3.5 h-3.5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5a2.5 2.5 0 002.5-2.5V11a2 2 0 012-2h1.065M12 2a10 10 0 100 20 10 10 0 000-20z"></path></svg>
+                  <span>International Finds (Japan, Korea)</span>
+                </a>
+                <a href="#" onclick="scrollToSection('kitBuilderSection'); closeAllNavDropdowns(); return false;" class="flex items-center space-x-2 px-3 py-2 text-xs text-zinc-800 hover:bg-zinc-100 rounded-lg transition font-medium">
+                  <svg class="w-3.5 h-3.5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                  <span>Build Your Atelier Kit</span>
+                </a>
+                <a href="#" onclick="scrollToSection('giftFinderSection'); closeAllNavDropdowns(); return false;" class="flex items-center space-x-2 px-3 py-2 text-xs text-zinc-800 hover:bg-zinc-100 rounded-lg transition font-medium">
+                  <svg class="w-3.5 h-3.5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                  <span>Stationery Gift Finder</span>
+                </a>
+              </div>
             </div>
           </div>
         </nav>
@@ -287,9 +295,7 @@
   <!-- ========================================================================= -->
   <main id="mainContent" class="flex-grow w-full max-w-full overflow-hidden">
     
-    <!-- ======================================================================= -->
     <!-- VIEW 1: MAIN HOMEPAGE -->
-    <!-- ======================================================================= -->
     <section id="viewHome" class="view-section">
       
       <!-- Hero Banner -->
@@ -298,7 +304,7 @@
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             <div class="lg:col-span-7 space-y-6">
-              <!-- Clear Store Identity Badge -->
+              <!-- Store Identity Badge -->
               <div class="inline-flex items-center space-x-2 bg-amber-100/70 border border-amber-300 px-4 py-1.5 rounded-full shadow-sm">
                 <svg class="w-3.5 h-3.5 text-amber-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
                 <span class="text-[10px] font-bold text-amber-900 uppercase tracking-widest">Fine Stationery, Aesthetic Desk Goods & Atelier Gifts</span>
@@ -688,9 +694,7 @@
 
     </section>
 
-    <!-- ======================================================================= -->
     <!-- VIEW 2: PRODUCT CATALOG VIEW -->
-    <!-- ======================================================================= -->
     <section id="viewCatalog" class="view-section hidden py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 pb-6 border-b border-zinc-200 gap-4">
         <div>
@@ -712,9 +716,7 @@
       </div>
     </section>
 
-    <!-- ======================================================================= -->
     <!-- VIEW 3: CHECKOUT FLOW -->
-    <!-- ======================================================================= -->
     <section id="viewCheckout" class="view-section hidden py-16 max-w-4xl mx-auto px-4 sm:px-6">
       <div class="bg-white rounded-3xl p-8 border border-zinc-200 shadow-xl space-y-8">
         <div class="border-b border-zinc-200 pb-4">
@@ -798,13 +800,10 @@
       </div>
     </section>
 
-    <!-- ======================================================================= -->
-    <!-- VIEW 4: COMPLETE AUTHENTICATION SUITE (LOGIN & SIGNUP TABS) -->
-    <!-- ======================================================================= -->
+    <!-- VIEW 4: AUTHENTICATION SUITE -->
     <section id="viewAuth" class="view-section hidden py-16 max-w-md mx-auto px-4">
       <div class="bg-white rounded-3xl shadow-2xl border border-zinc-200 p-8 space-y-6">
         
-        <!-- Auth Tabs Header -->
         <div class="flex border-b border-zinc-200">
           <button id="tabBtnLogin" onclick="switchAuthTab('login')" class="w-1/2 pb-3 font-bold text-xs uppercase tracking-wider text-zinc-950 border-b-2 border-zinc-950 text-center transition">
             Sign In
@@ -844,7 +843,6 @@
             Sign In To Account →
           </button>
 
-          <!-- Social Logins -->
           <div class="pt-4 border-t border-zinc-100 text-center space-y-2">
             <span class="text-[10px] text-zinc-400 font-bold uppercase tracking-widest block mb-2">Or Continue With</span>
             <button type="button" onclick="quickSocialAuth('Google')" class="w-full border border-zinc-200 hover:bg-zinc-50 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center space-x-2 text-zinc-800 transition">
@@ -1006,8 +1004,39 @@
     let currentUser = { name: 'Ayesha Khan', email: 'ayesha.khan@monograph.com' };
     let currentDetailPrice = 0;
 
+    // DROPDOWN CLICK-LOCK & CONTINUOUS HOVER CONTROLLER
+    function toggleNavDropdown(menuId, event) {
+      if (event) event.stopPropagation();
+      const menu = document.getElementById(menuId);
+      const isAlreadyOpen = menu.classList.contains('nav-dropdown-open');
+      
+      closeAllNavDropdowns();
+
+      if (!isAlreadyOpen) {
+        menu.classList.add('nav-dropdown-open');
+        menu.classList.remove('opacity-0', 'pointer-events-none');
+        menu.classList.add('opacity-100', 'pointer-events-auto');
+      }
+    }
+
+    function closeAllNavDropdowns() {
+      document.querySelectorAll('.nav-dropdown-menu').forEach(m => {
+        m.classList.remove('nav-dropdown-open');
+        m.classList.add('opacity-0', 'pointer-events-none');
+        m.classList.remove('opacity-100', 'pointer-events-auto');
+      });
+    }
+
+    // Close dropdowns on outside click
+    window.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-dropdown-container')) {
+        closeAllNavDropdowns();
+      }
+    });
+
     // View Switcher
     function switchView(viewName) {
+      closeAllNavDropdowns();
       document.querySelectorAll('.view-section').forEach(sec => sec.classList.add('hidden'));
       const target = document.getElementById('view' + viewName.charAt(0).toUpperCase() + viewName.slice(1));
       if (target) target.classList.remove('hidden');
