@@ -107,18 +107,22 @@
       <!-- Quick Flow & Interactive Feature Links -->
       <div class="flex items-center space-x-1.5 my-1 flex-wrap">
         <!-- Live Currency Selector (Feature #6) -->
-        <div class="relative group inline-block mr-1">
-          <button class="bg-amber-950/80 border border-amber-600/60 hover:bg-amber-900 text-amber-300 px-2.5 py-1 rounded text-[11px] font-bold flex items-center space-x-1 transition shadow-sm">
+        <div class="relative group nav-dropdown-container inline-block mr-1">
+          <button onclick="toggleNavDropdown('menuCurrency', event)" class="bg-amber-950/80 border border-amber-600/60 hover:bg-amber-900 text-amber-300 px-2.5 py-1 rounded text-[11px] font-bold flex items-center space-x-1 transition shadow-sm">
             <svg class="w-3 h-3 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             <span id="currentCurrencyLabel">USD ($)</span>
             <svg class="w-3 h-3 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
-          <div class="absolute right-0 top-full mt-1 bg-zinc-900 border border-zinc-700 rounded-xl p-1.5 space-y-1 shadow-2xl text-[10px] hidden group-hover:block z-50 w-28">
-            <button onclick="changeCurrency('USD')" class="w-full text-left px-2.5 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex items-center justify-between"><span>USD</span> <span>$</span></button>
-            <button onclick="changeCurrency('JPY')" class="w-full text-left px-2.5 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex items-center justify-between"><span>JPY</span> <span>¥</span></button>
-            <button onclick="changeCurrency('EUR')" class="w-full text-left px-2.5 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex items-center justify-between"><span>EUR</span> <span>€</span></button>
-            <button onclick="changeCurrency('GBP')" class="w-full text-left px-2.5 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex items-center justify-between"><span>GBP</span> <span>£</span></button>
-            <button onclick="changeCurrency('INR')" class="w-full text-left px-2.5 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex items-center justify-between"><span>INR</span> <span>₹</span></button>
+          
+          <!-- Zero-gap wrapper prevents hover loss & supports click-to-stick -->
+          <div id="menuCurrency" class="nav-dropdown-menu absolute right-0 top-full pt-1 w-28 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+            <div class="bg-zinc-900 border border-zinc-700 rounded-xl p-1.5 space-y-1 shadow-2xl text-[10px]">
+              <button onclick="changeCurrency('USD'); closeAllNavDropdowns();" class="w-full text-left px-2.5 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex items-center justify-between"><span>USD</span> <span class="font-mono text-amber-400">$</span></button>
+              <button onclick="changeCurrency('JPY'); closeAllNavDropdowns();" class="w-full text-left px-2.5 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex items-center justify-between"><span>JPY</span> <span class="font-mono text-amber-400">¥</span></button>
+              <button onclick="changeCurrency('EUR'); closeAllNavDropdowns();" class="w-full text-left px-2.5 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex items-center justify-between"><span>EUR</span> <span class="font-mono text-amber-400">€</span></button>
+              <button onclick="changeCurrency('GBP'); closeAllNavDropdowns();" class="w-full text-left px-2.5 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex items-center justify-between"><span>GBP</span> <span class="font-mono text-amber-400">£</span></button>
+              <button onclick="changeCurrency('INR'); closeAllNavDropdowns();" class="w-full text-left px-2.5 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex items-center justify-between"><span>INR</span> <span class="font-mono text-amber-400">₹</span></button>
+            </div>
           </div>
         </div>
 
@@ -1226,7 +1230,12 @@
     function formatPrice(usdVal) {
       const c = currencies[selectedCurrency] || currencies.USD;
       const converted = usdVal * c.rate;
-      if (selectedCurrency === 'JPY') return c.symbol + Math.round(converted).toLocaleString();
+      if (selectedCurrency === 'INR') {
+        return c.symbol + Math.round(converted).toLocaleString('en-IN');
+      }
+      if (selectedCurrency === 'JPY') {
+        return c.symbol + Math.round(converted).toLocaleString('ja-JP');
+      }
       return c.symbol + converted.toFixed(2);
     }
 
