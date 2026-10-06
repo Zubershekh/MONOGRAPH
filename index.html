@@ -66,7 +66,7 @@
 
     .desktop-nav-link {
       white-space: nowrap;
-      padding: 0.5rem 0.75rem;
+      padding: 0.5rem 0.85rem;
       font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.06em;
@@ -94,9 +94,9 @@
   <div class="bg-zinc-950 text-zinc-300 py-2 px-4 sm:px-6 flex flex-wrap items-center justify-between border-b border-zinc-800 z-50 text-xs w-full max-w-full">
     <div class="flex items-center space-x-2.5 my-1">
       <span class="inline-block w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-      <span class="font-bold tracking-widest uppercase text-[10px] text-zinc-300">Client Interactive Presentation</span>
+      <span class="font-bold tracking-widest uppercase text-[10px] text-zinc-300">Client Presentation Mode</span>
       <span class="text-zinc-700">|</span>
-      <span class="text-[11px] font-mono text-amber-300">MONOGRAPH Atelier (Scooboo Edition) v3.0</span>
+      <span class="text-[11px] font-mono text-amber-300">MONOGRAPH Atelier v3.2</span>
     </div>
     
     <!-- Quick Flow Links for Client Presentation -->
@@ -113,7 +113,7 @@
     </div>
   </div>
 
-  <!-- Top Announcement Bar (Scooboo Inspired) -->
+  <!-- Top Announcement Bar -->
   <div class="bg-zinc-900 text-zinc-300 text-[11px] tracking-widest uppercase py-2 px-4 text-center font-medium border-b border-zinc-800 flex items-center justify-center space-x-4 w-full max-w-full">
     <span>Complimentary Express Shipping On Orders Over $75</span>
     <span class="text-zinc-700 hidden sm:inline">•</span>
@@ -123,13 +123,13 @@
   </div>
 
   <!-- ========================================================================= -->
-  <!-- MAIN NAVBAR -->
+  <!-- MAIN NAVBAR (Clean Categorized Lists, Zero Clutter) -->
   <!-- ========================================================================= -->
   <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-zinc-200/80 w-full max-w-full">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20 gap-4">
         
-        <!-- Left Logo & Mobile Toggle -->
+        <!-- Left Logo & Mobile Drawer Trigger -->
         <div class="flex items-center space-x-3 shrink-0">
           <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-zinc-800 hover:bg-zinc-100 transition focus:outline-none" aria-label="Toggle Navigation">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -148,44 +148,72 @@
           </div>
         </div>
 
-        <!-- Center Desktop Links -->
-        <nav class="hidden lg:flex items-center space-x-1 xl:space-x-2">
-          <a href="#" onclick="switchView('home'); return false;" class="desktop-nav-link text-zinc-950 font-bold bg-zinc-100/80">Home</a>
-          <a href="#" onclick="switchView('catalog'); return false;" class="desktop-nav-link">Shop Catalog</a>
+        <!-- Center Desktop Nav Lists (Clean Grouped Dropdowns) -->
+        <nav class="hidden lg:flex items-center space-x-1 xl:space-x-3">
+          <a href="#" onclick="switchView('home'); return false;" class="desktop-nav-link text-zinc-950 font-bold bg-zinc-100/80">Storefront Home</a>
           
-          <!-- Dropdown -->
+          <!-- Dropdown List 1: Shop Categories -->
           <div class="relative group">
             <button class="desktop-nav-link flex items-center space-x-1">
-              <span>Categories</span>
+              <span>Shop Collections</span>
               <svg class="w-3.5 h-3.5 text-zinc-400 group-hover:text-zinc-900 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
-            <div class="absolute top-full left-0 w-60 bg-white border border-zinc-200 rounded-xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all transform group-hover:translate-y-2 p-2.5 space-y-1 z-50">
+            <div class="absolute top-full left-0 w-64 bg-white border border-zinc-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all transform group-hover:translate-y-2 p-3 space-y-1 z-50">
+              <div class="px-3 py-1.5 text-[9px] font-extrabold uppercase tracking-widest text-zinc-400 border-b border-zinc-100 mb-1">Catalog Categories</div>
               <a href="#" onclick="switchView('catalog'); return false;" class="flex items-center justify-between px-3 py-2 text-xs text-zinc-800 hover:bg-zinc-100 rounded-lg transition font-medium">
-                <span>Archival Notebooks</span>
-                <span class="text-[10px] text-zinc-400 font-mono">42</span>
+                <span class="flex items-center space-x-2">
+                  <svg class="w-3.5 h-3.5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                  <span>Archival Notebooks</span>
+                </span>
+                <span class="text-[10px] text-zinc-400 font-mono font-bold">42</span>
               </a>
               <a href="#" onclick="switchView('catalog'); return false;" class="flex items-center justify-between px-3 py-2 text-xs text-zinc-800 hover:bg-zinc-100 rounded-lg transition font-medium">
-                <span>Fountain & Gel Pens</span>
-                <span class="text-[10px] text-zinc-400 font-mono">86</span>
+                <span class="flex items-center space-x-2">
+                  <svg class="w-3.5 h-3.5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                  <span>Fountain & Fine Pens</span>
+                </span>
+                <span class="text-[10px] text-zinc-400 font-mono font-bold">86</span>
               </a>
               <a href="#" onclick="switchView('catalog'); return false;" class="flex items-center justify-between px-3 py-2 text-xs text-zinc-800 hover:bg-zinc-100 rounded-lg transition font-medium">
-                <span>Aesthetic Desk Items</span>
-                <span class="text-[10px] text-zinc-400 font-mono">50</span>
+                <span class="flex items-center space-x-2">
+                  <svg class="w-3.5 h-3.5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                  <span>Aesthetic Desk Items</span>
+                </span>
+                <span class="text-[10px] text-zinc-400 font-mono font-bold">50</span>
               </a>
               <a href="#" onclick="switchView('catalog'); return false;" class="flex items-center justify-between px-3 py-2 text-xs text-zinc-800 hover:bg-zinc-100 rounded-lg transition font-medium">
-                <span>Bespoke Gift Sets</span>
-                <span class="text-[10px] text-zinc-400 font-mono">24</span>
+                <span class="flex items-center space-x-2">
+                  <svg class="w-3.5 h-3.5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                  <span>Curated Gift Sets</span>
+                </span>
+                <span class="text-[10px] text-zinc-400 font-mono font-bold">24</span>
               </a>
             </div>
           </div>
 
-          <a href="#" onclick="scrollToSection('internationalSection'); return false;" class="desktop-nav-link text-amber-800 flex items-center space-x-1">
-            <svg class="w-3.5 h-3.5 text-amber-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5a2.5 2.5 0 002.5-2.5V11a2 2 0 012-2h1.065M12 2a10 10 0 100 20 10 10 0 000-20z"></path></svg>
-            <span>International Finds</span>
-          </a>
-          
-          <a href="#" onclick="scrollToSection('kitBuilderSection'); return false;" class="desktop-nav-link">Build Your Kit</a>
-          <a href="#" onclick="scrollToSection('giftFinderSection'); return false;" class="desktop-nav-link">Gift Finder</a>
+          <!-- Dropdown List 2: Discovery & Interactive Features -->
+          <div class="relative group">
+            <button class="desktop-nav-link flex items-center space-x-1 text-amber-800">
+              <svg class="w-3.5 h-3.5 text-amber-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5a2.5 2.5 0 002.5-2.5V11a2 2 0 012-2h1.065M12 2a10 10 0 100 20 10 10 0 000-20z"></path></svg>
+              <span>Features & Tools</span>
+              <svg class="w-3.5 h-3.5 text-zinc-400 group-hover:text-zinc-900 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="absolute top-full left-0 w-64 bg-white border border-zinc-200 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all transform group-hover:translate-y-2 p-3 space-y-1 z-50">
+              <div class="px-3 py-1.5 text-[9px] font-extrabold uppercase tracking-widest text-zinc-400 border-b border-zinc-100 mb-1">Interactive Features</div>
+              <a href="#" onclick="scrollToSection('internationalSection'); return false;" class="flex items-center space-x-2 px-3 py-2 text-xs text-zinc-800 hover:bg-zinc-100 rounded-lg transition font-medium">
+                <svg class="w-3.5 h-3.5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5a2.5 2.5 0 002.5-2.5V11a2 2 0 012-2h1.065M12 2a10 10 0 100 20 10 10 0 000-20z"></path></svg>
+                <span>International Finds (Japan, Korea)</span>
+              </a>
+              <a href="#" onclick="scrollToSection('kitBuilderSection'); return false;" class="flex items-center space-x-2 px-3 py-2 text-xs text-zinc-800 hover:bg-zinc-100 rounded-lg transition font-medium">
+                <svg class="w-3.5 h-3.5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                <span>Build Your Atelier Kit</span>
+              </a>
+              <a href="#" onclick="scrollToSection('giftFinderSection'); return false;" class="flex items-center space-x-2 px-3 py-2 text-xs text-zinc-800 hover:bg-zinc-100 rounded-lg transition font-medium">
+                <svg class="w-3.5 h-3.5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                <span>Stationery Gift Finder</span>
+              </a>
+            </div>
+          </div>
         </nav>
 
         <!-- Right Utilities -->
@@ -197,7 +225,7 @@
             <input type="text" placeholder="Search instruments..." class="bg-transparent text-xs w-full focus:outline-none text-zinc-800 placeholder-zinc-400">
           </div>
 
-          <!-- Wishlist Button (Scooboo Feature) -->
+          <!-- Wishlist Button -->
           <button onclick="showToast('Wishlist: 3 saved items')" class="p-2.5 rounded-full border border-zinc-200 text-zinc-800 hover:border-zinc-950 hover:bg-zinc-50 transition relative" title="Wishlist">
             <svg class="w-4 h-4 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
             <span id="wishlistBadge" class="absolute -top-1 -right-1 bg-rose-500 text-white text-[9px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center">3</span>
@@ -220,21 +248,44 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer Menu -->
+  <!-- Mobile Drawer Menu (Structured Categorized Lists) -->
   <div id="mobileMenuBackdrop" onclick="toggleMobileMenu()" class="fixed inset-0 bg-zinc-950/50 backdrop-blur-sm z-50 hidden transition-opacity lg:hidden"></div>
   <div id="mobileMenu" class="fixed top-0 left-0 h-full w-full max-w-xs bg-white z-50 shadow-2xl transform -translate-x-full transition-transform duration-300 flex flex-col lg:hidden">
     <div class="p-6 bg-zinc-950 text-white flex items-center justify-between">
       <span class="font-bold font-serif-title text-lg tracking-wider">MONOGRAPH</span>
       <button onclick="toggleMobileMenu()" class="text-zinc-400 hover:text-white p-1 text-xl font-bold">✕</button>
     </div>
-    <div class="flex-grow p-6 overflow-y-auto space-y-3 text-xs font-bold uppercase tracking-wider text-zinc-800">
-      <a href="#" onclick="switchView('home'); toggleMobileMenu(); return false;" class="block py-2.5 px-3 rounded-lg hover:bg-zinc-100">Storefront Home</a>
-      <a href="#" onclick="switchView('catalog'); toggleMobileMenu(); return false;" class="block py-2.5 px-3 rounded-lg hover:bg-zinc-100">Shop Catalog</a>
-      <a href="#" onclick="scrollToSection('internationalSection'); toggleMobileMenu(); return false;" class="block py-2.5 px-3 rounded-lg hover:bg-zinc-100">International Finds</a>
-      <a href="#" onclick="scrollToSection('kitBuilderSection'); toggleMobileMenu(); return false;" class="block py-2.5 px-3 rounded-lg hover:bg-zinc-100">Build Your Kit</a>
-      <a href="#" onclick="scrollToSection('giftFinderSection'); toggleMobileMenu(); return false;" class="block py-2.5 px-3 rounded-lg hover:bg-zinc-100">Gift Finder</a>
-      <a href="#" onclick="switchView('checkout'); toggleMobileMenu(); return false;" class="block py-2.5 px-3 rounded-lg hover:bg-zinc-100">Checkout Flow</a>
-      <a href="#" onclick="switchView('account'); toggleMobileMenu(); return false;" class="block py-2.5 px-3 rounded-lg hover:bg-zinc-100">Customer Account</a>
+    
+    <div class="flex-grow p-6 overflow-y-auto space-y-6 text-xs font-bold uppercase tracking-wider text-zinc-800">
+      
+      <!-- List Group 1: Store View Links -->
+      <div class="space-y-2">
+        <span class="text-[10px] text-zinc-400 uppercase tracking-widest font-extrabold block">Navigation</span>
+        <a href="#" onclick="switchView('home'); toggleMobileMenu(); return false;" class="block py-2 px-3 rounded-lg hover:bg-zinc-100">Storefront Home</a>
+        <a href="#" onclick="switchView('catalog'); toggleMobileMenu(); return false;" class="block py-2 px-3 rounded-lg hover:bg-zinc-100">Full Catalog</a>
+      </div>
+
+      <!-- List Group 2: Categories -->
+      <div class="space-y-2 pt-4 border-t border-zinc-200">
+        <span class="text-[10px] text-zinc-400 uppercase tracking-widest font-extrabold block">Categories</span>
+        <a href="#" onclick="switchView('catalog'); toggleMobileMenu(); return false;" class="block py-2 px-3 rounded-lg hover:bg-zinc-100 text-zinc-700">Archival Notebooks</a>
+        <a href="#" onclick="switchView('catalog'); toggleMobileMenu(); return false;" class="block py-2 px-3 rounded-lg hover:bg-zinc-100 text-zinc-700">Fountain & Fine Pens</a>
+        <a href="#" onclick="switchView('catalog'); toggleMobileMenu(); return false;" class="block py-2 px-3 rounded-lg hover:bg-zinc-100 text-zinc-700">Aesthetic Desk Objects</a>
+      </div>
+
+      <!-- List Group 3: Features & Tools -->
+      <div class="space-y-2 pt-4 border-t border-zinc-200">
+        <span class="text-[10px] text-zinc-400 uppercase tracking-widest font-extrabold block">Special Features</span>
+        <a href="#" onclick="scrollToSection('internationalSection'); toggleMobileMenu(); return false;" class="block py-2 px-3 rounded-lg hover:bg-zinc-100 text-amber-800">International Finds</a>
+        <a href="#" onclick="scrollToSection('kitBuilderSection'); toggleMobileMenu(); return false;" class="block py-2 px-3 rounded-lg hover:bg-zinc-100">Build Your Kit</a>
+        <a href="#" onclick="scrollToSection('giftFinderSection'); toggleMobileMenu(); return false;" class="block py-2 px-3 rounded-lg hover:bg-zinc-100">Gift Finder</a>
+      </div>
+
+      <!-- List Group 4: Account & Order -->
+      <div class="space-y-2 pt-4 border-t border-zinc-200">
+        <a href="#" onclick="switchView('checkout'); toggleMobileMenu(); return false;" class="block py-2 px-3 rounded-lg hover:bg-zinc-100">Checkout Flow</a>
+        <a href="#" onclick="switchView('account'); toggleMobileMenu(); return false;" class="block py-2 px-3 rounded-lg hover:bg-zinc-100">Customer Account</a>
+      </div>
     </div>
   </div>
 
@@ -337,7 +388,7 @@
         </div>
       </div>
 
-      <!-- BRAND SPOTLIGHT BAR (SCOOBOO STYLE) -->
+      <!-- BRAND SPOTLIGHT BAR -->
       <div class="py-8 bg-zinc-100 border-b border-zinc-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex flex-wrap items-center justify-between gap-6 opacity-75">
@@ -354,7 +405,7 @@
         </div>
       </div>
 
-      <!-- SHOP BY CATEGORY (Clear Visual Icons) -->
+      <!-- SHOP BY CATEGORY -->
       <div class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-end mb-8">
           <div>
@@ -416,7 +467,7 @@
         </div>
       </div>
 
-      <!-- SHOP BY MOOD (WITH SVG ICONS ONLY) -->
+      <!-- SHOP BY MOOD -->
       <div class="bg-white py-16 border-t border-b border-zinc-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center max-w-xl mx-auto mb-10">
@@ -571,7 +622,7 @@
         </div>
       </div>
 
-      <!-- CREATOR TESTIMONIALS (SCOOBOO STYLE) -->
+      <!-- CREATOR TESTIMONIALS -->
       <div class="py-16 bg-zinc-50 border-t border-b border-zinc-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center max-w-xl mx-auto mb-12">
@@ -837,7 +888,7 @@
 
   <!-- FOOTER -->
   <footer class="bg-zinc-950 text-zinc-400 py-12 border-t border-zinc-800 text-center text-xs">
-    © 2026 MONOGRAPH Atelier & Fine Stationery. High-Fidelity Client Prototype. Inspired by Scooboo.in.
+    © 2026 MONOGRAPH Atelier & Fine Stationery. High-Fidelity Client Prototype.
   </footer>
 
   <!-- ========================================================================= -->
