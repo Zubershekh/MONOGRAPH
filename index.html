@@ -96,7 +96,7 @@
       <span class="inline-block w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
       <span class="font-bold tracking-widest uppercase text-[10px] text-zinc-300">Client Presentation Mode</span>
       <span class="text-zinc-700">|</span>
-      <span class="text-[11px] font-mono text-amber-300">MONOGRAPH Atelier v3.2</span>
+      <span class="text-[11px] font-mono text-amber-300">MONOGRAPH Atelier v3.5</span>
     </div>
     
     <!-- Quick Flow Links for Client Presentation -->
@@ -104,12 +104,10 @@
       <span class="text-zinc-400 text-[11px] hidden md:inline">Click Flow:</span>
       <button onclick="switchView('home')" class="px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-white text-[11px] font-semibold transition">1. Home</button>
       <button onclick="switchView('catalog')" class="px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-white text-[11px] font-semibold transition">2. Shop</button>
-      <button onclick="openProductDetail('Matte Brass Fountain Pen', 45.00, 'Refillable Converter • Solid Brass Core', 'pen', 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=800&q=80', 'Japan')" class="px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-white text-[11px] font-semibold transition">3. Product</button>
-      <button onclick="toggleCartDrawer()" class="px-2.5 py-1 rounded bg-amber-700 hover:bg-amber-600 text-white text-[11px] font-bold transition flex items-center space-x-1">
-        <span>4. Cart (<span id="demoCartCount">2</span>)</span>
-      </button>
-      <button onclick="switchView('checkout')" class="px-2.5 py-1 rounded bg-emerald-700 hover:bg-emerald-600 text-white text-[11px] font-bold transition">5. Checkout</button>
-      <button onclick="switchView('account')" class="px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-white text-[11px] font-semibold transition">6. Account</button>
+      <button onclick="switchView('auth')" class="px-2.5 py-1 rounded bg-amber-700 hover:bg-amber-600 text-white text-[11px] font-bold transition">3. Login/Signup</button>
+      <button onclick="toggleWishlistDrawer()" class="px-2.5 py-1 rounded bg-rose-800 hover:bg-rose-700 text-white text-[11px] font-bold transition">4. Wishlist (<span id="demoWishCount">2</span>)</button>
+      <button onclick="toggleCartDrawer()" class="px-2.5 py-1 rounded bg-amber-800 hover:bg-amber-700 text-white text-[11px] font-bold transition">5. Cart (<span id="demoCartCount">2</span>)</button>
+      <button onclick="switchView('checkout')" class="px-2.5 py-1 rounded bg-emerald-700 hover:bg-emerald-600 text-white text-[11px] font-bold transition">6. Checkout</button>
     </div>
   </div>
 
@@ -123,13 +121,13 @@
   </div>
 
   <!-- ========================================================================= -->
-  <!-- MAIN NAVBAR (Clean Categorized Lists, Zero Clutter) -->
+  <!-- MAIN NAVBAR -->
   <!-- ========================================================================= -->
   <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-zinc-200/80 w-full max-w-full">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20 gap-4">
         
-        <!-- Left Logo & Mobile Drawer Trigger -->
+        <!-- Left Logo & Mobile Toggle -->
         <div class="flex items-center space-x-3 shrink-0">
           <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-zinc-800 hover:bg-zinc-100 transition focus:outline-none" aria-label="Toggle Navigation">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -148,7 +146,7 @@
           </div>
         </div>
 
-        <!-- Center Desktop Nav Lists (Clean Grouped Dropdowns) -->
+        <!-- Center Desktop Nav Lists -->
         <nav class="hidden lg:flex items-center space-x-1 xl:space-x-3">
           <a href="#" onclick="switchView('home'); return false;" class="desktop-nav-link text-zinc-950 font-bold bg-zinc-100/80">Storefront Home</a>
           
@@ -225,16 +223,16 @@
             <input type="text" placeholder="Search instruments..." class="bg-transparent text-xs w-full focus:outline-none text-zinc-800 placeholder-zinc-400">
           </div>
 
-          <!-- Wishlist Button -->
-          <button onclick="showToast('Wishlist: 3 saved items')" class="p-2.5 rounded-full border border-zinc-200 text-zinc-800 hover:border-zinc-950 hover:bg-zinc-50 transition relative" title="Wishlist">
+          <!-- Wishlist Drawer Trigger -->
+          <button onclick="toggleWishlistDrawer()" class="p-2.5 rounded-full border border-zinc-200 text-zinc-800 hover:border-rose-600 hover:bg-rose-50 transition relative" title="Saved Wishlist">
             <svg class="w-4 h-4 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-            <span id="wishlistBadge" class="absolute -top-1 -right-1 bg-rose-500 text-white text-[9px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center">3</span>
+            <span id="wishlistBadge" class="absolute -top-1 -right-1 bg-rose-500 text-white text-[9px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center">2</span>
           </button>
 
           <!-- Account Button -->
-          <button onclick="switchView('account')" class="flex items-center space-x-1.5 px-3 py-2 rounded-full border border-zinc-200 text-zinc-800 hover:border-zinc-950 hover:bg-zinc-50 transition" title="Member Account">
+          <button id="navAccountBtn" onclick="handleAccountClick()" class="flex items-center space-x-1.5 px-3 py-2 rounded-full border border-zinc-200 text-zinc-800 hover:border-zinc-950 hover:bg-zinc-50 transition" title="Member Account">
             <svg class="w-4 h-4 text-zinc-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-            <span class="text-[11px] font-bold uppercase tracking-wider hidden sm:inline">Account</span>
+            <span id="navAccountLabel" class="text-[11px] font-bold uppercase tracking-wider hidden sm:inline">Sign In</span>
           </button>
 
           <!-- Cart Button -->
@@ -248,7 +246,7 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer Menu (Structured Categorized Lists) -->
+  <!-- Mobile Drawer Menu -->
   <div id="mobileMenuBackdrop" onclick="toggleMobileMenu()" class="fixed inset-0 bg-zinc-950/50 backdrop-blur-sm z-50 hidden transition-opacity lg:hidden"></div>
   <div id="mobileMenu" class="fixed top-0 left-0 h-full w-full max-w-xs bg-white z-50 shadow-2xl transform -translate-x-full transition-transform duration-300 flex flex-col lg:hidden">
     <div class="p-6 bg-zinc-950 text-white flex items-center justify-between">
@@ -257,15 +255,12 @@
     </div>
     
     <div class="flex-grow p-6 overflow-y-auto space-y-6 text-xs font-bold uppercase tracking-wider text-zinc-800">
-      
-      <!-- List Group 1: Store View Links -->
       <div class="space-y-2">
         <span class="text-[10px] text-zinc-400 uppercase tracking-widest font-extrabold block">Navigation</span>
         <a href="#" onclick="switchView('home'); toggleMobileMenu(); return false;" class="block py-2 px-3 rounded-lg hover:bg-zinc-100">Storefront Home</a>
         <a href="#" onclick="switchView('catalog'); toggleMobileMenu(); return false;" class="block py-2 px-3 rounded-lg hover:bg-zinc-100">Full Catalog</a>
       </div>
 
-      <!-- List Group 2: Categories -->
       <div class="space-y-2 pt-4 border-t border-zinc-200">
         <span class="text-[10px] text-zinc-400 uppercase tracking-widest font-extrabold block">Categories</span>
         <a href="#" onclick="switchView('catalog'); toggleMobileMenu(); return false;" class="block py-2 px-3 rounded-lg hover:bg-zinc-100 text-zinc-700">Archival Notebooks</a>
@@ -273,7 +268,6 @@
         <a href="#" onclick="switchView('catalog'); toggleMobileMenu(); return false;" class="block py-2 px-3 rounded-lg hover:bg-zinc-100 text-zinc-700">Aesthetic Desk Objects</a>
       </div>
 
-      <!-- List Group 3: Features & Tools -->
       <div class="space-y-2 pt-4 border-t border-zinc-200">
         <span class="text-[10px] text-zinc-400 uppercase tracking-widest font-extrabold block">Special Features</span>
         <a href="#" onclick="scrollToSection('internationalSection'); toggleMobileMenu(); return false;" class="block py-2 px-3 rounded-lg hover:bg-zinc-100 text-amber-800">International Finds</a>
@@ -281,10 +275,9 @@
         <a href="#" onclick="scrollToSection('giftFinderSection'); toggleMobileMenu(); return false;" class="block py-2 px-3 rounded-lg hover:bg-zinc-100">Gift Finder</a>
       </div>
 
-      <!-- List Group 4: Account & Order -->
       <div class="space-y-2 pt-4 border-t border-zinc-200">
+        <a href="#" onclick="switchView('auth'); toggleMobileMenu(); return false;" class="block py-2 px-3 rounded-lg hover:bg-zinc-100">Sign In / Create Account</a>
         <a href="#" onclick="switchView('checkout'); toggleMobileMenu(); return false;" class="block py-2 px-3 rounded-lg hover:bg-zinc-100">Checkout Flow</a>
-        <a href="#" onclick="switchView('account'); toggleMobileMenu(); return false;" class="block py-2 px-3 rounded-lg hover:bg-zinc-100">Customer Account</a>
       </div>
     </div>
   </div>
@@ -299,7 +292,7 @@
     <!-- ======================================================================= -->
     <section id="viewHome" class="view-section">
       
-      <!-- Hero Banner: Instantly Communicates Stationery, Gifts & Aesthetic Objects -->
+      <!-- Hero Banner -->
       <div class="relative overflow-hidden bg-gradient-to-b from-zinc-100 via-[#FAF8F5] to-[#FAF8F5] py-16 sm:py-24 border-b border-zinc-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -331,7 +324,7 @@
                 </button>
               </div>
 
-              <!-- Trust Badges with Pure Vector SVG Icons (No Emojis) -->
+              <!-- Trust Badges -->
               <div class="pt-8 border-t border-zinc-200 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs text-zinc-600">
                 <div class="flex items-start space-x-2">
                   <svg class="w-5 h-5 text-amber-700 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"></path></svg>
@@ -416,7 +409,6 @@
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          <!-- Notebooks -->
           <div onclick="switchView('catalog')" class="bg-white p-4 rounded-2xl border border-zinc-200 text-center cursor-pointer hover:border-zinc-900 transition product-card">
             <div class="h-28 rounded-xl overflow-hidden mb-3 border border-zinc-100 relative">
               <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">
@@ -424,7 +416,6 @@
             <h4 class="font-bold text-xs uppercase tracking-wider text-zinc-900">Archival Journals</h4>
             <p class="text-[10px] text-zinc-400 mt-0.5">42 Editions</p>
           </div>
-          <!-- Writing Pens -->
           <div onclick="switchView('catalog')" class="bg-white p-4 rounded-2xl border border-zinc-200 text-center cursor-pointer hover:border-zinc-900 transition product-card">
             <div class="h-28 rounded-xl overflow-hidden mb-3 border border-zinc-100 relative">
               <img src="https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">
@@ -432,7 +423,6 @@
             <h4 class="font-bold text-xs uppercase tracking-wider text-zinc-900">Writing Pens</h4>
             <p class="text-[10px] text-zinc-400 mt-0.5">86 Instruments</p>
           </div>
-          <!-- Art & Supplies -->
           <div onclick="switchView('catalog')" class="bg-white p-4 rounded-2xl border border-zinc-200 text-center cursor-pointer hover:border-zinc-900 transition product-card">
             <div class="h-28 rounded-xl overflow-hidden mb-3 border border-zinc-100 relative">
               <img src="https://images.unsplash.com/photo-1585336261026-8f5786372966?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">
@@ -440,7 +430,6 @@
             <h4 class="font-bold text-xs uppercase tracking-wider text-zinc-900">Art & Color</h4>
             <p class="text-[10px] text-zinc-400 mt-0.5">34 Mediums</p>
           </div>
-          <!-- Desk Objects -->
           <div onclick="switchView('catalog')" class="bg-white p-4 rounded-2xl border border-zinc-200 text-center cursor-pointer hover:border-zinc-900 transition product-card">
             <div class="h-28 rounded-xl overflow-hidden mb-3 border border-zinc-100 relative">
               <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">
@@ -448,7 +437,6 @@
             <h4 class="font-bold text-xs uppercase tracking-wider text-zinc-900">Aesthetic Desk Objects</h4>
             <p class="text-[10px] text-zinc-400 mt-0.5">50+ Items</p>
           </div>
-          <!-- Japan Imports -->
           <div onclick="scrollToSection('internationalSection')" class="bg-white p-4 rounded-2xl border border-zinc-200 text-center cursor-pointer hover:border-zinc-900 transition product-card">
             <div class="h-28 rounded-xl overflow-hidden mb-3 border border-zinc-100 relative">
               <img src="https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">
@@ -456,7 +444,6 @@
             <h4 class="font-bold text-xs uppercase tracking-wider text-zinc-900">Japan Imports</h4>
             <p class="text-[10px] text-zinc-400 mt-0.5">Exclusive</p>
           </div>
-          <!-- Gift Kits -->
           <div onclick="scrollToSection('kitBuilderSection')" class="bg-white p-4 rounded-2xl border border-zinc-200 text-center cursor-pointer hover:border-zinc-900 transition product-card">
             <div class="h-28 rounded-xl overflow-hidden mb-3 border border-zinc-100 relative">
               <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">
@@ -476,7 +463,6 @@
             <p class="text-xs text-zinc-500 mt-1">Select your focus area to discover tailored stationery combinations.</p>
           </div>
 
-          <!-- Mood Tabs with SVG Icons -->
           <div class="flex flex-wrap justify-center gap-3 mb-10">
             <button onclick="filterMood('study', this)" class="mood-btn tab-active px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition border border-zinc-300 flex items-center space-x-2">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
@@ -496,7 +482,6 @@
             </button>
           </div>
 
-          <!-- Mood Content Grid -->
           <div id="moodGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Dynamically Rendered -->
           </div>
@@ -518,7 +503,6 @@
                 Discover rare stationery instruments directly imported from master craftsmen in Japan, Korea, Italy, and the United States.
               </p>
 
-              <!-- Country Rails -->
               <div class="flex flex-wrap gap-3 pt-2">
                 <button onclick="filterCountry('Japan', this)" class="country-btn bg-amber-600 text-zinc-950 font-bold px-4 py-2 rounded-xl text-xs flex items-center space-x-1.5">
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
@@ -538,14 +522,12 @@
                 </button>
               </div>
 
-              <!-- Country Story Box -->
               <div id="countryStoryBox" class="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10 text-xs text-zinc-200">
                 <span class="font-bold text-amber-300 uppercase tracking-widest block mb-1">Why We Selected Japan</span>
                 Smooth archival writing, precision 0.38mm tip tolerance, and Japanese Smyth-sewn flat binding for perfectionists.
               </div>
             </div>
 
-            <!-- Country Featured Product -->
             <div class="lg:col-span-5 bg-white text-zinc-900 rounded-2xl p-6 shadow-xl space-y-4">
               <div class="h-56 rounded-xl overflow-hidden border border-zinc-200">
                 <img src="https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
@@ -574,9 +556,7 @@
             <p class="text-xs text-zinc-500 mt-1">Select 1 Notebook + 1 Writing Pen + 1 Desk Accessory to unlock 15% off.</p>
           </div>
 
-          <!-- Builder Steps -->
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-            <!-- Step 1 -->
             <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-200 space-y-4">
               <div class="flex justify-between items-center">
                 <span class="text-xs font-bold uppercase tracking-widest text-zinc-500">Step 1: Notebook</span>
@@ -588,7 +568,6 @@
               </select>
             </div>
 
-            <!-- Step 2 -->
             <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-200 space-y-4">
               <div class="flex justify-between items-center">
                 <span class="text-xs font-bold uppercase tracking-widest text-zinc-500">Step 2: Writing Tool</span>
@@ -600,7 +579,6 @@
               </select>
             </div>
 
-            <!-- Step 3 -->
             <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-200 space-y-4">
               <div class="flex justify-between items-center">
                 <span class="text-xs font-bold uppercase tracking-widest text-zinc-500">Step 3: Accessory</span>
@@ -729,7 +707,6 @@
         </div>
       </div>
 
-      <!-- Grid -->
       <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         <!-- Rendered by JS -->
       </div>
@@ -746,16 +723,14 @@
         </div>
 
         <form onsubmit="handlePlaceOrder(event)" class="space-y-6">
-          <!-- Contact -->
           <div class="space-y-4">
             <h3 class="text-sm font-bold uppercase tracking-wider text-zinc-800">1. Customer Details</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input type="text" required placeholder="First & Last Name" class="custom-input p-3 text-xs rounded-xl">
-              <input type="email" required placeholder="Email Address" class="custom-input p-3 text-xs rounded-xl">
+              <input type="text" id="checkoutName" required placeholder="First & Last Name" class="custom-input p-3 text-xs rounded-xl">
+              <input type="email" id="checkoutEmail" required placeholder="Email Address" class="custom-input p-3 text-xs rounded-xl">
             </div>
           </div>
 
-          <!-- Shipping -->
           <div class="space-y-4 pt-4 border-t border-zinc-200">
             <h3 class="text-sm font-bold uppercase tracking-wider text-zinc-800">2. Shipping Address</h3>
             <input type="text" required placeholder="Street Address" class="custom-input w-full p-3 text-xs rounded-xl">
@@ -766,7 +741,6 @@
             </div>
           </div>
 
-          <!-- Order Summary -->
           <div class="bg-zinc-50 p-5 rounded-2xl border border-zinc-200 space-y-2 text-xs">
             <div class="flex justify-between text-zinc-600"><span>Subtotal Amount:</span><span id="checkoutSubtotal">$39.98</span></div>
             <div class="flex justify-between text-zinc-600"><span>Worldwide Shipping:</span><span class="text-emerald-700 font-bold">FREE</span></div>
@@ -795,11 +769,14 @@
     <section id="viewAccount" class="view-section hidden py-16 max-w-4xl mx-auto px-4 sm:px-6">
       <div class="bg-white rounded-3xl p-8 border border-zinc-200 shadow-xl space-y-6">
         <div class="flex justify-between items-center border-b border-zinc-200 pb-4">
-          <div>
-            <h2 class="text-2xl font-bold font-serif-title text-zinc-950">Member Account Dashboard</h2>
-            <p class="text-xs text-zinc-500">Ayesha Khan • Premium Atelier Member</p>
+          <div class="flex items-center space-x-3">
+            <div class="w-12 h-12 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-lg shadow-sm" id="accountAvatar">AK</div>
+            <div>
+              <h2 class="text-2xl font-bold font-serif-title text-zinc-950" id="accountName">Ayesha Khan</h2>
+              <p class="text-xs text-zinc-500" id="accountEmail">ayesha.khan@monograph.com • Premium Member</p>
+            </div>
           </div>
-          <button onclick="switchView('login')" class="text-xs text-red-600 font-bold">Sign Out</button>
+          <button onclick="performSignOut()" class="text-xs text-red-600 font-bold px-3 py-1.5 rounded-lg border border-red-200 hover:bg-red-50 transition">Sign Out</button>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
@@ -807,16 +784,105 @@
           <div class="bg-zinc-50 p-4 rounded-xl border border-zinc-200"><span class="text-xl font-bold text-zinc-900">120</span><span class="block text-[10px] text-zinc-500 uppercase tracking-widest mt-1">Rewards Points</span></div>
           <div class="bg-zinc-50 p-4 rounded-xl border border-zinc-200"><span class="text-xl font-bold text-zinc-900">Japan</span><span class="block text-[10px] text-zinc-500 uppercase tracking-widest mt-1">Favorite Collection</span></div>
         </div>
+
+        <div class="pt-4 space-y-3">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-zinc-800">Recent Account Activity</h3>
+          <div class="p-3 bg-zinc-50 rounded-xl border border-zinc-200 flex justify-between items-center text-xs">
+            <div>
+              <span class="font-bold text-zinc-900">Order #MONO-89241</span>
+              <p class="text-[10px] text-zinc-500">1x Matte Brass Fountain Pen • Delivered</p>
+            </div>
+            <span class="font-mono text-zinc-900 font-bold">$45.00</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- VIEW 4: LOGIN / SIGNUP VIEW -->
-    <section id="viewLogin" class="view-section hidden py-16 max-w-md mx-auto px-4">
-      <div class="bg-white rounded-3xl shadow-xl border border-zinc-200 p-8 space-y-5">
-        <h2 class="text-2xl font-bold font-serif-title text-zinc-950">Sign In To Member Account</h2>
-        <input type="email" required placeholder="Email Address" class="custom-input w-full p-3 text-xs rounded-xl">
-        <input type="password" required placeholder="Password" class="custom-input w-full p-3 text-xs rounded-xl">
-        <button onclick="switchView('account')" class="w-full bg-zinc-950 text-white font-bold py-3.5 rounded-xl text-xs uppercase tracking-widest">Sign In</button>
+    <!-- ======================================================================= -->
+    <!-- VIEW 4: COMPLETE AUTHENTICATION SUITE (LOGIN & SIGNUP TABS) -->
+    <!-- ======================================================================= -->
+    <section id="viewAuth" class="view-section hidden py-16 max-w-md mx-auto px-4">
+      <div class="bg-white rounded-3xl shadow-2xl border border-zinc-200 p-8 space-y-6">
+        
+        <!-- Auth Tabs Header -->
+        <div class="flex border-b border-zinc-200">
+          <button id="tabBtnLogin" onclick="switchAuthTab('login')" class="w-1/2 pb-3 font-bold text-xs uppercase tracking-wider text-zinc-950 border-b-2 border-zinc-950 text-center transition">
+            Sign In
+          </button>
+          <button id="tabBtnSignup" onclick="switchAuthTab('signup')" class="w-1/2 pb-3 font-bold text-xs uppercase tracking-wider text-zinc-400 border-b-2 border-transparent text-center transition">
+            Create Account
+          </button>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <form id="formLogin" onsubmit="handleLoginSubmit(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">Email Address</label>
+            <div class="relative">
+              <input type="email" id="loginEmail" required value="ayesha.khan@monograph.com" class="custom-input w-full p-3.5 text-xs rounded-xl pl-10 font-medium">
+              <svg class="w-4 h-4 text-zinc-400 absolute left-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path></svg>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between items-center mb-1.5">
+              <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700">Password</label>
+              <a href="#" onclick="showToast('Password reset link sent to your email!'); return false;" class="text-[11px] text-amber-700 font-semibold hover:underline">Forgot?</a>
+            </div>
+            <div class="relative">
+              <input type="password" id="loginPassword" required value="password123" class="custom-input w-full p-3.5 text-xs rounded-xl pl-10 font-medium">
+              <svg class="w-4 h-4 text-zinc-400 absolute left-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+            </div>
+          </div>
+
+          <div class="flex items-center space-x-2 pt-1">
+            <input type="checkbox" id="rememberMe" checked class="rounded text-amber-600 focus:ring-amber-500">
+            <label for="rememberMe" class="text-xs text-zinc-600">Remember this browser</label>
+          </div>
+
+          <button type="submit" class="w-full bg-zinc-950 hover:bg-zinc-800 text-white font-bold py-3.5 rounded-xl text-xs uppercase tracking-widest transition shadow-lg mt-2">
+            Sign In To Account →
+          </button>
+
+          <!-- Social Logins -->
+          <div class="pt-4 border-t border-zinc-100 text-center space-y-2">
+            <span class="text-[10px] text-zinc-400 font-bold uppercase tracking-widest block mb-2">Or Continue With</span>
+            <button type="button" onclick="quickSocialAuth('Google')" class="w-full border border-zinc-200 hover:bg-zinc-50 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center space-x-2 text-zinc-800 transition">
+              <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+              <span>Sign In with Google</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- SIGNUP FORM -->
+        <form id="formSignup" onsubmit="handleSignupSubmit(event)" class="space-y-4 hidden">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">Full Name</label>
+            <input type="text" id="signupName" required placeholder="e.g. Ayesha Khan" class="custom-input w-full p-3.5 text-xs rounded-xl font-medium">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">Email Address</label>
+            <input type="email" id="signupEmail" required placeholder="your.name@domain.com" class="custom-input w-full p-3.5 text-xs rounded-xl font-medium">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">Password</label>
+            <input type="password" id="signupPassword" required placeholder="Minimum 8 characters" class="custom-input w-full p-3.5 text-xs rounded-xl font-medium">
+          </div>
+
+          <div class="space-y-2 pt-1">
+            <div class="flex items-start space-x-2">
+              <input type="checkbox" id="termsCheck" required class="rounded text-amber-600 focus:ring-amber-500 mt-0.5">
+              <label for="termsCheck" class="text-xs text-zinc-600">I agree to Monograph's Privacy & Atelier Terms</label>
+            </div>
+          </div>
+
+          <button type="submit" class="w-full bg-amber-600 hover:bg-amber-500 text-zinc-950 font-bold py-3.5 rounded-xl text-xs uppercase tracking-widest transition shadow-lg mt-2">
+            Create Member Account →
+          </button>
+        </form>
+
       </div>
     </section>
 
@@ -862,6 +928,28 @@
     </div>
   </div>
 
+  <!-- WISHLIST DRAWER -->
+  <div id="wishlistDrawerBackdrop" onclick="toggleWishlistDrawer()" class="fixed inset-0 bg-zinc-950/40 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+  <div id="wishlistDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+    <div class="p-5 bg-zinc-950 text-white flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <svg class="w-5 h-5 text-rose-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        <h3 class="font-bold font-serif-title text-base">Your Saved Wishlist</h3>
+      </div>
+      <button onclick="toggleWishlistDrawer()" class="text-zinc-400 hover:text-white">✕</button>
+    </div>
+    
+    <div id="wishlistItemsContainer" class="flex-grow p-5 overflow-y-auto space-y-4">
+      <!-- Wishlist items injected by JS -->
+    </div>
+    
+    <div class="p-5 border-t border-zinc-200 bg-zinc-50 space-y-2">
+      <button onclick="moveAllWishlistToCart()" class="w-full bg-zinc-950 hover:bg-zinc-800 text-white font-bold py-3.5 rounded-xl text-xs uppercase tracking-widest transition">
+        Move All Saved Items To Cart →
+      </button>
+    </div>
+  </div>
+
   <!-- CART DRAWER -->
   <div id="cartDrawerBackdrop" onclick="toggleCartDrawer()" class="fixed inset-0 bg-zinc-950/40 backdrop-blur-sm z-50 hidden transition-opacity"></div>
   <div id="cartDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
@@ -895,7 +983,7 @@
   <!-- COMPLETE SPA JAVASCRIPT CONTROLLER -->
   <!-- ========================================================================= -->
   <script>
-    // Product Database with Real Photography
+    // Product Database
     const productsDB = [
       { id: 1, title: 'Matte Brass Fountain Pen', price: 45.00, cat: 'pens', mood: 'creative', img: 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=800&q=80', country: 'Japan', desc: 'Solid brass barrel with stainless steel fine nib and refillable converter.' },
       { id: 2, title: 'Archival Leather Journal', price: 28.00, cat: 'notebooks', mood: 'study', img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80', country: 'Italy', desc: '180gsm fountain-pen friendly thick paper with Smyth-sewn flat binding.' },
@@ -909,6 +997,13 @@
       { id: 1, title: 'Matte Brass Fountain Pen', price: 45.00, qty: 1, img: 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=800&q=80' }
     ];
 
+    let wishlist = [
+      { id: 2, title: 'Archival Leather Journal', price: 28.00, img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80' },
+      { id: 1, title: 'Matte Brass Fountain Pen', price: 45.00, img: 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=800&q=80' }
+    ];
+
+    let isLoggedIn = false;
+    let currentUser = { name: 'Ayesha Khan', email: 'ayesha.khan@monograph.com' };
     let currentDetailPrice = 0;
 
     // View Switcher
@@ -927,6 +1022,172 @@
       }, 100);
     }
 
+    // AUTH TAB CONTROLLER
+    function switchAuthTab(tab) {
+      if (tab === 'login') {
+        document.getElementById('formLogin').classList.remove('hidden');
+        document.getElementById('formSignup').classList.add('hidden');
+        document.getElementById('tabBtnLogin').className = "w-1/2 pb-3 font-bold text-xs uppercase tracking-wider text-zinc-950 border-b-2 border-zinc-950 text-center transition";
+        document.getElementById('tabBtnSignup').className = "w-1/2 pb-3 font-bold text-xs uppercase tracking-wider text-zinc-400 border-b-2 border-transparent text-center transition";
+      } else {
+        document.getElementById('formLogin').classList.add('hidden');
+        document.getElementById('formSignup').classList.remove('hidden');
+        document.getElementById('tabBtnSignup').className = "w-1/2 pb-3 font-bold text-xs uppercase tracking-wider text-zinc-950 border-b-2 border-zinc-950 text-center transition";
+        document.getElementById('tabBtnLogin').className = "w-1/2 pb-3 font-bold text-xs uppercase tracking-wider text-zinc-400 border-b-2 border-transparent text-center transition";
+      }
+    }
+
+    function handleAccountClick() {
+      if (isLoggedIn) {
+        switchView('account');
+      } else {
+        switchView('auth');
+      }
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      isLoggedIn = true;
+      currentUser.email = email;
+      currentUser.name = email.split('@')[0].replace('.', ' ').toUpperCase();
+      
+      updateUserUI();
+      showToast(`Welcome back, ${currentUser.name}!`);
+      switchView('account');
+    }
+
+    function handleSignupSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('signupName').value;
+      const email = document.getElementById('signupEmail').value;
+      
+      isLoggedIn = true;
+      currentUser.name = name;
+      currentUser.email = email;
+
+      updateUserUI();
+      showToast(`Account created successfully! Welcome to Monograph, ${name}.`);
+      switchView('account');
+    }
+
+    function quickSocialAuth(provider) {
+      isLoggedIn = true;
+      currentUser.name = "Ayesha Khan";
+      currentUser.email = "ayesha.khan@gmail.com";
+      updateUserUI();
+      showToast(`Authenticated via ${provider}!`);
+      switchView('account');
+    }
+
+    function performSignOut() {
+      isLoggedIn = false;
+      updateUserUI();
+      showToast("Signed out of account");
+      switchView('home');
+    }
+
+    function updateUserUI() {
+      const label = document.getElementById('navAccountLabel');
+      const checkoutName = document.getElementById('checkoutName');
+      const checkoutEmail = document.getElementById('checkoutEmail');
+
+      if (isLoggedIn) {
+        label.innerText = currentUser.name.split(' ')[0];
+        document.getElementById('accountName').innerText = currentUser.name;
+        document.getElementById('accountEmail').innerText = currentUser.email + " • Premium Member";
+        document.getElementById('accountAvatar').innerText = currentUser.name.split(' ').map(n => n[0]).join('');
+        if (checkoutName) checkoutName.value = currentUser.name;
+        if (checkoutEmail) checkoutEmail.value = currentUser.email;
+      } else {
+        label.innerText = "Sign In";
+      }
+    }
+
+    // WISHLIST CONTROLLER
+    function toggleWishlist(title, price, img, e) {
+      if (e) e.stopPropagation();
+      const idx = wishlist.findIndex(i => i.title === title);
+      if (idx >= 0) {
+        wishlist.splice(idx, 1);
+        showToast(`Removed "${title}" from Wishlist`);
+      } else {
+        wishlist.push({ id: Date.now(), title, price, img });
+        showToast(`Saved "${title}" to Wishlist!`);
+      }
+      updateWishlistUI();
+      renderCatalog();
+      filterMood('study');
+    }
+
+    function updateWishlistUI() {
+      const count = wishlist.length;
+      document.getElementById('wishlistBadge').innerText = count;
+      document.getElementById('demoWishCount').innerText = count;
+
+      const container = document.getElementById('wishlistItemsContainer');
+      if (count === 0) {
+        container.innerHTML = `
+          <div class="text-center py-12 text-zinc-400 space-y-3">
+            <svg class="w-12 h-12 mx-auto text-zinc-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+            <p class="text-xs font-semibold">Your wishlist is currently empty.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = wishlist.map((item, idx) => `
+        <div class="flex items-center justify-between p-3.5 bg-zinc-50 rounded-xl border border-zinc-200">
+          <div class="flex items-center space-x-3">
+            <img src="${item.img}" class="w-12 h-12 rounded-lg object-cover border border-zinc-200">
+            <div>
+              <h4 class="text-xs font-bold text-zinc-900">${item.title}</h4>
+              <p class="text-xs text-zinc-600 font-semibold">$${item.price.toFixed(2)}</p>
+            </div>
+          </div>
+          <div class="flex items-center space-x-2">
+            <button onclick="addToCart('${item.title}', ${item.price}, '${item.img}')" class="bg-zinc-950 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg hover:bg-zinc-800 transition">
+              + Cart
+            </button>
+            <button onclick="removeFromWishlist(${idx})" class="text-zinc-400 hover:text-rose-600 p-1 text-xs font-bold">
+              ✕
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function removeFromWishlist(idx) {
+      const removed = wishlist.splice(idx, 1);
+      if (removed.length) showToast(`Removed "${removed[0].title}" from Wishlist`);
+      updateWishlistUI();
+      renderCatalog();
+      filterMood('study');
+    }
+
+    function moveAllWishlistToCart() {
+      if (wishlist.length === 0) {
+        showToast("Wishlist is empty");
+        return;
+      }
+      wishlist.forEach(item => {
+        const existing = cart.find(c => c.title === item.title);
+        if (existing) existing.qty++;
+        else cart.push({ id: Date.now(), title: item.title, price: item.price, qty: 1, img: item.img });
+      });
+      wishlist = [];
+      updateWishlistUI();
+      updateCartUI();
+      toggleWishlistDrawer();
+      toggleCartDrawer();
+      showToast("Moved all wishlist items to cart!");
+    }
+
+    function toggleWishlistDrawer() {
+      document.getElementById('wishlistDrawer').classList.toggle('translate-x-full');
+      document.getElementById('wishlistDrawerBackdrop').classList.toggle('hidden');
+    }
+
     // Render Mood Products
     function filterMood(moodKey, btnEl) {
       document.querySelectorAll('.mood-btn').forEach(b => {
@@ -938,24 +1199,27 @@
       const moodGrid = document.getElementById('moodGrid');
       const filtered = productsDB.filter(p => moodKey === 'all' || p.mood === moodKey || moodKey === 'study');
       
-      moodGrid.innerHTML = filtered.map(p => `
-        <div class="bg-white rounded-2xl p-4 border border-zinc-200 product-card flex flex-col justify-between">
-          <div onclick="openProductDetail('${p.title}', ${p.price}, '${p.desc}', '${p.cat}', '${p.img}', '${p.country}')" class="cursor-pointer">
-            <div class="h-48 rounded-xl overflow-hidden mb-3 border border-zinc-100 relative">
-              <img src="${p.img}" class="w-full h-full object-cover">
-              <button onclick="event.stopPropagation(); showToast('Saved to Wishlist');" class="absolute top-2 right-2 p-1.5 rounded-full bg-white/90 shadow hover:bg-white text-rose-600 transition" title="Add to Wishlist">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-              </button>
+      moodGrid.innerHTML = filtered.map(p => {
+        const isSaved = wishlist.some(w => w.title === p.title);
+        return `
+          <div class="bg-white rounded-2xl p-4 border border-zinc-200 product-card flex flex-col justify-between">
+            <div onclick="openProductDetail('${p.title}', ${p.price}, '${p.desc}', '${p.cat}', '${p.img}', '${p.country}')" class="cursor-pointer">
+              <div class="h-48 rounded-xl overflow-hidden mb-3 border border-zinc-100 relative">
+                <img src="${p.img}" class="w-full h-full object-cover">
+                <button onclick="toggleWishlist('${p.title}', ${p.price}, '${p.img}', event)" class="absolute top-2 right-2 p-1.5 rounded-full bg-white/90 shadow hover:bg-white transition" title="Save to Wishlist">
+                  <svg class="w-4 h-4 ${isSaved ? 'text-rose-600 fill-rose-600' : 'text-zinc-400'}" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                </button>
+              </div>
+              <span class="text-[10px] font-bold text-amber-700 uppercase tracking-widest">${p.country}</span>
+              <h4 class="font-bold text-sm font-serif-title text-zinc-900">${p.title}</h4>
             </div>
-            <span class="text-[10px] font-bold text-amber-700 uppercase tracking-widest">${p.country}</span>
-            <h4 class="font-bold text-sm font-serif-title text-zinc-900">${p.title}</h4>
+            <div class="mt-3 pt-3 border-t border-zinc-100 flex justify-between items-center">
+              <span class="font-bold text-zinc-900">$${p.price.toFixed(2)}</span>
+              <button onclick="addToCart('${p.title}', ${p.price}, '${p.img}')" class="bg-zinc-950 text-white text-xs font-bold px-3.5 py-1.5 rounded-lg">Add</button>
+            </div>
           </div>
-          <div class="mt-3 pt-3 border-t border-zinc-100 flex justify-between items-center">
-            <span class="font-bold text-zinc-900">$${p.price.toFixed(2)}</span>
-            <button onclick="addToCart('${p.title}', ${p.price}, '${p.img}')" class="bg-zinc-950 text-white text-xs font-bold px-3.5 py-1.5 rounded-lg">Add</button>
-          </div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
     }
 
     // Country Filter
@@ -968,25 +1232,28 @@
     // Render Catalog Grid
     function renderCatalog() {
       const grid = document.getElementById('catalogGrid');
-      grid.innerHTML = productsDB.map(p => `
-        <div class="bg-white rounded-2xl p-4 border border-zinc-200 product-card flex flex-col justify-between">
-          <div onclick="openProductDetail('${p.title}', ${p.price}, '${p.desc}', '${p.cat}', '${p.img}', '${p.country}')" class="cursor-pointer">
-            <div class="h-48 rounded-xl overflow-hidden mb-3 border border-zinc-100 relative">
-              <img src="${p.img}" class="w-full h-full object-cover">
-              <button onclick="event.stopPropagation(); showToast('Saved to Wishlist');" class="absolute top-2 right-2 p-1.5 rounded-full bg-white/90 shadow hover:bg-white text-rose-600 transition" title="Add to Wishlist">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-              </button>
+      grid.innerHTML = productsDB.map(p => {
+        const isSaved = wishlist.some(w => w.title === p.title);
+        return `
+          <div class="bg-white rounded-2xl p-4 border border-zinc-200 product-card flex flex-col justify-between">
+            <div onclick="openProductDetail('${p.title}', ${p.price}, '${p.desc}', '${p.cat}', '${p.img}', '${p.country}')" class="cursor-pointer">
+              <div class="h-48 rounded-xl overflow-hidden mb-3 border border-zinc-100 relative">
+                <img src="${p.img}" class="w-full h-full object-cover">
+                <button onclick="toggleWishlist('${p.title}', ${p.price}, '${p.img}', event)" class="absolute top-2 right-2 p-1.5 rounded-full bg-white/90 shadow hover:bg-white transition" title="Save to Wishlist">
+                  <svg class="w-4 h-4 ${isSaved ? 'text-rose-600 fill-rose-600' : 'text-zinc-400'}" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                </button>
+              </div>
+              <span class="text-[10px] font-bold text-amber-700 uppercase tracking-widest">${p.country}</span>
+              <h4 class="font-bold text-sm font-serif-title text-zinc-900">${p.title}</h4>
+              <p class="text-xs text-zinc-500 mt-0.5 line-clamp-2">${p.desc}</p>
             </div>
-            <span class="text-[10px] font-bold text-amber-700 uppercase tracking-widest">${p.country}</span>
-            <h4 class="font-bold text-sm font-serif-title text-zinc-900">${p.title}</h4>
-            <p class="text-xs text-zinc-500 mt-0.5 line-clamp-2">${p.desc}</p>
+            <div class="mt-4 pt-3 border-t border-zinc-100 flex justify-between items-center">
+              <span class="font-bold text-zinc-900">$${p.price.toFixed(2)}</span>
+              <button onclick="addToCart('${p.title}', ${p.price}, '${p.img}')" class="bg-zinc-950 text-white text-xs font-bold px-3.5 py-2 rounded-lg">Add</button>
+            </div>
           </div>
-          <div class="mt-4 pt-3 border-t border-zinc-100 flex justify-between items-center">
-            <span class="font-bold text-zinc-900">$${p.price.toFixed(2)}</span>
-            <button onclick="addToCart('${p.title}', ${p.price}, '${p.img}')" class="bg-zinc-950 text-white text-xs font-bold px-3.5 py-2 rounded-lg">Add</button>
-          </div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
     }
 
     // Product Detail Modal
@@ -1092,6 +1359,8 @@
       filterMood('study', document.querySelector('.mood-btn'));
       renderCatalog();
       updateCartUI();
+      updateWishlistUI();
+      updateUserUI();
     };
   </script>
 
