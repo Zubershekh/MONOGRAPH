@@ -104,15 +104,31 @@
         <span class="text-[11px] font-mono text-amber-300">MONOGRAPH Atelier v4.0</span>
       </div>
       
-      <!-- Quick Flow Links for Client Presentation -->
+      <!-- Quick Flow & Interactive Feature Links -->
       <div class="flex items-center space-x-1.5 my-1 flex-wrap">
-        <span class="text-zinc-400 text-[11px] hidden md:inline">Click Flow:</span>
-        <button onclick="switchView('home')" class="px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-white text-[11px] font-semibold transition">1. Home</button>
-        <button onclick="switchView('catalog')" class="px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-white text-[11px] font-semibold transition">2. Shop</button>
-        <button onclick="switchView('auth')" class="px-2.5 py-1 rounded bg-amber-700 hover:bg-amber-600 text-white text-[11px] font-bold transition">3. Login/Signup</button>
-        <button onclick="toggleWishlistDrawer()" class="px-2.5 py-1 rounded bg-rose-800 hover:bg-rose-700 text-white text-[11px] font-bold transition">4. Wishlist (<span id="demoWishCount">2</span>)</button>
-        <button onclick="toggleCartDrawer()" class="px-2.5 py-1 rounded bg-amber-800 hover:bg-amber-700 text-white text-[11px] font-bold transition">5. Cart (<span id="demoCartCount">2</span>)</button>
-        <button onclick="switchView('checkout')" class="px-2.5 py-1 rounded bg-emerald-700 hover:bg-emerald-600 text-white text-[11px] font-bold transition">6. Checkout</button>
+        <!-- Live Currency Selector (Feature #6) -->
+        <div class="relative group inline-block mr-1">
+          <button class="bg-amber-950/80 border border-amber-600/60 hover:bg-amber-900 text-amber-300 px-2.5 py-1 rounded text-[11px] font-bold flex items-center space-x-1 transition shadow-sm">
+            <svg class="w-3 h-3 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span id="currentCurrencyLabel">USD ($)</span>
+            <svg class="w-3 h-3 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div class="absolute right-0 top-full mt-1 bg-zinc-900 border border-zinc-700 rounded-xl p-1.5 space-y-1 shadow-2xl text-[10px] hidden group-hover:block z-50 w-28">
+            <button onclick="changeCurrency('USD')" class="w-full text-left px-2.5 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex items-center justify-between"><span>USD</span> <span>$</span></button>
+            <button onclick="changeCurrency('JPY')" class="w-full text-left px-2.5 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex items-center justify-between"><span>JPY</span> <span>¥</span></button>
+            <button onclick="changeCurrency('EUR')" class="w-full text-left px-2.5 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex items-center justify-between"><span>EUR</span> <span>€</span></button>
+            <button onclick="changeCurrency('GBP')" class="w-full text-left px-2.5 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex items-center justify-between"><span>GBP</span> <span>£</span></button>
+            <button onclick="changeCurrency('INR')" class="w-full text-left px-2.5 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex items-center justify-between"><span>INR</span> <span>₹</span></button>
+          </div>
+        </div>
+
+        <button onclick="switchView('home')" class="px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-white text-[11px] font-semibold transition">Home</button>
+        <button onclick="switchView('catalog')" class="px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-white text-[11px] font-semibold transition">Shop</button>
+        <button onclick="openBoxBuilder()" class="px-2.5 py-1 rounded bg-amber-600 hover:bg-amber-500 text-zinc-950 text-[11px] font-bold transition shadow-sm">Gift Box Builder</button>
+        <button onclick="openGiftQuiz()" class="px-2.5 py-1 rounded bg-amber-700 hover:bg-amber-600 text-white text-[11px] font-bold transition shadow-sm">Gift Quiz</button>
+        <button onclick="scrollToSection('deskSetupSection')" class="px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-amber-300 text-[11px] font-bold transition">Desk Setup</button>
+        <button onclick="toggleWishlistDrawer()" class="px-2.5 py-1 rounded bg-rose-800 hover:bg-rose-700 text-white text-[11px] font-bold transition">Wishlist (<span id="demoWishCount">2</span>)</button>
+        <button onclick="toggleCartDrawer()" class="px-2.5 py-1 rounded bg-amber-800 hover:bg-amber-700 text-white text-[11px] font-bold transition">Cart (<span id="demoCartCount">2</span>)</button>
       </div>
     </div>
 
@@ -648,6 +664,85 @@
         </div>
       </div>
 
+      <!-- FEATURE #3: INTERACTIVE DESK SETUP HOTSPOT RAIL -->
+      <div id="deskSetupSection" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-zinc-200/80">
+        <div class="text-center max-w-xl mx-auto mb-10">
+          <span class="text-[10px] font-bold uppercase tracking-widest text-amber-700 bg-amber-100/70 border border-amber-300 px-3 py-1 rounded-full">Visual Hotspot Experience</span>
+          <h2 class="text-3xl font-bold font-serif-title text-zinc-950 mt-2">Shop The Aesthetic Desk Setup</h2>
+          <p class="text-xs text-zinc-500 mt-1">Click hot-spots on the workstation photo to inspect curated instruments or add the complete aesthetic look.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white rounded-3xl p-6 sm:p-8 border border-zinc-200 shadow-xl">
+          <!-- Interactive Image Box with 4 Hotspots -->
+          <div class="lg:col-span-8 relative rounded-2xl overflow-hidden shadow-lg border border-zinc-200 group">
+            <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=1200&q=80" alt="Minimalist Desk Setup" class="w-full h-[400px] sm:h-[450px] object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/40 via-transparent to-transparent"></div>
+
+            <!-- Hotspot 1: Brass Fountain Pen -->
+            <button onclick="selectHotspotItem(1)" class="absolute top-1/3 left-1/4 transform -translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-amber-500/90 text-white flex items-center justify-center font-extrabold text-xs shadow-2xl animate-bounce hover:scale-125 transition border-2 border-white z-10 cursor-pointer" title="Matte Brass Fountain Pen">
+              1
+            </button>
+
+            <!-- Hotspot 2: Archival Journal -->
+            <button onclick="selectHotspotItem(2)" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-amber-500/90 text-white flex items-center justify-center font-extrabold text-xs shadow-2xl animate-bounce hover:scale-125 transition border-2 border-white z-10 cursor-pointer" title="Archival Leather Journal">
+              2
+            </button>
+
+            <!-- Hotspot 3: Walnut Desk Tray -->
+            <button onclick="selectHotspotItem(3)" class="absolute bottom-1/4 right-1/3 transform -translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-amber-500/90 text-white flex items-center justify-center font-extrabold text-xs shadow-2xl animate-bounce hover:scale-125 transition border-2 border-white z-10 cursor-pointer" title="Solid Walnut Desk Tray">
+              3
+            </button>
+
+            <!-- Hotspot 4: Kyoto Washi Tape -->
+            <button onclick="selectHotspotItem(4)" class="absolute bottom-1/3 left-1/3 transform -translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-amber-500/90 text-white flex items-center justify-center font-extrabold text-xs shadow-2xl animate-bounce hover:scale-125 transition border-2 border-white z-10 cursor-pointer" title="Kyoto Washi Rice Tape">
+              4
+            </button>
+
+            <div class="absolute bottom-4 left-4 bg-zinc-950/80 backdrop-blur-md text-white px-3.5 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest border border-zinc-800">
+              Interactive Hotspot Map
+            </div>
+          </div>
+
+          <!-- Hotspot Active Inspection Card -->
+          <div class="lg:col-span-4 space-y-6">
+            <div class="bg-zinc-50 rounded-2xl p-5 border border-zinc-200 space-y-3 shadow-xs">
+              <div class="flex items-center space-x-2">
+                <span class="w-6 h-6 rounded-full bg-amber-600 text-white font-bold text-xs flex items-center justify-center" id="hotspotItemNum">1</span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-amber-700" id="hotspotItemCat">Featured Instrument</span>
+              </div>
+
+              <h3 class="text-lg font-bold font-serif-title text-zinc-950" id="hotspotItemTitle">Matte Brass Fountain Pen</h3>
+              <p class="text-xs text-zinc-600 leading-relaxed" id="hotspotItemDesc">Solid brass barrel with stainless steel fine nib and refillable converter.</p>
+
+              <div class="flex items-center justify-between pt-2 border-t border-zinc-200">
+                <span class="text-base font-bold text-zinc-900" id="hotspotItemPrice">$45.00</span>
+                <button onclick="addSelectedHotspotToCart()" class="bg-zinc-950 hover:bg-zinc-800 text-white text-xs font-bold px-4 py-2 rounded-xl transition shadow-sm">
+                  Add Item To Cart
+                </button>
+              </div>
+            </div>
+
+            <!-- Complete Bundle Card -->
+            <div class="bg-amber-950 text-amber-100 rounded-2xl p-5 space-y-3 border border-amber-800/80 shadow-lg">
+              <div class="flex items-center justify-between text-xs font-bold uppercase tracking-widest text-amber-300">
+                <span>Complete Desk Look</span>
+                <span class="bg-amber-800/80 text-amber-200 px-2 py-0.5 rounded text-[9px]">Save 15%</span>
+              </div>
+              <p class="text-xs text-amber-200/80 leading-relaxed">Get all 4 items (Pen + Journal + Tray + Washi Tape) in a unified atelier presentation gift case.</p>
+              
+              <div class="flex items-baseline space-x-2">
+                <span class="text-xl font-bold text-white" id="deskBundlePrice">$110.00</span>
+                <span class="text-xs text-amber-400 line-through font-mono">$129.00</span>
+              </div>
+
+              <button onclick="addCompleteDeskBundleToCart()" class="w-full bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider transition shadow-md">
+                Add Complete Desk Set ($110.00) →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- GIFT FINDER WIZARD -->
       <div id="giftFinderSection" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="bg-zinc-100 rounded-3xl p-8 sm:p-12 border border-zinc-200 space-y-8">
@@ -899,8 +994,12 @@
       
       <div class="md:w-1/2 bg-zinc-100 p-6 flex flex-col items-center justify-center relative border-b md:border-b-0 md:border-r border-zinc-200">
         <span id="detailBadge" class="absolute top-4 left-4 bg-zinc-950 text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded">ORIGINAL EDITION</span>
-        <div class="w-56 h-56 rounded-2xl overflow-hidden shadow-xl border border-zinc-200 mb-4">
+        <div class="w-56 h-56 rounded-2xl overflow-hidden shadow-xl border border-zinc-200 mb-4 relative">
           <img id="detailImg" src="" class="w-full h-full object-cover">
+          <!-- Monogram Real-time Foil Engraving Overlay -->
+          <div id="monogramOverlay" class="absolute bottom-4 left-0 right-0 text-center hidden pointer-events-none px-2">
+            <span id="monogramOverlayText" class="font-serif-title tracking-[0.3em] font-bold text-lg text-amber-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] uppercase">A.K.</span>
+          </div>
         </div>
         <span id="detailCountry" class="text-xs font-bold text-zinc-700 bg-white px-3 py-1 rounded-full border border-zinc-200">Import</span>
       </div>
@@ -916,10 +1015,34 @@
           <p id="detailDesc" class="text-xs text-zinc-600 mt-3 leading-relaxed font-light">
             Detailed specification paragraph about archival materials and ergonomics.
           </p>
+
+          <!-- FEATURE #1: LIVE MONOGRAM CUSTOMIZER -->
+          <div class="bg-amber-50/70 border border-amber-200 rounded-2xl p-3.5 space-y-2.5 mt-4">
+            <div class="flex items-center justify-between cursor-pointer" onclick="toggleMonogramCheckbox()">
+              <div class="flex items-center space-x-2">
+                <input type="checkbox" id="toggleMonogram" class="w-4 h-4 accent-amber-600 rounded cursor-pointer pointer-events-none">
+                <span class="text-xs font-extrabold text-amber-950 uppercase tracking-wider">Custom Foil Monogram</span>
+              </div>
+              <span class="text-[10px] font-bold text-amber-800 bg-amber-200/60 px-2 py-0.5 rounded font-mono">+$12.00</span>
+            </div>
+
+            <div id="monogramControls" class="hidden space-y-2 pt-2 border-t border-amber-200/60">
+              <input type="text" id="monogramInput" maxlength="10" placeholder="Initials (e.g. A.K.)" oninput="updateMonogramText()" class="w-full text-xs px-3 py-2 rounded-xl border border-amber-300 bg-white font-serif-title tracking-widest text-center font-bold text-amber-950 uppercase focus:outline-none focus:ring-1 focus:ring-amber-600">
+              
+              <div class="flex items-center justify-between text-[10px] font-bold text-zinc-600 pt-1">
+                <span>Foil Finish:</span>
+                <div class="flex space-x-1.5">
+                  <button type="button" onclick="setFoilColor('gold')" id="foilBtnGold" class="px-2 py-1 rounded bg-amber-400 text-amber-950 font-bold border border-amber-500 text-[9px] shadow-sm">Gold Leaf</button>
+                  <button type="button" onclick="setFoilColor('silver')" id="foilBtnSilver" class="px-2 py-1 rounded bg-zinc-200 text-zinc-900 font-bold border border-zinc-300 text-[9px]">Silver Foil</button>
+                  <button type="button" onclick="setFoilColor('deboss')" id="foilBtnDeboss" class="px-2 py-1 rounded bg-amber-900 text-amber-100 font-bold text-[9px]">Deboss</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="space-y-2">
-          <button onclick="addToCart(document.getElementById('detailTitle').innerText, currentDetailPrice, 'pen'); closeProductDetail();" class="w-full bg-zinc-950 hover:bg-zinc-800 text-white font-bold py-3.5 rounded-xl transition uppercase text-xs tracking-widest">
+          <button onclick="addCurrentProductToCart()" class="w-full bg-zinc-950 hover:bg-zinc-800 text-white font-bold py-3.5 rounded-xl transition uppercase text-xs tracking-widest shadow-md">
             Add To Order Selection
           </button>
           <button onclick="closeProductDetail()" class="w-full bg-zinc-100 text-zinc-800 font-bold py-2.5 rounded-xl transition text-xs">
@@ -971,6 +1094,86 @@
     </div>
   </div>
 
+  <!-- ========================================================================= -->
+  <!-- FEATURE #2: BUILD YOUR ATELIER GIFT BOX MODAL -->
+  <!-- ========================================================================= -->
+  <div id="modalBoxBuilder" class="fixed inset-0 z-50 hidden bg-zinc-950/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full border border-zinc-200 shadow-2xl overflow-hidden relative max-h-[90vh] flex flex-col">
+      <div class="p-6 bg-zinc-950 text-white flex items-center justify-between">
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-amber-400">Custom Atelier Gift Studio</span>
+          <h3 class="text-xl font-bold font-serif-title text-white">Build Your Stationery Box</h3>
+        </div>
+        <button onclick="closeBoxBuilder()" class="text-zinc-400 hover:text-white p-1 font-bold text-lg">✕</button>
+      </div>
+
+      <div class="p-6 overflow-y-auto space-y-6 flex-grow">
+        <!-- Step 1: Choose Box Style -->
+        <div class="space-y-3">
+          <label class="block text-xs font-bold uppercase tracking-widest text-zinc-800">1. Select Luxury Gift Packaging</label>
+          <div class="grid grid-cols-3 gap-3">
+            <button type="button" onclick="selectBoxPackaging('Linen Keepsake Box', 15.00, this)" class="box-pkg-btn p-3 border-2 border-amber-600 bg-amber-50/50 rounded-xl text-left space-y-1 transition">
+              <span class="text-xs font-bold text-zinc-900 block">Linen Keepsake Box</span>
+              <span class="text-[10px] text-zinc-500 font-mono font-bold block" id="pkgPriceLinen">$15.00</span>
+            </button>
+            <button type="button" onclick="selectBoxPackaging('Solid Walnut Chest', 35.00, this)" class="box-pkg-btn p-3 border border-zinc-200 rounded-xl text-left space-y-1 hover:border-zinc-400 transition">
+              <span class="text-xs font-bold text-zinc-900 block">Solid Walnut Chest</span>
+              <span class="text-[10px] text-zinc-500 font-mono font-bold block" id="pkgPriceWalnut">$35.00</span>
+            </button>
+            <button type="button" onclick="selectBoxPackaging('Velvet Sleeve Bag', 10.00, this)" class="box-pkg-btn p-3 border border-zinc-200 rounded-xl text-left space-y-1 hover:border-zinc-400 transition">
+              <span class="text-xs font-bold text-zinc-900 block">Velvet Sleeve Bag</span>
+              <span class="text-[10px] text-zinc-500 font-mono font-bold block" id="pkgPriceVelvet">$10.00</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Pick Items -->
+        <div class="space-y-3">
+          <label class="block text-xs font-bold uppercase tracking-widest text-zinc-800">2. Pick Included Instruments (Select 2-4)</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="builderItemGrid">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+
+        <!-- Step 3: Note & Ribbon -->
+        <div class="space-y-3">
+          <label class="block text-xs font-bold uppercase tracking-widest text-zinc-800">3. Gift Card Message & Ribbon</label>
+          <input type="text" id="builderCardNote" placeholder="Handwritten Card Message (e.g., 'Congratulations Ayesha!')" class="w-full text-xs p-3 rounded-xl border border-zinc-200 focus:border-zinc-900 focus:outline-none">
+        </div>
+      </div>
+
+      <!-- Builder Footer -->
+      <div class="p-5 border-t border-zinc-200 bg-zinc-50 flex items-center justify-between">
+        <div>
+          <span class="text-[10px] text-zinc-400 uppercase font-bold block">Kit Total</span>
+          <span id="builderTotalPrice" class="text-xl font-bold text-zinc-950">$60.00</span>
+        </div>
+        <button onclick="addCustomBoxToCart()" class="bg-zinc-950 hover:bg-zinc-800 text-white font-bold px-6 py-3 rounded-xl text-xs uppercase tracking-wider transition shadow-md">
+          Add Gift Box To Cart →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- FEATURE #4: 30-SECOND GIFT FINDER QUIZ MODAL -->
+  <!-- ========================================================================= -->
+  <div id="modalGiftQuiz" class="fixed inset-0 z-50 hidden bg-zinc-950/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full border border-zinc-200 shadow-2xl overflow-hidden relative p-6 space-y-6">
+      <div class="flex items-center justify-between border-b border-zinc-100 pb-4">
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-amber-700">30-Second Matcher</span>
+          <h3 class="text-xl font-bold font-serif-title text-zinc-950">Stationery Gift Finder Quiz</h3>
+        </div>
+        <button onclick="closeGiftQuiz()" class="text-zinc-400 hover:text-zinc-900 font-bold p-1">✕</button>
+      </div>
+
+      <div id="quizStepContainer" class="space-y-4">
+        <!-- Injected dynamically by JS -->
+      </div>
+    </div>
+  </div>
+
   <!-- Toast -->
   <div id="toast" class="fixed bottom-6 right-6 bg-zinc-950 text-white px-5 py-3 rounded-xl shadow-2xl z-50 hidden flex items-center space-x-2 text-xs font-semibold border border-zinc-800">
     <span id="toastMsg">Notification message</span>
@@ -1008,6 +1211,41 @@
     let currentUser = { name: 'Ayesha Khan', email: 'ayesha.khan@monograph.com' };
     let currentDetailPrice = 0;
 
+    // =========================================================================
+    // FEATURE #6: MULTI-CURRENCY ENGINE (USD, JPY, EUR, GBP, INR)
+    // =========================================================================
+    const currencies = {
+      USD: { symbol: '$', rate: 1.0 },
+      JPY: { symbol: '¥', rate: 155.0 },
+      EUR: { symbol: '€', rate: 0.92 },
+      GBP: { symbol: '£', rate: 0.78 },
+      INR: { symbol: '₹', rate: 83.5 }
+    };
+    let selectedCurrency = 'USD';
+
+    function formatPrice(usdVal) {
+      const c = currencies[selectedCurrency] || currencies.USD;
+      const converted = usdVal * c.rate;
+      if (selectedCurrency === 'JPY') return c.symbol + Math.round(converted).toLocaleString();
+      return c.symbol + converted.toFixed(2);
+    }
+
+    function changeCurrency(code) {
+      if (currencies[code]) {
+        selectedCurrency = code;
+        document.getElementById('currentCurrencyLabel').innerText = code + ' (' + currencies[code].symbol + ')';
+        renderCatalog();
+        updateCartUI();
+        updateWishlistUI();
+        updateHotspotCard();
+        updateBoxBuilderPrice();
+        if (!document.getElementById('productDetailModal').classList.contains('hidden')) {
+          document.getElementById('detailPrice').innerText = formatPrice(currentDetailPrice);
+        }
+        showToast(`Switched storefront currency to ${code} (${currencies[code].symbol})`);
+      }
+    }
+
     // DROPDOWN CLICK-LOCK & CONTINUOUS HOVER CONTROLLER
     function toggleNavDropdown(menuId, event) {
       if (event) event.stopPropagation();
@@ -1031,7 +1269,6 @@
       });
     }
 
-    // Close dropdowns on outside click
     window.addEventListener('click', function(e) {
       if (!e.target.closest('.nav-dropdown-container')) {
         closeAllNavDropdowns();
@@ -1055,7 +1292,250 @@
       }, 100);
     }
 
-    // AUTH TAB CONTROLLER
+    // =========================================================================
+    // FEATURE #1: LIVE MONOGRAM FOIL ENGRAVING ENGINE
+    // =========================================================================
+    let isMonogramEnabled = false;
+    let currentFoilColor = 'gold';
+
+    function toggleMonogramCheckbox() {
+      const cb = document.getElementById('toggleMonogram');
+      cb.checked = !cb.checked;
+      isMonogramEnabled = cb.checked;
+      document.getElementById('monogramControls').classList.toggle('hidden', !isMonogramEnabled);
+      document.getElementById('monogramOverlay').classList.toggle('hidden', !isMonogramEnabled);
+      updateMonogramText();
+    }
+
+    function updateMonogramText() {
+      const txt = document.getElementById('monogramInput').value.trim() || 'A.K.';
+      const el = document.getElementById('monogramOverlayText');
+      el.innerText = txt.toUpperCase();
+    }
+
+    function setFoilColor(color) {
+      currentFoilColor = color;
+      const el = document.getElementById('monogramOverlayText');
+      document.getElementById('foilBtnGold').className = "px-2 py-1 rounded text-[9px] font-bold " + (color==='gold' ? "bg-amber-400 text-amber-950 border border-amber-500 shadow-sm" : "bg-zinc-100 text-zinc-700");
+      document.getElementById('foilBtnSilver').className = "px-2 py-1 rounded text-[9px] font-bold " + (color==='silver' ? "bg-zinc-200 text-zinc-950 border border-zinc-400 shadow-sm" : "bg-zinc-100 text-zinc-700");
+      document.getElementById('foilBtnDeboss').className = "px-2 py-1 rounded text-[9px] font-bold " + (color==='deboss' ? "bg-amber-900 text-amber-100 shadow-sm" : "bg-zinc-100 text-zinc-700");
+
+      if (color === 'gold') {
+        el.className = "font-serif-title tracking-[0.3em] font-bold text-lg text-amber-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] uppercase";
+      } else if (color === 'silver') {
+        el.className = "font-serif-title tracking-[0.3em] font-bold text-lg text-zinc-200 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] uppercase";
+      } else {
+        el.className = "font-serif-title tracking-[0.3em] font-bold text-lg text-amber-950 opacity-80 drop-shadow-[0_1px_1px_rgba(255,255,255,0.4)] uppercase";
+      }
+    }
+
+    function addCurrentProductToCart() {
+      let title = document.getElementById('detailTitle').innerText;
+      let finalPrice = currentDetailPrice;
+      if (isMonogramEnabled) {
+        const initials = document.getElementById('monogramInput').value.trim() || 'A.K.';
+        title += ` [Custom ${currentFoilColor.toUpperCase()} Monogram: "${initials}"]`;
+        finalPrice += 12.00;
+      }
+      addToCart(title, finalPrice, document.getElementById('detailImg').src);
+      closeProductDetail();
+    }
+
+    // =========================================================================
+    // FEATURE #3: INTERACTIVE DESK SETUP HOTSPOT ENGINE
+    // =========================================================================
+    const hotspotData = {
+      1: { num: 1, title: 'Matte Brass Fountain Pen', price: 45.00, cat: 'Writing Instrument', desc: 'Solid brass barrel with stainless steel fine nib and refillable converter.' },
+      2: { num: 2, title: 'Archival Leather Journal', price: 28.00, cat: 'Notebook', desc: '180gsm fountain-pen friendly thick paper with Smyth-sewn flat binding.' },
+      3: { num: 3, title: 'Solid Walnut Desk Tray', price: 38.00, cat: 'Organizer', desc: 'Hand-finished solid American walnut organizer for pens, clips, and cards.' },
+      4: { num: 4, title: 'Kyoto Washi Rice Tape', price: 18.00, cat: 'Crafting', desc: 'Authentic Japanese washi rice paper tape with delicate gold foil accents.' }
+    };
+    let activeHotspotId = 1;
+
+    function selectHotspotItem(id) {
+      activeHotspotId = id;
+      updateHotspotCard();
+    }
+
+    function updateHotspotCard() {
+      const item = hotspotData[activeHotspotId];
+      if (!item) return;
+      document.getElementById('hotspotItemNum').innerText = item.num;
+      document.getElementById('hotspotItemCat').innerText = item.cat;
+      document.getElementById('hotspotItemTitle').innerText = item.title;
+      document.getElementById('hotspotItemDesc').innerText = item.desc;
+      document.getElementById('hotspotItemPrice').innerText = formatPrice(item.price);
+      document.getElementById('deskBundlePrice').innerText = formatPrice(110.00);
+    }
+
+    function addSelectedHotspotToCart() {
+      const item = hotspotData[activeHotspotId];
+      if (item) addToCart(item.title, item.price, 'https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=800&q=80');
+    }
+
+    function addCompleteDeskBundleToCart() {
+      addToCart('Complete Minimalist Desk Setup Bundle (4 Items)', 110.00, 'https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=800&q=80');
+      toggleCartDrawer();
+    }
+
+    // =========================================================================
+    // FEATURE #2: BUILD YOUR ATELIER GIFT BOX ENGINE
+    // =========================================================================
+    let selectedBoxPkg = { name: 'Linen Keepsake Box', price: 15.00 };
+    let selectedBoxItems = [1, 2];
+
+    function openBoxBuilder() {
+      renderBoxBuilderGrid();
+      updateBoxBuilderPrice();
+      document.getElementById('modalBoxBuilder').classList.remove('hidden');
+    }
+
+    function closeBoxBuilder() {
+      document.getElementById('modalBoxBuilder').classList.add('hidden');
+    }
+
+    function selectBoxPackaging(name, price, btnEl) {
+      selectedBoxPkg = { name, price };
+      document.querySelectorAll('.box-pkg-btn').forEach(b => {
+        b.classList.remove('border-2', 'border-amber-600', 'bg-amber-50/50');
+        b.classList.add('border', 'border-zinc-200');
+      });
+      if (btnEl) btnEl.classList.add('border-2', 'border-amber-600', 'bg-amber-50/50');
+      updateBoxBuilderPrice();
+    }
+
+    function renderBoxBuilderGrid() {
+      const grid = document.getElementById('builderItemGrid');
+      grid.innerHTML = productsDB.map(p => {
+        const isSelected = selectedBoxItems.includes(p.id);
+        return `
+          <div onclick="toggleBuilderItem(${p.id})" class="p-3 rounded-xl border ${isSelected ? 'border-2 border-amber-600 bg-amber-50/40' : 'border-zinc-200 hover:border-zinc-300'} cursor-pointer flex items-center space-x-3 transition">
+            <input type="checkbox" ${isSelected ? 'checked' : ''} class="w-4 h-4 accent-amber-600 rounded pointer-events-none">
+            <div class="overflow-hidden flex-grow">
+              <h4 class="text-xs font-bold text-zinc-900 truncate">${p.title}</h4>
+              <span class="text-[10px] text-zinc-500 font-mono font-bold">${formatPrice(p.price)}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function toggleBuilderItem(id) {
+      const idx = selectedBoxItems.indexOf(id);
+      if (idx >= 0) {
+        if (selectedBoxItems.length <= 2) {
+          showToast("Please keep at least 2 items in your gift box!");
+          return;
+        }
+        selectedBoxItems.splice(idx, 1);
+      } else {
+        if (selectedBoxItems.length >= 4) {
+          showToast("Maximum 4 items allowed in 1 box");
+          return;
+        }
+        selectedBoxItems.push(id);
+      }
+      renderBoxBuilderGrid();
+      updateBoxBuilderPrice();
+    }
+
+    function updateBoxBuilderPrice() {
+      let itemsSum = selectedBoxItems.reduce((acc, id) => {
+        const p = productsDB.find(prod => prod.id === id);
+        return acc + (p ? p.price : 0);
+      }, 0);
+      const totalUSD = (selectedBoxPkg.price + itemsSum) * 0.90; // 10% bundle discount
+      document.getElementById('builderTotalPrice').innerText = formatPrice(totalUSD);
+      document.getElementById('pkgPriceLinen').innerText = formatPrice(15.00);
+      document.getElementById('pkgPriceWalnut').innerText = formatPrice(35.00);
+      document.getElementById('pkgPriceVelvet').innerText = formatPrice(10.00);
+    }
+
+    function addCustomBoxToCart() {
+      const note = document.getElementById('builderCardNote').value.trim() || 'Best wishes';
+      const totalUSD = (selectedBoxPkg.price + selectedBoxItems.reduce((acc, id) => {
+        const p = productsDB.find(prod => prod.id === id);
+        return acc + (p ? p.price : 0);
+      }, 0)) * 0.90;
+      
+      const title = `Custom Atelier Box (${selectedBoxPkg.name} + ${selectedBoxItems.length} Instruments) [Note: "${note}"]`;
+      addToCart(title, totalUSD, 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80');
+      closeBoxBuilder();
+      toggleCartDrawer();
+    }
+
+    // =========================================================================
+    // FEATURE #4: 30-SECOND GIFT FINDER QUIZ ENGINE
+    // =========================================================================
+    let quizAnswers = { recipient: '', vibe: '', budget: '' };
+    let currentQuizStep = 1;
+
+    function openGiftQuiz() {
+      currentQuizStep = 1;
+      quizAnswers = { recipient: '', vibe: '', budget: '' };
+      renderQuizStep();
+      document.getElementById('modalGiftQuiz').classList.remove('hidden');
+    }
+
+    function closeGiftQuiz() {
+      document.getElementById('modalGiftQuiz').classList.add('hidden');
+    }
+
+    function renderQuizStep() {
+      const container = document.getElementById('quizStepContainer');
+      if (currentQuizStep === 1) {
+        container.innerHTML = `
+          <span class="text-xs font-bold text-amber-700 uppercase tracking-widest block mb-2">Step 1 of 3: Who is the recipient?</span>
+          <div class="grid grid-cols-2 gap-3">
+            <button onclick="selectQuizOpt('recipient', 'Architect & Designer')" class="p-3 text-left border border-zinc-200 rounded-xl hover:border-zinc-900 transition font-bold text-xs">📐 Architect / Designer</button>
+            <button onclick="selectQuizOpt('recipient', 'Executive & Writer')" class="p-3 text-left border border-zinc-200 rounded-xl hover:border-zinc-900 transition font-bold text-xs">✒️ Executive / Writer</button>
+            <button onclick="selectQuizOpt('recipient', 'Calligrapher & Artist')" class="p-3 text-left border border-zinc-200 rounded-xl hover:border-zinc-900 transition font-bold text-xs">🎨 Calligrapher / Artist</button>
+            <button onclick="selectQuizOpt('recipient', 'Student & Scholar')" class="p-3 text-left border border-zinc-200 rounded-xl hover:border-zinc-900 transition font-bold text-xs">📚 Student / Scholar</button>
+          </div>
+        `;
+      } else if (currentQuizStep === 2) {
+        container.innerHTML = `
+          <span class="text-xs font-bold text-amber-700 uppercase tracking-widest block mb-2">Step 2 of 3: What is their visual aesthetic?</span>
+          <div class="grid grid-cols-2 gap-3">
+            <button onclick="selectQuizOpt('vibe', 'Minimalist Brass')" class="p-3 text-left border border-zinc-200 rounded-xl hover:border-zinc-900 transition font-bold text-xs">✨ Minimalist Matte Brass</button>
+            <button onclick="selectQuizOpt('vibe', 'Japanese Washi & Pastel')" class="p-3 text-left border border-zinc-200 rounded-xl hover:border-zinc-900 transition font-bold text-xs">🌸 Japanese Pastel & Washi</button>
+            <button onclick="selectQuizOpt('vibe', 'Vintage Italian Leather')" class="p-3 text-left border border-zinc-200 rounded-xl hover:border-zinc-900 transition font-bold text-xs">📖 Vintage Archival Leather</button>
+            <button onclick="selectQuizOpt('vibe', 'Modern Executive')" class="p-3 text-left border border-zinc-200 rounded-xl hover:border-zinc-900 transition font-bold text-xs">💼 Executive Monograph</button>
+          </div>
+        `;
+      } else if (currentQuizStep === 3) {
+        container.innerHTML = `
+          <span class="text-xs font-bold text-amber-700 uppercase tracking-widest block mb-2">Step 3 of 3: What is your budget target?</span>
+          <div class="grid grid-cols-3 gap-3">
+            <button onclick="selectQuizOpt('budget', 'Under $40')" class="p-3 text-center border border-zinc-200 rounded-xl hover:border-zinc-900 transition font-bold text-xs">Under $40</button>
+            <button onclick="selectQuizOpt('budget', '$40 - $80')" class="p-3 text-center border border-zinc-200 rounded-xl hover:border-zinc-900 transition font-bold text-xs">$40 - $80</button>
+            <button onclick="selectQuizOpt('budget', 'Luxury $80+')" class="p-3 text-center border border-zinc-200 rounded-xl hover:border-zinc-900 transition font-bold text-xs">Luxury $80+</button>
+          </div>
+        `;
+      } else {
+        container.innerHTML = `
+          <div class="text-center space-y-4 py-2">
+            <span class="bg-amber-100 text-amber-900 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-widest">Recommended Match</span>
+            <h4 class="text-lg font-bold font-serif-title text-zinc-950">${quizAnswers.vibe} Gift Edition for ${quizAnswers.recipient}</h4>
+            <p class="text-xs text-zinc-500">Hand-curated bundle including Brass Pen + Smyth-sewn Notebook + Gift Sleeve.</p>
+            <div class="text-2xl font-bold text-zinc-900">${formatPrice(68.00)}</div>
+            
+            <button onclick="addToCart('${quizAnswers.vibe} Gift Edition for ${quizAnswers.recipient}', 68.00, 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80'); closeGiftQuiz(); toggleCartDrawer();" class="w-full bg-zinc-950 hover:bg-zinc-800 text-white font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider transition">
+              Add Match To Cart →
+            </button>
+            <button onclick="openGiftQuiz()" class="text-xs text-zinc-400 font-bold hover:underline block mx-auto">Retake Quiz</button>
+          </div>
+        `;
+      }
+    }
+
+    function selectQuizOpt(key, val) {
+      quizAnswers[key] = val;
+      currentQuizStep++;
+      renderQuizStep();
+    }
+
+    // AUTH CONTROLLERS
     function switchAuthTab(tab) {
       if (tab === 'login') {
         document.getElementById('formLogin').classList.remove('hidden');
@@ -1175,7 +1655,7 @@
             <img src="${item.img}" class="w-12 h-12 rounded-lg object-cover border border-zinc-200">
             <div>
               <h4 class="text-xs font-bold text-zinc-900">${item.title}</h4>
-              <p class="text-xs text-zinc-600 font-semibold">$${item.price.toFixed(2)}</p>
+              <p class="text-xs text-zinc-600 font-semibold">${formatPrice(item.price)}</p>
             </div>
           </div>
           <div class="flex items-center space-x-2">
@@ -1247,7 +1727,7 @@
               <h4 class="font-bold text-sm font-serif-title text-zinc-900">${p.title}</h4>
             </div>
             <div class="mt-3 pt-3 border-t border-zinc-100 flex justify-between items-center">
-              <span class="font-bold text-zinc-900">$${p.price.toFixed(2)}</span>
+              <span class="font-bold text-zinc-900">${formatPrice(p.price)}</span>
               <button onclick="addToCart('${p.title}', ${p.price}, '${p.img}')" class="bg-zinc-950 text-white text-xs font-bold px-3.5 py-1.5 rounded-lg">Add</button>
             </div>
           </div>
@@ -1255,14 +1735,12 @@
       }).join('');
     }
 
-    // Country Filter
     function filterCountry(countryName, btnEl) {
       const box = document.getElementById('countryStoryBox');
       box.innerHTML = `<span class="font-bold text-amber-300 uppercase tracking-widest block mb-1">Why We Selected ${countryName}</span>` +
         `Directly imported from master artisans in ${countryName}, meeting strict archival and ergonomic standards.`;
     }
 
-    // Render Catalog Grid
     function renderCatalog() {
       const grid = document.getElementById('catalogGrid');
       grid.innerHTML = productsDB.map(p => {
@@ -1281,7 +1759,7 @@
               <p class="text-xs text-zinc-500 mt-0.5 line-clamp-2">${p.desc}</p>
             </div>
             <div class="mt-4 pt-3 border-t border-zinc-100 flex justify-between items-center">
-              <span class="font-bold text-zinc-900">$${p.price.toFixed(2)}</span>
+              <span class="font-bold text-zinc-900">${formatPrice(p.price)}</span>
               <button onclick="addToCart('${p.title}', ${p.price}, '${p.img}')" class="bg-zinc-950 text-white text-xs font-bold px-3.5 py-2 rounded-lg">Add</button>
             </div>
           </div>
@@ -1289,14 +1767,21 @@
       }).join('');
     }
 
-    // Product Detail Modal
     function openProductDetail(title, price, desc, type, imgUrl, country) {
       document.getElementById('detailTitle').innerText = title;
-      document.getElementById('detailPrice').innerText = '$' + Number(price).toFixed(2);
+      document.getElementById('detailPrice').innerText = formatPrice(price);
       document.getElementById('detailDesc').innerText = desc;
       document.getElementById('detailImg').src = imgUrl || 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80';
       document.getElementById('detailCountry').innerText = country || 'Import';
       currentDetailPrice = price;
+
+      // Reset Monogram customizer state
+      isMonogramEnabled = false;
+      document.getElementById('toggleMonogram').checked = false;
+      document.getElementById('monogramControls').classList.add('hidden');
+      document.getElementById('monogramOverlay').classList.add('hidden');
+      document.getElementById('monogramInput').value = '';
+
       document.getElementById('productDetailModal').classList.remove('hidden');
     }
 
@@ -1304,7 +1789,6 @@
       document.getElementById('productDetailModal').classList.add('hidden');
     }
 
-    // Cart Management
     function addToCart(title, price, img) {
       const existing = cart.find(i => i.title === title);
       if (existing) {
@@ -1313,7 +1797,7 @@
         cart.push({ id: Date.now(), title, price, qty: 1, img: img || 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80' });
       }
       updateCartUI();
-      showToast(`Added "${title}" to cart`);
+      showToast(`Added "${title}" to order selection`);
     }
 
     function updateCartUI() {
@@ -1330,7 +1814,7 @@
             <img src="${item.img}" class="w-12 h-12 rounded-lg object-cover border border-zinc-200">
             <div>
               <h4 class="text-xs font-bold text-zinc-900">${item.title}</h4>
-              <p class="text-xs text-zinc-600 font-semibold">$${item.price.toFixed(2)}</p>
+              <p class="text-xs text-zinc-600 font-semibold">${formatPrice(item.price)}</p>
             </div>
           </div>
           <div class="flex items-center space-x-2">
@@ -1341,9 +1825,9 @@
         </div>
       `).join('');
 
-      document.getElementById('cartSubtotal').innerText = '$' + subtotal.toFixed(2);
-      document.getElementById('checkoutSubtotal').innerText = '$' + subtotal.toFixed(2);
-      document.getElementById('checkoutTotal').innerText = '$' + subtotal.toFixed(2);
+      document.getElementById('cartSubtotal').innerText = formatPrice(subtotal);
+      document.getElementById('checkoutSubtotal').innerText = formatPrice(subtotal);
+      document.getElementById('checkoutTotal').innerText = formatPrice(subtotal);
     }
 
     function changeQty(idx, delta) {
@@ -1362,13 +1846,6 @@
       document.getElementById('mobileMenuBackdrop').classList.toggle('hidden');
     }
 
-    // Kit Builder
-    function addKitToCart() {
-      addToCart('Custom Atelier Stationery Kit (3 Items)', 77.35, 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80');
-      toggleCartDrawer();
-    }
-
-    // Gift Finder
     function runGiftFinder() {
       document.getElementById('giftResultBox').classList.remove('hidden');
     }
@@ -1387,13 +1864,13 @@
       setTimeout(() => toast.classList.add('hidden'), 2500);
     }
 
-    // Initialize SPA
     window.onload = function() {
       filterMood('study', document.querySelector('.mood-btn'));
       renderCatalog();
       updateCartUI();
       updateWishlistUI();
       updateUserUI();
+      updateHotspotCard();
     };
   </script>
 
