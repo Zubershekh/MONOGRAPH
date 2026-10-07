@@ -549,19 +549,29 @@ function handleAccountClick() {
 }
 
 // --- 7. THEME TOGGLE (LIGHT / DARK) ---
-function initTheme() {
-  const saved = localStorage.getItem('monograph_theme') || 'light';
-  if (saved === 'dark') {
-    document.body.classList.add('dark-mode');
+function applyTheme(isDark) {
+  if (isDark) {
+    document.documentElement.classList.add('dark');
+    document.body?.classList.add('dark', 'dark-mode');
   } else {
-    document.body.classList.remove('dark-mode');
+    document.documentElement.classList.remove('dark');
+    document.body?.classList.remove('dark', 'dark-mode');
   }
 }
 
+function initTheme() {
+  const saved = localStorage.getItem('monograph_theme');
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isDark = saved === 'dark' || (!saved && prefersDark);
+  applyTheme(isDark);
+}
+
 function toggleTheme() {
-  const isDark = document.body.classList.toggle('dark-mode');
-  localStorage.setItem('monograph_theme', isDark ? 'dark' : 'light');
-  showToast(`Theme switched to ${isDark ? 'Dark Mode' : 'Light Mode'}`);
+  const isCurrentlyDark = document.documentElement.classList.contains('dark') || (document.body && document.body.classList.contains('dark-mode'));
+  const newDark = !isCurrentlyDark;
+  applyTheme(newDark);
+  localStorage.setItem('monograph_theme', newDark ? 'dark' : 'light');
+  showToast(`Switched to ${newDark ? 'Dark Mode 🌙' : 'Light Mode ☀️'}`);
 }
 
 

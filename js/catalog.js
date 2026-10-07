@@ -253,3 +253,87 @@ function closeQuickViewModal() {
     document.body.style.overflow = '';
   }
 }
+
+// --- HOME STOREFRONT INTERACTION ENGINE ---
+let currentHomeCat = 'all';
+let currentHomeSort = 'featured';
+
+function filterHomeStore(cat, btn) {
+  currentHomeCat = cat;
+  document.querySelectorAll('.home-cat-tab').forEach(t => {
+    t.classList.remove('active', 'bg-zinc-950', 'text-white', 'dark:bg-white', 'dark:text-zinc-950', 'shadow-sm');
+    t.classList.add('bg-zinc-100', 'dark:bg-zinc-800', 'text-zinc-700', 'dark:text-zinc-300');
+  });
+  if (btn) {
+    btn.classList.add('active', 'bg-zinc-950', 'text-white', 'dark:bg-white', 'dark:text-zinc-950', 'shadow-sm');
+    btn.classList.remove('bg-zinc-100', 'dark:bg-zinc-800', 'text-zinc-700', 'dark:text-zinc-300');
+  }
+  renderHomeStoreGrid();
+}
+
+function sortHomeStore(sortVal) {
+  currentHomeSort = sortVal;
+  renderHomeStoreGrid();
+}
+
+function renderHomeStoreGrid() {
+  const grid = document.getElementById('homeProductGrid');
+  const countEl = document.getElementById('homeStoreItemCount');
+  if (!grid || typeof getAllProducts !== 'function') return;
+
+  const all = getAllProducts();
+  let list = all.filter(p => {
+    if (currentHomeCat === 'all') return true;
+    if (currentHomeCat === 'international') return p.origin === 'Japan' || p.origin === 'S. Korea';
+    return p.category === currentHomeCat;
+  });
+
+  if (currentHomeSort === 'price-low') {
+    list.sort((a, b) => a.price - b.price);
+  } else if (currentHomeSort === 'price-high') {
+    list.sort((a, b) => b.price - a.price);
+  } else if (currentHomeSort === 'rating') {
+    list.sort((a, b) => b.rating - a.rating);
+  }
+
+  // Cap preview at 8 items
+  const displayList = list.slice(0, 8);
+
+  if (countEl) {
+    countEl.innerText = `Showing ${displayList.length} of ${list.length} Instrument${list.length === 1 ? '' : 's'}`;
+  }
+
+  if (displayList.length === 0) {
+    grid.innerHTML = `
+      <div class="col-span-full py-16 text-center space-y-2">
+        <p class="font-serif text-2xl text-zinc-800 dark:text-zinc-200">No instruments found in this collection</p>
+        <p class="text-xs text-zinc-500">Try selecting 'All Curated' or visiting the full catalog.</p>
+        <button onclick="filterHomeStore('all')" class="btn-secondary text-xs mt-2">Reset Filter</button>
+      </div>
+    `;
+    return;
+  }
+
+  grid.innerHTML = displayList.map(p => createProductCardHTML(p)).join('');
+
+  // Re-sync wishlist heart buttons
+  if (typeof getWishlist === 'function') {
+    const wishIds = getWishlist();
+    wishIds.forEach(id => {
+      document.querySelectorAll(`[data-wishlist-id="${id}"]`).forEach(b => b.classList.add('active'));
+    });
+  }
+
+  // Re-sync currency pricing
+  if (typeof updateCurrencyUI === 'function') {
+    updateCurrencyUI();
+  }
+}
+
+// Auto-init on home page if homeProductGrid exists
+document.addEventListener('DOMContentLoaded', () => {
+  const homeGrid = document.getElementById('homeProductGrid');
+  if (homeGrid) {
+    renderHomeStoreGrid();
+  }
+});

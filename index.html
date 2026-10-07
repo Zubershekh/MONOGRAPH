@@ -26,6 +26,17 @@
   <!-- Master Stylesheets -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/components.css">
+  <script>
+    (function() {
+      const theme = localStorage.getItem('monograph_theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (theme === 'dark' || (!theme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
 </head>
 <body class="bg-[#FAF8F5] dark:bg-[#0D0D11] text-zinc-900 dark:text-zinc-100 min-h-screen flex flex-col antialiased">
 
@@ -197,27 +208,27 @@
               <span class="text-[10px] font-bold text-amber-900 dark:text-amber-300 uppercase tracking-widest">Fine Stationery, Aesthetic Desk Goods & Atelier Gifts</span>
             </div>
 
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold font-serif tracking-tight text-zinc-950 dark:text-white leading-[1.08]">
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold font-serif tracking-tight text-zinc-950 dark:text-white leading-[1.1]">
               Archival Notebooks, Pens<br>
               <span class="italic font-normal text-amber-700 dark:text-amber-400">& Aesthetic Desk Gifts.</span>
             </h1>
 
-            <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-300 max-w-xl leading-relaxed font-light">
+            <p class="text-xs sm:text-base text-zinc-600 dark:text-zinc-300 max-w-xl leading-relaxed font-light">
               Discover imported Japanese fountain pens, Smyth-sewn archival journals, minimal walnut desk objects, and curated stationery gift bundles for creators, thinkers, and architects.
             </p>
 
-            <div class="flex flex-wrap gap-3 pt-2">
-              <a href="catalog.html" class="btn-primary text-xs uppercase tracking-wider px-8 py-4 shadow-lg flex items-center space-x-2">
-                <span>Explore Full Catalog</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+              <a href="#atelier-store" class="btn-primary text-xs uppercase tracking-wider px-8 py-3.5 shadow-lg flex items-center justify-center space-x-2">
+                <span>Shop Featured Instruments</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
               </a>
-              <a href="box-builder.html" class="btn-secondary text-xs uppercase tracking-wider px-6 py-4">
-                Build Custom Gift Box
+              <a href="catalog.html" class="btn-secondary text-xs uppercase tracking-wider px-6 py-3.5 justify-center flex items-center">
+                Explore Full Catalog
               </a>
             </div>
 
             <!-- Value propositions -->
-            <div class="grid grid-cols-3 gap-4 pt-6 border-t border-zinc-200 dark:border-zinc-800/80 text-xs">
+            <div class="grid grid-cols-3 gap-2 sm:gap-4 pt-6 border-t border-zinc-200 dark:border-zinc-800/80 text-xs">
               <div>
                 <span class="font-serif font-bold text-xl block text-zinc-950 dark:text-zinc-100">100%</span>
                 <span class="text-[11px] text-zinc-500">Acid-Free Cotton Rag</span>
@@ -255,9 +266,360 @@
     </section>
 
     <!-- ========================================================================= -->
+    <!-- THE ATELIER STOREFRONT — FEATURED INSTRUMENTS & BEST SELLERS -->
+    <!-- ========================================================================= -->
+    <section id="atelier-store" class="py-20 bg-white dark:bg-[#111117] border-b border-zinc-200 dark:border-zinc-800">
+      <div class="container-custom">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+          <div class="space-y-2">
+            <div class="inline-flex items-center space-x-2 bg-amber-100/90 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-800/60 px-3.5 py-1 rounded-full shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-amber-600 dark:bg-amber-400 animate-pulse"></span>
+              <span class="text-[10px] font-bold text-amber-900 dark:text-amber-300 uppercase tracking-widest">In Stock & Ready To Dispatch</span>
+            </div>
+            <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-950 dark:text-white tracking-tight">
+              The Atelier Storefront
+            </h2>
+            <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 max-w-xl font-light">
+              Explore authentic Japanese fountain pens, Smyth-sewn archival journals, and minimal solid wood desk artifacts crafted for thoughtful writers.
+            </p>
+          </div>
+
+          <div class="flex items-center space-x-3 flex-shrink-0">
+            <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400 hidden sm:inline" id="homeStoreItemCount">Showing 8 Instruments</span>
+            <a href="catalog.html" class="btn-secondary text-xs uppercase tracking-wider py-2.5 px-4 flex items-center space-x-1.5 shadow-sm">
+              <span>View All 20+</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Filter Bar & Category Tabs (Horizontal Scroll on Mobile) -->
+        <div class="flex items-center justify-between gap-4 pb-4 mb-8 border-b border-zinc-200 dark:border-zinc-800/80 flex-wrap">
+          <div class="flex items-center space-x-2 overflow-x-auto no-scrollbar w-full sm:w-auto py-1">
+            <button onclick="filterHomeStore('all', this)" class="home-cat-tab active px-4 py-2 rounded-full text-xs font-bold transition whitespace-nowrap bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 shadow-sm">
+              All Curated
+            </button>
+            <button onclick="filterHomeStore('notebooks', this)" class="home-cat-tab px-4 py-2 rounded-full text-xs font-bold transition whitespace-nowrap bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700">
+              Archival Notebooks
+            </button>
+            <button onclick="filterHomeStore('pens', this)" class="home-cat-tab px-4 py-2 rounded-full text-xs font-bold transition whitespace-nowrap bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700">
+              Fountain & Fine Pens
+            </button>
+            <button onclick="filterHomeStore('desk', this)" class="home-cat-tab px-4 py-2 rounded-full text-xs font-bold transition whitespace-nowrap bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700">
+              Desk Objects
+            </button>
+            <button onclick="filterHomeStore('gifts', this)" class="home-cat-tab px-4 py-2 rounded-full text-xs font-bold transition whitespace-nowrap bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700">
+              Gift Sets
+            </button>
+            <button onclick="filterHomeStore('international', this)" class="home-cat-tab px-4 py-2 rounded-full text-xs font-bold transition whitespace-nowrap bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700">
+              Imports 🇯🇵🇰🇷
+            </button>
+          </div>
+
+          <!-- Sort Selector -->
+          <div class="flex items-center space-x-2 text-xs text-zinc-500 dark:text-zinc-400">
+            <span class="text-[11px] font-bold uppercase tracking-wider hidden md:inline">Sort:</span>
+            <select id="homeStoreSort" onchange="sortHomeStore(this.value)" class="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-amber-600">
+              <option value="featured">Featured Picks</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Highest Rated ★</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Store Grid -->
+        <div id="homeProductGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <!-- Flagship Product 1: Smyth-Sewn Archival Leather Journal -->
+          <div class="product-card group">
+            <div class="product-image-box">
+              <span class="product-origin-badge">Italy</span>
+              <span class="absolute top-2.5 left-20 badge-tag highlight text-[9px] shadow-sm">Best Seller</span>
+              <button class="product-wishlist-btn" data-wishlist-id="101" onclick="toggleWishlist(101); event.stopPropagation();" title="Save to Wishlist">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+              </button>
+              <a href="product-detail.html?id=101" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=900&q=80" alt="Smyth-Sewn Archival Leather Journal" loading="lazy">
+              </a>
+              <div class="product-overlay-actions">
+                <button onclick="openQuickViewModal(101)" class="btn-secondary text-[11px] py-1.5 px-3 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm">Quick View</button>
+                <button onclick="addToCart(101)" class="btn-primary text-[11px] py-1.5 px-3 bg-amber-600 hover:bg-amber-500 text-white">+ Quick Add</button>
+              </div>
+            </div>
+            <div class="product-info-box">
+              <div class="product-category-meta">Archival Notebooks</div>
+              <a href="product-detail.html?id=101" class="product-title">Smyth-Sewn Archival Leather Journal</a>
+              <div class="product-rating">
+                <span>★</span><span>4.9</span><span>(128)</span>
+                <span class="ml-auto text-[9px] font-bold text-amber-700 uppercase tracking-wider bg-amber-50 dark:bg-amber-950/40 px-1.5 py-0.5 rounded">Foil Emboss</span>
+              </div>
+              <div class="product-price-row">
+                <div>
+                  <span class="product-price" data-usd-price="34.00">$34.00</span>
+                  <span class="product-mrp" data-usd-price="42.00">$42.00</span>
+                </div>
+                <button onclick="addToCart(101)" class="btn-quick-add text-[11px]">Add</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flagship Product 2: Solid Brass Hexagonal Fountain Pen -->
+          <div class="product-card group">
+            <div class="product-image-box">
+              <span class="product-origin-badge">Japan</span>
+              <span class="absolute top-2.5 left-20 badge-tag highlight text-[9px] shadow-sm">Best Seller</span>
+              <button class="product-wishlist-btn" data-wishlist-id="201" onclick="toggleWishlist(201); event.stopPropagation();" title="Save to Wishlist">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+              </button>
+              <a href="product-detail.html?id=201" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=900&q=80" alt="Solid Brass Hexagonal Fountain Pen" loading="lazy">
+              </a>
+              <div class="product-overlay-actions">
+                <button onclick="openQuickViewModal(201)" class="btn-secondary text-[11px] py-1.5 px-3 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm">Quick View</button>
+                <button onclick="addToCart(201)" class="btn-primary text-[11px] py-1.5 px-3 bg-amber-600 hover:bg-amber-500 text-white">+ Quick Add</button>
+              </div>
+            </div>
+            <div class="product-info-box">
+              <div class="product-category-meta">Fountain & Fine Pens</div>
+              <a href="product-detail.html?id=201" class="product-title">Solid Brass Hexagonal Fountain Pen</a>
+              <div class="product-rating">
+                <span>★</span><span>4.9</span><span>(210)</span>
+                <span class="ml-auto text-[9px] font-bold text-amber-700 uppercase tracking-wider bg-amber-50 dark:bg-amber-950/40 px-1.5 py-0.5 rounded">Schmidt Nib</span>
+              </div>
+              <div class="product-price-row">
+                <div>
+                  <span class="product-price" data-usd-price="58.00">$58.00</span>
+                  <span class="product-mrp" data-usd-price="68.00">$68.00</span>
+                </div>
+                <button onclick="addToCart(201)" class="btn-quick-add text-[11px]">Add</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flagship Product 3: Solid American Walnut Pen Rest & Tray -->
+          <div class="product-card group">
+            <div class="product-image-box">
+              <span class="product-origin-badge">USA</span>
+              <span class="absolute top-2.5 left-20 badge-tag highlight text-[9px] shadow-sm">Staff Pick</span>
+              <button class="product-wishlist-btn" data-wishlist-id="301" onclick="toggleWishlist(301); event.stopPropagation();" title="Save to Wishlist">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+              </button>
+              <a href="product-detail.html?id=301" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=900&q=80" alt="Solid American Walnut Pen Rest & Tray" loading="lazy">
+              </a>
+              <div class="product-overlay-actions">
+                <button onclick="openQuickViewModal(301)" class="btn-secondary text-[11px] py-1.5 px-3 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm">Quick View</button>
+                <button onclick="addToCart(301)" class="btn-primary text-[11px] py-1.5 px-3 bg-amber-600 hover:bg-amber-500 text-white">+ Quick Add</button>
+              </div>
+            </div>
+            <div class="product-info-box">
+              <div class="product-category-meta">Aesthetic Desk Objects</div>
+              <a href="product-detail.html?id=301" class="product-title">Solid American Walnut Pen Rest & Tray</a>
+              <div class="product-rating">
+                <span>★</span><span>4.9</span><span>(96)</span>
+                <span class="ml-auto text-[9px] font-bold text-amber-700 uppercase tracking-wider bg-amber-50 dark:bg-amber-950/40 px-1.5 py-0.5 rounded">Solid Wood</span>
+              </div>
+              <div class="product-price-row">
+                <div>
+                  <span class="product-price" data-usd-price="42.00">$42.00</span>
+                  <span class="product-mrp" data-usd-price="50.00">$50.00</span>
+                </div>
+                <button onclick="addToCart(301)" class="btn-quick-add text-[11px]">Add</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flagship Product 4: The Grand Atelier Calligraphy Gift Chest -->
+          <div class="product-card group">
+            <div class="product-image-box">
+              <span class="product-origin-badge">France</span>
+              <span class="absolute top-2.5 left-20 badge-tag highlight text-[9px] shadow-sm">Luxury Gift</span>
+              <button class="product-wishlist-btn" data-wishlist-id="401" onclick="toggleWishlist(401); event.stopPropagation();" title="Save to Wishlist">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+              </button>
+              <a href="product-detail.html?id=401" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=900&q=80" alt="The Grand Atelier Calligraphy Gift Chest" loading="lazy">
+              </a>
+              <div class="product-overlay-actions">
+                <button onclick="openQuickViewModal(401)" class="btn-secondary text-[11px] py-1.5 px-3 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm">Quick View</button>
+                <button onclick="addToCart(401)" class="btn-primary text-[11px] py-1.5 px-3 bg-amber-600 hover:bg-amber-500 text-white">+ Quick Add</button>
+              </div>
+            </div>
+            <div class="product-info-box">
+              <div class="product-category-meta">Curated Gift Sets</div>
+              <a href="product-detail.html?id=401" class="product-title">The Grand Atelier Calligraphy Gift Chest</a>
+              <div class="product-rating">
+                <span>★</span><span>5.0</span><span>(54)</span>
+                <span class="ml-auto text-[9px] font-bold text-amber-700 uppercase tracking-wider bg-amber-50 dark:bg-amber-950/40 px-1.5 py-0.5 rounded">Wax Seal</span>
+              </div>
+              <div class="product-price-row">
+                <div>
+                  <span class="product-price" data-usd-price="125.00">$125.00</span>
+                  <span class="product-mrp" data-usd-price="145.00">$145.00</span>
+                </div>
+                <button onclick="addToCart(401)" class="btn-quick-add text-[11px]">Add</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flagship Product 5: Kyoto Washi Thread-Bound Notebook -->
+          <div class="product-card group">
+            <div class="product-image-box">
+              <span class="product-origin-badge">Japan</span>
+              <span class="absolute top-2.5 left-20 badge-tag highlight text-[9px] shadow-sm">Japanese Import</span>
+              <button class="product-wishlist-btn" data-wishlist-id="102" onclick="toggleWishlist(102); event.stopPropagation();" title="Save to Wishlist">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+              </button>
+              <a href="product-detail.html?id=102" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&w=900&q=80" alt="Kyoto Washi Thread-Bound Notebook" loading="lazy">
+              </a>
+              <div class="product-overlay-actions">
+                <button onclick="openQuickViewModal(102)" class="btn-secondary text-[11px] py-1.5 px-3 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm">Quick View</button>
+                <button onclick="addToCart(102)" class="btn-primary text-[11px] py-1.5 px-3 bg-amber-600 hover:bg-amber-500 text-white">+ Quick Add</button>
+              </div>
+            </div>
+            <div class="product-info-box">
+              <div class="product-category-meta">Archival Notebooks</div>
+              <a href="product-detail.html?id=102" class="product-title">Kyoto Washi Thread-Bound Notebook</a>
+              <div class="product-rating">
+                <span>★</span><span>4.8</span><span>(84)</span>
+                <span class="ml-auto text-[9px] font-bold text-amber-700 uppercase tracking-wider bg-amber-50 dark:bg-amber-950/40 px-1.5 py-0.5 rounded">Handmade</span>
+              </div>
+              <div class="product-price-row">
+                <div>
+                  <span class="product-price" data-usd-price="26.00">$26.00</span>
+                  <span class="product-mrp" data-usd-price="30.00">$30.00</span>
+                </div>
+                <button onclick="addToCart(102)" class="btn-quick-add text-[11px]">Add</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flagship Product 6: Kyoto Urushi Lacquered Ebonite Pen -->
+          <div class="product-card group">
+            <div class="product-image-box">
+              <span class="product-origin-badge">Japan</span>
+              <span class="absolute top-2.5 left-20 badge-tag highlight text-[9px] shadow-sm">Heirloom Guild</span>
+              <button class="product-wishlist-btn" data-wishlist-id="202" onclick="toggleWishlist(202); event.stopPropagation();" title="Save to Wishlist">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+              </button>
+              <a href="product-detail.html?id=202" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1585336261026-7d4323c914bf?auto=format&fit=crop&w=900&q=80" alt="Kyoto Urushi Lacquered Ebonite Pen" loading="lazy">
+              </a>
+              <div class="product-overlay-actions">
+                <button onclick="openQuickViewModal(202)" class="btn-secondary text-[11px] py-1.5 px-3 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm">Quick View</button>
+                <button onclick="addToCart(202)" class="btn-primary text-[11px] py-1.5 px-3 bg-amber-600 hover:bg-amber-500 text-white">+ Quick Add</button>
+              </div>
+            </div>
+            <div class="product-info-box">
+              <div class="product-category-meta">Fountain & Fine Pens</div>
+              <a href="product-detail.html?id=202" class="product-title">Kyoto Urushi Lacquered Ebonite Pen</a>
+              <div class="product-rating">
+                <span>★</span><span>5.0</span><span>(48)</span>
+                <span class="ml-auto text-[9px] font-bold text-amber-700 uppercase tracking-wider bg-amber-50 dark:bg-amber-950/40 px-1.5 py-0.5 rounded">14k Gold Nib</span>
+              </div>
+              <div class="product-price-row">
+                <div>
+                  <span class="product-price" data-usd-price="145.00">$145.00</span>
+                  <span class="product-mrp" data-usd-price="165.00">$165.00</span>
+                </div>
+                <button onclick="addToCart(202)" class="btn-quick-add text-[11px]">Add</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flagship Product 7: Cast Iron Geometric Bookends (Set of 2) -->
+          <div class="product-card group">
+            <div class="product-image-box">
+              <span class="product-origin-badge">Japan</span>
+              <span class="absolute top-2.5 left-20 badge-tag highlight text-[9px] shadow-sm">Artisan Cast</span>
+              <button class="product-wishlist-btn" data-wishlist-id="302" onclick="toggleWishlist(302); event.stopPropagation();" title="Save to Wishlist">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+              </button>
+              <a href="product-detail.html?id=302" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=900&q=80" alt="Cast Iron Geometric Bookends (Set of 2)" loading="lazy">
+              </a>
+              <div class="product-overlay-actions">
+                <button onclick="openQuickViewModal(302)" class="btn-secondary text-[11px] py-1.5 px-3 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm">Quick View</button>
+                <button onclick="addToCart(302)" class="btn-primary text-[11px] py-1.5 px-3 bg-amber-600 hover:bg-amber-500 text-white">+ Quick Add</button>
+              </div>
+            </div>
+            <div class="product-info-box">
+              <div class="product-category-meta">Aesthetic Desk Objects</div>
+              <a href="product-detail.html?id=302" class="product-title">Cast Iron Geometric Bookends (Set of 2)</a>
+              <div class="product-rating">
+                <span>★</span><span>4.8</span><span>(62)</span>
+                <span class="ml-auto text-[9px] font-bold text-amber-700 uppercase tracking-wider bg-amber-50 dark:bg-amber-950/40 px-1.5 py-0.5 rounded">Nanbu Tekki</span>
+              </div>
+              <div class="product-price-row">
+                <div>
+                  <span class="product-price" data-usd-price="48.00">$48.00</span>
+                  <span class="product-mrp" data-usd-price="55.00">$55.00</span>
+                </div>
+                <button onclick="addToCart(302)" class="btn-quick-add text-[11px]">Add</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flagship Product 8: Echizen Kozo Calligraphy Letterpress Set -->
+          <div class="product-card group">
+            <div class="product-image-box">
+              <span class="product-origin-badge">Japan</span>
+              <span class="absolute top-2.5 left-20 badge-tag highlight text-[9px] shadow-sm">1500-Yr Guild</span>
+              <button class="product-wishlist-btn" data-wishlist-id="501" onclick="toggleWishlist(501); event.stopPropagation();" title="Save to Wishlist">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+              </button>
+              <a href="product-detail.html?id=501" class="block w-full h-full">
+                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=900&q=80" alt="Echizen Kozo Calligraphy Letterpress Set" loading="lazy">
+              </a>
+              <div class="product-overlay-actions">
+                <button onclick="openQuickViewModal(501)" class="btn-secondary text-[11px] py-1.5 px-3 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm">Quick View</button>
+                <button onclick="addToCart(501)" class="btn-primary text-[11px] py-1.5 px-3 bg-amber-600 hover:bg-amber-500 text-white">+ Quick Add</button>
+              </div>
+            </div>
+            <div class="product-info-box">
+              <div class="product-category-meta">International Finds</div>
+              <a href="product-detail.html?id=501" class="product-title">Echizen Kozo Calligraphy Letterpress Set</a>
+              <div class="product-rating">
+                <span>★</span><span>5.0</span><span>(39)</span>
+                <span class="ml-auto text-[9px] font-bold text-amber-700 uppercase tracking-wider bg-amber-50 dark:bg-amber-950/40 px-1.5 py-0.5 rounded">Fukui Guild</span>
+              </div>
+              <div class="product-price-row">
+                <div>
+                  <span class="product-price" data-usd-price="38.00">$38.00</span>
+                  <span class="product-mrp" data-usd-price="45.00">$45.00</span>
+                </div>
+                <button onclick="addToCart(501)" class="btn-quick-add text-[11px]">Add</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Action Strip -->
+        <div class="mt-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border border-amber-300/30 dark:border-amber-600/20 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div class="space-y-1 text-center sm:text-left">
+            <h4 class="font-serif text-xl sm:text-2xl font-bold text-zinc-950 dark:text-white">Seeking Custom Guild Craftsmanship?</h4>
+            <p class="text-xs text-zinc-600 dark:text-zinc-400">Personalize with 24k gold foil debossed monogramming or build a bespoke gift box with wax seals.</p>
+          </div>
+          <div class="flex flex-wrap gap-3 justify-center">
+            <a href="box-builder.html" class="btn-primary text-xs py-3 px-5 bg-amber-600 hover:bg-amber-500 text-white shadow-md">
+              Gift Box Builder
+            </a>
+            <a href="catalog.html" class="btn-secondary text-xs py-3 px-5">
+              Explore All 20+ Items →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
     <!-- DEDICATED COLLECTIONS PREVIEW SECTION -->
     <!-- ========================================================================= -->
-    <section class="py-20 bg-white dark:bg-[#121218] border-b border-zinc-200 dark:border-zinc-800">
+    <section class="py-20 bg-[#FAF8F5] dark:bg-[#0D0D11] border-b border-zinc-200 dark:border-zinc-800">
       <div class="container-custom">
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
