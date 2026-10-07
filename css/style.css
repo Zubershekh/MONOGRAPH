@@ -167,20 +167,6 @@ body {
   100% { transform: translateX(-50%); }
 }
 
-/* Presentation Demo Bar */
-.demo-bar {
-  background: #09090D;
-  color: #E4E4E7;
-  padding: 6px 1.5rem;
-  font-size: 0.72rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  z-index: 60;
-}
 
 /* Buttons */
 .btn-primary {

@@ -17,38 +17,6 @@
 <body class="bg-[#FAF8F5] dark:bg-[#0D0D11] text-zinc-900 dark:text-zinc-100 min-h-screen flex flex-col antialiased">
 
 
-  <!-- Top Controller Bar -->
-  <div class="demo-bar">
-    <div class="flex items-center space-x-2">
-      <span class="inline-block w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-      <span class="font-bold tracking-widest uppercase text-[10px] text-zinc-300">Complete Atelier Catalog</span>
-      <span class="text-zinc-700">|</span>
-      <span class="text-[11px] font-mono text-amber-400 font-bold">All 19+ Curated Masterpieces</span>
-    </div>
-    <div class="flex items-center space-x-2 flex-wrap">
-      <div class="relative group">
-        <button class="currency-select-btn">
-          <span class="currency-current-label">USD ($)</span>
-          <svg class="w-3 h-3 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </button>
-        <div class="absolute right-0 top-full pt-1 w-28 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all z-50">
-          <div class="bg-zinc-900 border border-zinc-700 rounded-xl p-1.5 space-y-1 shadow-2xl text-[10px]">
-            <button onclick="setCurrency('USD')" class="w-full text-left px-2 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex justify-between"><span>USD</span> <span class="text-amber-400 font-mono">$</span></button>
-            <button onclick="setCurrency('EUR')" class="w-full text-left px-2 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex justify-between"><span>EUR</span> <span class="text-amber-400 font-mono">€</span></button>
-            <button onclick="setCurrency('GBP')" class="w-full text-left px-2 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex justify-between"><span>GBP</span> <span class="text-amber-400 font-mono">£</span></button>
-            <button onclick="setCurrency('JPY')" class="w-full text-left px-2 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex justify-between"><span>JPY</span> <span class="text-amber-400 font-mono">¥</span></button>
-            <button onclick="setCurrency('INR')" class="w-full text-left px-2 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex justify-between"><span>INR</span> <span class="text-amber-400 font-mono">₹</span></button>
-          </div>
-        </div>
-      </div>
-      <a href="index.html" class="px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-[10px] font-semibold transition">Storefront</a>
-      <a href="box-builder.html" class="px-2 py-0.5 rounded bg-amber-600 hover:bg-amber-500 text-white text-[10px] font-bold transition shadow-sm">Gift Builder</a>
-      <a href="gift-quiz.html" class="px-2 py-0.5 rounded bg-amber-700 hover:bg-amber-600 text-white text-[10px] font-bold transition shadow-sm">Gift Quiz</a>
-      <button onclick="toggleWishlistDrawer()" class="px-2 py-0.5 rounded bg-rose-900/60 text-rose-200 text-[10px] font-bold">Wishlist (<span class="wishlist-count-badge">2</span>)</button>
-      <button onclick="toggleCartDrawer()" class="px-2 py-0.5 rounded bg-amber-900/60 text-amber-200 text-[10px] font-bold">Cart (<span class="cart-count-badge">2</span>)</button>
-    </div>
-  </div>
-
   <!-- Announcement Ticker -->
   <div class="ticker-wrap">
     <div class="ticker-content">
@@ -111,6 +79,23 @@
         </nav>
 
         <div class="nav-actions">
+          <!-- Currency Selector -->
+          <div class="relative group">
+            <button class="currency-select-btn" title="Select Currency">
+              <span class="currency-current-label">USD ($)</span>
+              <svg class="w-3 h-3 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="absolute right-0 top-full pt-1 w-28 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all z-50">
+              <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-xl p-1.5 space-y-1 shadow-2xl text-[10px]">
+                <button onclick="setCurrency('USD')" class="w-full text-left px-2 py-1 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded font-bold transition flex justify-between"><span>USD</span> <span class="text-amber-600 dark:text-amber-400 font-mono">$</span></button>
+                <button onclick="setCurrency('EUR')" class="w-full text-left px-2 py-1 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded font-bold transition flex justify-between"><span>EUR</span> <span class="text-amber-600 dark:text-amber-400 font-mono">€</span></button>
+                <button onclick="setCurrency('GBP')" class="w-full text-left px-2 py-1 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded font-bold transition flex justify-between"><span>GBP</span> <span class="text-amber-600 dark:text-amber-400 font-mono">£</span></button>
+                <button onclick="setCurrency('JPY')" class="w-full text-left px-2 py-1 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded font-bold transition flex justify-between"><span>JPY</span> <span class="text-amber-600 dark:text-amber-400 font-mono">¥</span></button>
+                <button onclick="setCurrency('INR')" class="w-full text-left px-2 py-1 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded font-bold transition flex justify-between"><span>INR</span> <span class="text-amber-600 dark:text-amber-400 font-mono">₹</span></button>
+              </div>
+            </div>
+          </div>
+
           <button onclick="openSearchModal()" class="nav-icon-btn"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
           <button onclick="toggleTheme()" class="nav-icon-btn"><svg class="w-4 h-4 text-zinc-700 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg><svg class="w-4 h-4 text-amber-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg></button>
           <button onclick="toggleWishlistDrawer()" class="nav-icon-btn text-rose-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg><span class="nav-icon-badge bg-rose-500 wishlist-count-badge">2</span></button>
