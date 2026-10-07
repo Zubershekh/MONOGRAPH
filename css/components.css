@@ -74,8 +74,7 @@
 }
 
 /* Nav Links & Dropdowns */
-.nav-menu,
-.site-header nav {
+.nav-menu {
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -84,6 +83,24 @@
   white-space: nowrap;
   flex-wrap: nowrap;
 }
+
+/* Hide desktop navigation menu on mobile & tablet to prevent horizontal overflow */
+.site-header nav {
+  display: none !important;
+}
+
+@media (min-width: 1024px) {
+  .site-header nav {
+    display: flex !important;
+    align-items: center;
+    gap: 0.25rem;
+    list-style: none;
+    flex-shrink: 0;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+  }
+}
+
 .nav-link {
   font-size: 0.72rem;
   font-weight: 700;
