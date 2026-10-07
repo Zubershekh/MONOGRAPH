@@ -564,49 +564,7 @@ function toggleTheme() {
   showToast(`Theme switched to ${isDark ? 'Dark Mode' : 'Light Mode'}`);
 }
 
-// --- 8. CUSTOM CURSOR (Inspired by Reference Website) ---
-function initCustomCursor() {
-  if (window.matchMedia('(pointer: fine)').matches) {
-    const cur = document.getElementById('cur');
-    const cur2 = document.getElementById('cur2');
-    if (!cur || !cur2) return;
 
-    cur.style.display = 'block';
-    cur2.style.display = 'block';
-
-    let mouseX = -100, mouseY = -100;
-    let curX = -100, curY = -100;
-
-    window.addEventListener('mousemove', e => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      cur2.style.left = `${mouseX}px`;
-      cur2.style.top = `${mouseY}px`;
-    });
-
-    function renderCursor() {
-      curX += (mouseX - curX) * 0.18;
-      curY += (mouseY - curY) * 0.18;
-      cur.style.left = `${curX}px`;
-      cur.style.top = `${curY}px`;
-      requestAnimationFrame(renderCursor);
-    }
-    requestAnimationFrame(renderCursor);
-
-    // Hover state over interactive elements
-    const interactiveSelectors = 'a, button, input, select, textarea, .product-card, .btn-primary, .btn-secondary';
-    document.addEventListener('mouseover', e => {
-      if (e.target.closest(interactiveSelectors)) {
-        document.body.classList.add('cursor-hover');
-      }
-    });
-    document.addEventListener('mouseout', e => {
-      if (e.target.closest(interactiveSelectors)) {
-        document.body.classList.remove('cursor-hover');
-      }
-    });
-  }
-}
 
 // --- 9. LIVE SEARCH AUTOCOMPLETE MODAL ---
 function toggleSearchModal() {
@@ -699,8 +657,6 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartBadges();
   updateWishlistBadges();
   updateAuthUI();
-  initCustomCursor();
-
   // Close drawers with ESC key
   window.addEventListener('keydown', e => {
     if (e.key === 'Escape') {

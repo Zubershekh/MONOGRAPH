@@ -125,33 +125,7 @@ body {
   padding-right: 1.5rem;
 }
 
-/* Custom Interactive Cursor (as seen in reference site) */
-#cur, #cur2 {
-  position: fixed;
-  pointer-events: none;
-  z-index: 99999;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  display: none; /* activated on desktop via JS */
-}
-#cur {
-  width: 26px;
-  height: 26px;
-  border: 1.5px solid var(--gold-accent);
-  transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
-}
-#cur2 {
-  width: 6px;
-  height: 6px;
-  background-color: var(--gold-accent);
-  transition: transform 0.08s ease;
-}
-body.cursor-hover #cur {
-  width: 44px;
-  height: 44px;
-  background-color: var(--gold-glow);
-  border-color: var(--gold-light);
-}
+
 
 /* Ticker Marquee Announcement */
 .ticker-wrap {
