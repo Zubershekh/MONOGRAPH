@@ -647,15 +647,21 @@ function handleSearchInput(query) {
 function toggleMobileMenu() {
   const drawer = document.getElementById('mobileNavDrawer');
   const backdrop = document.getElementById('mobileDrawerBackdrop');
-  if (!drawer || !backdrop) return;
+  if (!drawer) return;
   const isOpen = drawer.classList.contains('open');
   if (isOpen) {
     drawer.classList.remove('open');
-    backdrop.classList.remove('open');
+    if (backdrop) {
+      backdrop.classList.remove('open');
+      backdrop.classList.add('hidden');
+    }
     document.body.style.overflow = '';
   } else {
     drawer.classList.add('open');
-    backdrop.classList.add('open');
+    if (backdrop) {
+      backdrop.classList.add('open');
+      backdrop.classList.remove('hidden');
+    }
     document.body.style.overflow = 'hidden';
   }
 }

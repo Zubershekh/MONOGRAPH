@@ -134,6 +134,13 @@ body {
   padding-right: 1.5rem;
 }
 
+@media (max-width: 639px) {
+  .container-custom {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
 
 
 /* Ticker Marquee Announcement */

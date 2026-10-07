@@ -44,7 +44,7 @@
       <div class="nav-container">
         
         <div class="flex items-center space-x-3">
-          <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800">
+          <button onclick="toggleMobileMenu()" class="lg:hidden p-1.5 sm:p-2 rounded-lg text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition" aria-label="Open Navigation Menu">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
           </button>
           <a href="index.html" class="brand-logo">
@@ -53,7 +53,7 @@
             </div>
             <div class="brand-text">
               <h1>MONOGRAPH</h1>
-              <span>Atelier Stationery</span>
+              <span class="hidden sm:block">Atelier Stationery</span>
             </div>
           </a>
         </div>
@@ -92,7 +92,7 @@
 
         <div class="nav-actions">
           <!-- Currency Selector -->
-          <div class="relative group hidden sm:block">
+          <div class="relative group hidden lg:block">
             <button class="currency-select-btn" title="Select Currency">
               <span class="currency-current-label">USD ($)</span>
               <svg class="w-3 h-3 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -109,10 +109,10 @@
           </div>
 
           <button onclick="openSearchModal()" class="nav-icon-btn"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
-          <button onclick="toggleTheme()" class="nav-icon-btn"><svg class="w-4 h-4 text-zinc-700 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg><svg class="w-4 h-4 text-amber-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg></button>
+          <button onclick="toggleTheme()" class="nav-icon-btn nav-theme-toggle"><svg class="w-4 h-4 text-zinc-700 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg><svg class="w-4 h-4 text-amber-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg></button>
           <button onclick="toggleWishlistDrawer()" class="nav-icon-btn text-rose-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg><span class="nav-icon-badge bg-rose-500 wishlist-count-badge">2</span></button>
-          <a href="account.html" class="nav-icon-btn text-zinc-700 dark:text-zinc-300" title="Member Profile / Sign In"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></a>
-          <button onclick="toggleCartDrawer()" class="relative p-2.5 rounded-full bg-zinc-950 dark:bg-white text-white dark:text-zinc-950"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg><span class="nav-icon-badge bg-amber-500 cart-count-badge">2</span></button>
+          <a href="account.html" class="nav-icon-btn text-zinc-700 dark:text-zinc-300 hidden md:flex" title="Member Profile / Sign In"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></a>
+          <button onclick="toggleCartDrawer()" class="relative p-2 sm:p-2.5 rounded-full bg-zinc-950 dark:bg-white text-white dark:text-zinc-950 hover:bg-zinc-800 transition shadow-sm flex items-center justify-center nav-cart-btn" title="Shopping Cart"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg><span class="nav-icon-badge bg-amber-500 cart-count-badge">2</span></button>
         </div>
 
       </div>
@@ -278,19 +278,67 @@
     </div>
   </div>
 
-  <div id="mobileDrawerBackdrop" onclick="toggleMobileMenu()" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden lg:hidden"></div>
-  <aside id="mobileNavDrawer" class="mobile-nav-drawer p-6 overflow-y-auto space-y-6">
-    <div class="flex items-center justify-between pb-4 border-b border-zinc-200 dark:border-zinc-800">
-      <span class="font-serif text-xl font-bold uppercase">MONOGRAPH</span>
-      <button onclick="toggleMobileMenu()" class="text-zinc-400 text-xl">✕</button>
+    <!-- ========================================================================= -->
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <!-- ========================================================================= -->
+  <div id="mobileDrawerBackdrop" onclick="toggleMobileMenu()" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden transition-opacity lg:hidden"></div>
+  <aside id="mobileNavDrawer" class="mobile-nav-drawer p-5 sm:p-6 overflow-y-auto space-y-5">
+    <div class="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
+      <div class="flex items-center space-x-2">
+        <div class="w-7 h-7 rounded bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 flex items-center justify-center font-serif font-bold text-xs">M</div>
+        <span class="font-serif text-lg font-bold uppercase tracking-wider text-zinc-900 dark:text-white">MONOGRAPH</span>
+      </div>
+      <button onclick="toggleMobileMenu()" class="p-1 rounded-lg text-zinc-400 hover:text-zinc-900 dark:hover:text-white text-xl">✕</button>
     </div>
-    <div class="space-y-2">
-      <a href="index.html" class="block py-2 text-sm font-semibold">Home</a>
-      <a href="archival-notebooks.html" class="block py-2 text-sm font-semibold">Archival Notebooks</a>
-      <a href="fountain-pens.html" class="block py-2 text-sm font-semibold text-amber-600 font-bold">Fountain & Fine Pens</a>
-      <a href="desk-objects.html" class="block py-2 text-sm font-semibold">Aesthetic Desk Items</a>
-      <a href="curated-gifts.html" class="block py-2 text-sm font-semibold">Curated Gift Sets</a>
-      <a href="catalog.html" class="block py-2 text-sm font-semibold">Catalog</a>
+
+    <!-- Quick Utilities: Dark Mode & Account -->
+    <div class="grid grid-cols-2 gap-2 pb-1">
+      <button onclick="toggleTheme()" class="flex items-center justify-center space-x-2 px-3 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs font-bold text-zinc-800 dark:text-zinc-200 transition shadow-sm">
+        <svg class="w-4 h-4 text-zinc-600 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        <span>Toggle Mode</span>
+      </button>
+      <a href="account.html" class="flex items-center justify-center space-x-2 px-3 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs font-bold text-zinc-800 dark:text-zinc-200 transition shadow-sm">
+        <svg class="w-4 h-4 text-zinc-600 dark:text-zinc-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+        <span>Account</span>
+      </a>
+    </div>
+
+    <!-- Shop Departments -->
+    <div class="space-y-1">
+      <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest block pb-1">Shop Collections</span>
+      <a href="index.html" class="flex items-center justify-between py-2 text-sm font-semibold hover:text-amber-600 transition"><span>Home</span></a>
+      <a href="archival-notebooks.html" class="flex items-center justify-between py-2 text-sm font-semibold hover:text-amber-600 transition"><span>Archival Notebooks</span><span class="text-[10px] text-zinc-400 font-mono">4 items</span></a>
+      <a href="fountain-pens.html" class="flex items-center justify-between py-2 text-sm font-semibold hover:text-amber-600 transition"><span>Fountain & Fine Pens</span><span class="text-[10px] text-zinc-400 font-mono">4 items</span></a>
+      <a href="desk-objects.html" class="flex items-center justify-between py-2 text-sm font-semibold hover:text-amber-600 transition"><span>Aesthetic Desk Items</span><span class="text-[10px] text-zinc-400 font-mono">4 items</span></a>
+      <a href="curated-gifts.html" class="flex items-center justify-between py-2 text-sm font-semibold hover:text-amber-600 transition"><span>Curated Gift Sets</span><span class="text-[10px] text-zinc-400 font-mono">3 bundles</span></a>
+      <a href="international-finds.html" class="flex items-center justify-between py-2 text-sm font-semibold text-amber-600 font-bold transition"><span>International Finds (JP/KR)</span><span class="text-[9px] bg-amber-100 dark:bg-amber-950/60 px-1.5 py-0.5 rounded text-amber-700 dark:text-amber-400 uppercase font-bold">Import</span></a>
+      <a href="catalog.html" class="flex items-center justify-between py-2 text-sm font-semibold hover:text-amber-600 transition"><span>Complete Atelier Catalog</span><span class="text-[10px] text-zinc-400 font-mono">All</span></a>
+    </div>
+
+    <!-- Interactive Tools -->
+    <div class="space-y-1 pt-3 border-t border-zinc-200 dark:border-zinc-800">
+      <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest block pb-1">Interactive Experiences</span>
+      <a href="box-builder.html" class="flex items-center justify-between py-2 text-sm font-semibold hover:text-amber-600 transition"><span>Gift Box Builder</span><span class="text-[10px] text-amber-600 font-bold">Custom</span></a>
+      <a href="gift-quiz.html" class="flex items-center justify-between py-2 text-sm font-semibold hover:text-amber-600 transition"><span>Stationery Gift Quiz</span><span class="text-[10px] text-zinc-400">3 Questions</span></a>
+      <a href="desk-setup.html" class="flex items-center justify-between py-2 text-sm font-semibold hover:text-amber-600 transition"><span>Interactive Desk Hotspots</span><span class="text-[10px] text-amber-600 font-bold">Lookbook</span></a>
+    </div>
+
+    <!-- Currency Selection -->
+    <div class="space-y-2 pt-3 border-t border-zinc-200 dark:border-zinc-800">
+      <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest block">Select Currency</span>
+      <div class="flex flex-wrap gap-1.5">
+        <button onclick="setCurrency('USD')" class="px-2.5 py-1 text-xs rounded border border-zinc-300 dark:border-zinc-700 font-bold hover:bg-amber-600 hover:text-white transition">USD ($)</button>
+        <button onclick="setCurrency('EUR')" class="px-2.5 py-1 text-xs rounded border border-zinc-300 dark:border-zinc-700 font-bold hover:bg-amber-600 hover:text-white transition">EUR (€)</button>
+        <button onclick="setCurrency('GBP')" class="px-2.5 py-1 text-xs rounded border border-zinc-300 dark:border-zinc-700 font-bold hover:bg-amber-600 hover:text-white transition">GBP (£)</button>
+        <button onclick="setCurrency('JPY')" class="px-2.5 py-1 text-xs rounded border border-zinc-300 dark:border-zinc-700 font-bold hover:bg-amber-600 hover:text-white transition">JPY (¥)</button>
+        <button onclick="setCurrency('INR')" class="px-2.5 py-1 text-xs rounded border border-zinc-300 dark:border-zinc-700 font-bold hover:bg-amber-600 hover:text-white transition">INR (₹)</button>
+      </div>
+    </div>
+
+    <!-- Sign In / Register Buttons -->
+    <div class="space-y-2 pt-3 border-t border-zinc-200 dark:border-zinc-800">
+      <a href="login.html" class="btn-primary w-full text-center text-xs py-2.5">Sign In / Register</a>
+      <a href="account.html" class="btn-secondary w-full text-center text-xs py-2.5">Member Account</a>
     </div>
   </aside>
 
