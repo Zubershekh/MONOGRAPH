@@ -560,9 +560,9 @@ function applyTheme(isDark) {
 }
 
 function initTheme() {
-  const saved = localStorage.getItem('monograph_theme');
-  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const isDark = saved === 'dark' || (!saved && prefersDark);
+  // Default is WHITE (Light Mode)
+  const saved = localStorage.getItem('monograph_theme_v2');
+  const isDark = saved === 'dark';
   applyTheme(isDark);
 }
 
@@ -570,7 +570,7 @@ function toggleTheme() {
   const isCurrentlyDark = document.documentElement.classList.contains('dark') || (document.body && document.body.classList.contains('dark-mode'));
   const newDark = !isCurrentlyDark;
   applyTheme(newDark);
-  localStorage.setItem('monograph_theme', newDark ? 'dark' : 'light');
+  localStorage.setItem('monograph_theme_v2', newDark ? 'dark' : 'light');
   showToast(`Switched to ${newDark ? 'Dark Mode 🌙' : 'Light Mode ☀️'}`);
 }
 

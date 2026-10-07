@@ -39,9 +39,9 @@
   </style>
   <script>
     (function() {
-      const theme = localStorage.getItem('monograph_theme');
-      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (theme === 'dark' || (!theme && prefersDark)) {
+      // Default theme is WHITE (Light Mode)
+      const theme = localStorage.getItem('monograph_theme_v2');
+      if (theme === 'dark') {
         document.documentElement.classList.add('dark');
       } else {
         document.documentElement.classList.remove('dark');
