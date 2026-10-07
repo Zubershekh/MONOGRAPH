@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details — MONOGRAPH Atelier</title>
+  <meta name="description" content="Inspect craftsmanship specifications, artisan binding details, and personalize with 24k gold leaf monogram debossing.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body class="bg-[#FAF8F5] dark:bg-[#0D0D11] text-zinc-900 dark:text-zinc-100 min-h-screen flex flex-col antialiased">
+
+  <div id="cur"></div>
+  <div id="cur2"></div>
+
+  <!-- Top Controller Bar -->
+  <div class="demo-bar">
+    <div class="flex items-center space-x-2">
+      <span class="inline-block w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+      <span class="font-bold tracking-widest uppercase text-[10px] text-zinc-300">Product Studio Inspection</span>
+      <span class="text-zinc-700">|</span>
+      <span class="text-[11px] font-mono text-amber-400 font-bold">Interactive Foil Simulator Enabled</span>
+    </div>
+    <div class="flex items-center space-x-2 flex-wrap">
+      <div class="relative group">
+        <button class="currency-select-btn">
+          <span class="currency-current-label">USD ($)</span>
+          <svg class="w-3 h-3 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="absolute right-0 top-full pt-1 w-28 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all z-50">
+          <div class="bg-zinc-900 border border-zinc-700 rounded-xl p-1.5 space-y-1 shadow-2xl text-[10px]">
+            <button onclick="setCurrency('USD')" class="w-full text-left px-2 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex justify-between"><span>USD</span> <span class="text-amber-400 font-mono">$</span></button>
+            <button onclick="setCurrency('EUR')" class="w-full text-left px-2 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex justify-between"><span>EUR</span> <span class="text-amber-400 font-mono">€</span></button>
+            <button onclick="setCurrency('GBP')" class="w-full text-left px-2 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex justify-between"><span>GBP</span> <span class="text-amber-400 font-mono">£</span></button>
+            <button onclick="setCurrency('JPY')" class="w-full text-left px-2 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex justify-between"><span>JPY</span> <span class="text-amber-400 font-mono">¥</span></button>
+            <button onclick="setCurrency('INR')" class="w-full text-left px-2 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex justify-between"><span>INR</span> <span class="text-amber-400 font-mono">₹</span></button>
+          </div>
+        </div>
+      </div>
+      <a href="catalog.html" class="px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-[10px] font-semibold transition">Back To Catalog</a>
+      <button onclick="toggleWishlistDrawer()" class="px-2 py-0.5 rounded bg-rose-900/60 text-rose-200 text-[10px] font-bold">Wishlist (<span class="wishlist-count-badge">2</span>)</button>
+      <button onclick="toggleCartDrawer()" class="px-2 py-0.5 rounded bg-amber-900/60 text-amber-200 text-[10px] font-bold">Cart (<span class="cart-count-badge">2</span>)</button>
+    </div>
+  </div>
+
+  <!-- Announcement Ticker -->
+  <div class="ticker-wrap">
+    <div class="ticker-content">
+      <div class="ticker-item"><span>Complimentary 24k Gold Leaf Monogram Debossing</span><span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span>Complimentary Express Shipping On Orders Over $75</span><span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span>Hand-Inspected In Our Kyoto & Milan Partner Ateliers</span><span class="ticker-dot"></span></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container-custom">
+      <div class="nav-container">
+        
+        <div class="flex items-center space-x-3">
+          <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+          <a href="index.html" class="brand-logo">
+            <div class="brand-mark">
+              <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+              </svg>
+            </div>
+            <div class="brand-text">
+              <h1>MONOGRAPH</h1>
+              <span>Atelier Stationery</span>
+            </div>
+          </a>
+        </div>
+
+        <nav class="hidden lg:flex items-center space-x-1">
+          <a href="index.html" class="nav-link">Storefront Home</a>
+          
+          <div class="nav-dropdown-wrapper group">
+            <button class="nav-link flex items-center space-x-1">
+              <span>Shop Collections</span>
+              <svg class="w-3.5 h-3.5 text-zinc-400 group-hover:text-amber-600 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="archival-notebooks.html" class="nav-dropdown-item"><span>Archival Notebooks</span><span class="item-badge">4 Items</span></a>
+              <a href="fountain-pens.html" class="nav-dropdown-item"><span>Fountain & Fine Pens</span><span class="item-badge">4 Items</span></a>
+              <a href="desk-objects.html" class="nav-dropdown-item"><span>Aesthetic Desk Items</span><span class="item-badge">4 Items</span></a>
+              <a href="curated-gifts.html" class="nav-dropdown-item"><span>Curated Gift Sets</span><span class="item-badge">3 Bundles</span></a>
+              <a href="international-finds.html" class="nav-dropdown-item"><span>International Finds</span><span class="item-badge">Import</span></a>
+            </div>
+          </div>
+
+          <div class="nav-dropdown-wrapper group">
+            <button class="nav-link flex items-center space-x-1">
+              <span>Atelier Features</span>
+              <svg class="w-3.5 h-3.5 text-zinc-400 group-hover:text-amber-600 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="box-builder.html" class="nav-dropdown-item"><span>Gift Box Builder</span></a>
+              <a href="gift-quiz.html" class="nav-dropdown-item"><span>Gift Finder Quiz</span></a>
+              <a href="desk-setup.html" class="nav-dropdown-item"><span>Desk Setup Hotspots</span></a>
+            </div>
+          </div>
+
+          <a href="catalog.html" class="nav-link">Full Catalog</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button onclick="openSearchModal()" class="nav-icon-btn"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+          <button onclick="toggleTheme()" class="nav-icon-btn"><svg class="w-4 h-4 text-zinc-700 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg><svg class="w-4 h-4 text-amber-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg></button>
+          <button onclick="toggleWishlistDrawer()" class="nav-icon-btn text-rose-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg><span class="nav-icon-badge bg-rose-500 wishlist-count-badge">2</span></button>
+          <a href="account.html" class="flex items-center space-x-1.5 px-3 py-2 rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 hover:border-zinc-950 transition"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg><span class="nav-account-label text-[11px] font-bold uppercase tracking-wider hidden sm:inline">Sign In</span></a>
+          <button onclick="toggleCartDrawer()" class="relative p-2.5 rounded-full bg-zinc-950 dark:bg-white text-white dark:text-zinc-950"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg><span class="nav-icon-badge bg-amber-500 cart-count-badge">2</span></button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Product Detail Section -->
+  <main class="flex-grow py-12">
+    <div class="container-custom">
+      
+      <!-- Breadcrumbs -->
+      <nav class="flex items-center space-x-2 text-xs text-zinc-500 mb-8">
+        <a href="index.html" class="hover:underline">Home</a>
+        <span>/</span>
+        <a id="crumbCategory" href="catalog.html" class="hover:underline">Catalog</a>
+        <span>/</span>
+        <span id="crumbTitle" class="text-zinc-900 dark:text-zinc-100 font-semibold truncate max-w-xs">Product Details</span>
+      </nav>
+
+      <!-- Main Product Grid: Gallery Left, Details Right -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Left: Image Showcase with Monogram Live Simulator -->
+        <div class="lg:col-span-6 space-y-4 sticky top-28">
+          <div class="monogram-overlay-container aspect-[4/3.5] bg-zinc-100 dark:bg-zinc-800/60 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-md">
+            <img id="productMainImg" src="" alt="Product View" class="w-full h-full object-cover">
+            
+            <!-- Live Monogram Simulation Overlay -->
+            <div id="monogramOverlay" class="hidden">
+              <div id="monogramPreviewText" class="monogram-text-preview foil-gold">A.K.</div>
+            </div>
+          </div>
+
+          <!-- Thumbnails Row -->
+          <div id="productThumbnailsContainer" class="flex gap-3 overflow-x-auto pb-2">
+            <!-- Injected by product-detail.js -->
+          </div>
+        </div>
+
+        <!-- Right: Purchasing Controls & Monogram Configurator -->
+        <div class="lg:col-span-6 space-y-6">
+          
+          <!-- Badges & Origin -->
+          <div class="flex items-center gap-2">
+            <span id="detailOriginBadge" class="badge-tag highlight">Japan • Osaka</span>
+            <span id="detailCategoryBadge" class="badge-tag">Writing Instrument</span>
+            <span class="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold ml-auto flex items-center gap-1">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
+              In Stock & Ready To Ship
+            </span>
+          </div>
+
+          <!-- Title & Rating -->
+          <div>
+            <h1 id="detailTitle" class="font-serif text-3xl sm:text-4xl font-bold text-zinc-950 dark:text-white leading-tight">
+              Loading Product...
+            </h1>
+            <div class="flex items-center gap-2 mt-2 text-xs">
+              <span class="text-amber-500">★★★★★</span>
+              <span id="detailRating" class="font-bold">4.9</span>
+              <span id="detailReviewsCount" class="text-zinc-500">(128 atelier reviews)</span>
+            </div>
+          </div>
+
+          <!-- Price Display -->
+          <div class="flex items-baseline gap-3 pb-4 border-b border-zinc-200 dark:border-zinc-800">
+            <span id="detailPrice" class="font-mono text-3xl font-bold text-zinc-950 dark:text-white">$0.00</span>
+            <span id="detailMrp" class="font-mono text-base text-zinc-400 line-through">$0.00</span>
+            <span class="text-xs text-amber-700 dark:text-amber-400 font-bold bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded">
+              Complimentary Atelier Gift Packaging
+            </span>
+          </div>
+
+          <!-- Summary & Description -->
+          <p id="detailSummary" class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed font-light">
+            Loading craftsmanship summary...
+          </p>
+
+          <!-- INTERACTIVE MONOGRAM CUSTOMIZER CARD -->
+          <div id="monogramPersonalizerCard" class="bg-amber-50/50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/60 rounded-2xl p-5 space-y-4">
+            <div class="flex items-center justify-between">
+              <label class="flex items-center gap-2.5 cursor-pointer">
+                <input type="checkbox" id="monogramEnableToggle" class="accent-amber-600 w-4 h-4 rounded">
+                <span class="font-serif font-bold text-base text-zinc-900 dark:text-zinc-100">Add Bespoke Foil Monogram</span>
+              </label>
+              <span class="text-[10px] font-bold text-amber-700 dark:text-amber-400 uppercase tracking-widest bg-amber-100 dark:bg-amber-900/40 px-2 py-0.5 rounded">
+                Complimentary
+              </span>
+            </div>
+
+            <div id="monogramOptionsBox" class="hidden space-y-3 pt-3 border-t border-amber-200/60 dark:border-amber-800/40">
+              <div>
+                <label class="form-label text-[10px]">Initials or Word (Up to 10 characters)</label>
+                <input 
+                  type="text" 
+                  id="monogramTextInput" 
+                  maxlength="10" 
+                  placeholder="e.g. A.K. or STUDIO" 
+                  value="A.K."
+                  class="form-input text-center font-serif text-lg tracking-widest font-bold uppercase py-2 bg-white dark:bg-zinc-900"
+                >
+              </div>
+
+              <!-- Foil Color Picker Buttons -->
+              <div>
+                <label class="form-label text-[10px]">Select Foil Stamping Finish</label>
+                <div class="grid grid-cols-3 gap-2">
+                  <button 
+                    type="button" 
+                    onclick="selectFoilColor('gold')" 
+                    data-foil="gold" 
+                    class="foil-selector-btn ring-2 ring-amber-500 border-amber-600 p-2 rounded-xl border bg-amber-100/70 text-amber-900 font-bold text-xs flex items-center justify-center gap-1.5 transition"
+                  >
+                    <span class="w-3 h-3 rounded-full bg-amber-400 inline-block shadow-sm"></span>
+                    <span>24k Gold Leaf</span>
+                  </button>
+                  <button 
+                    type="button" 
+                    onclick="selectFoilColor('silver')" 
+                    data-foil="silver" 
+                    class="foil-selector-btn p-2 rounded-xl border border-zinc-200 bg-zinc-100 text-zinc-800 font-bold text-xs flex items-center justify-center gap-1.5 transition"
+                  >
+                    <span class="w-3 h-3 rounded-full bg-zinc-300 inline-block shadow-sm"></span>
+                    <span>Silver Foil</span>
+                  </button>
+                  <button 
+                    type="button" 
+                    onclick="selectFoilColor('deboss')" 
+                    data-foil="deboss" 
+                    class="foil-selector-btn p-2 rounded-xl border border-zinc-300 bg-amber-900/10 text-amber-950 dark:text-amber-200 font-bold text-xs flex items-center justify-center gap-1.5 transition"
+                  >
+                    <span class="w-3 h-3 rounded-full bg-amber-900 inline-block shadow-sm"></span>
+                    <span>Blind Deboss</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quantity Stepper & Add to Cart -->
+          <div class="flex items-center gap-4 pt-2">
+            <div class="qty-stepper p-1">
+              <button onclick="decrementDetailQty()" class="qty-btn w-8 h-8 text-sm">-</button>
+              <span id="detailQtyValue" class="qty-val w-8 text-sm">1</span>
+              <button onclick="incrementDetailQty()" class="qty-btn w-8 h-8 text-sm">+</button>
+            </div>
+
+            <button onclick="addDetailProductToCart()" class="btn-primary flex-grow py-3.5 text-xs bg-amber-600 hover:bg-amber-500 text-white font-bold tracking-wider">
+              Add To Atelier Cart
+            </button>
+
+            <button id="detailWishlistBtn" onclick="toggleDetailWishlist()" class="nav-icon-btn w-12 h-12 flex-shrink-0" title="Save To Wishlist">
+              <svg class="w-5 h-5 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+            </button>
+          </div>
+
+          <!-- Reassurance Checklist -->
+          <div class="grid grid-cols-2 gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800 text-[11px] text-zinc-500">
+            <div class="flex items-center gap-2"><span>✓</span><span>Complimentary Shipping over $75</span></div>
+            <div class="flex items-center gap-2"><span>✓</span><span>14-Day Return Guarantee</span></div>
+            <div class="flex items-center gap-2"><span>✓</span><span>Archival Cotton Acid-Free Certified</span></div>
+            <div class="flex items-center gap-2"><span>✓</span><span>Inspected Before Dispatch</span></div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Specifications & Narrative Tabs Section -->
+      <section class="mt-20 pt-12 border-t border-zinc-200 dark:border-zinc-800">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          
+          <!-- Detailed Specs Table -->
+          <div class="lg:col-span-6 space-y-4">
+            <h3 class="font-serif text-2xl font-bold">Technical Specifications</h3>
+            <div class="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+              <table class="w-full text-left border-collapse">
+                <tbody id="detailSpecsTable">
+                  <!-- Injected by product-detail.js -->
+                </tbody>
+              </table>
+            </div>
+            <p id="detailDesc" class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed font-light pt-3">
+              Craftsmanship narrative description...
+            </p>
+          </div>
+
+          <!-- Reviews & Feedback Form -->
+          <div class="lg:col-span-6 space-y-6">
+            <h3 class="font-serif text-2xl font-bold">Atelier Patron Reviews</h3>
+            
+            <!-- Submit Review Form -->
+            <form onsubmit="submitProductReview(event)" class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5 space-y-3 shadow-sm">
+              <span class="text-xs font-bold uppercase tracking-wider block">Leave an Atelier Review</span>
+              <div class="grid grid-cols-2 gap-3">
+                <input type="text" id="reviewAuthorInput" required placeholder="Your Name or Studio" class="form-input text-xs py-2">
+                <select class="form-input text-xs py-2">
+                  <option value="5">★★★★★ (5 Stars - Masterpiece)</option>
+                  <option value="4">★★★★☆ (4 Stars - Exceptional)</option>
+                </select>
+              </div>
+              <textarea id="reviewTextInput" required placeholder="Describe the tactile feel, paper smoothness, or nib glide..." rows="3" class="form-input text-xs"></textarea>
+              <button type="submit" class="btn-primary text-[10px] py-2 px-5">Submit Atelier Review</button>
+            </form>
+
+            <!-- Reviews List -->
+            <div id="reviewsListContainer" class="space-y-4">
+              <div class="border-b border-zinc-100 dark:border-zinc-800 pb-4 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-xs">Elena Rostova, Architect</span>
+                  <span class="text-[10px] text-zinc-400">2 weeks ago • Verified Order</span>
+                </div>
+                <div class="text-amber-500 text-xs">★★★★★</div>
+                <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed font-light">
+                  “The Smyth-sewn binding lays perfectly flat across my drafting table. No ink bleeding even with wet Diamine Oxblood inks. The gold monogram feels incredibly regal.”
+                </p>
+              </div>
+
+              <div class="border-b border-zinc-100 dark:border-zinc-800 pb-4 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-xs">Julian K., Author</span>
+                  <span class="text-[10px] text-zinc-400">1 month ago • Verified Order</span>
+                </div>
+                <div class="text-amber-500 text-xs">★★★★★</div>
+                <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed font-light">
+                  “Solid brass balance is sublime. Has developed a wonderful natural patina after writing 50,000 words this winter.”
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Related Instruments -->
+      <section class="mt-20 pt-12 border-t border-zinc-200 dark:border-zinc-800">
+        <div class="flex items-center justify-between mb-8">
+          <h3 class="font-serif text-3xl font-bold">Frequently Paired Instruments</h3>
+          <a href="catalog.html" class="text-xs font-bold text-amber-700 dark:text-amber-400 hover:underline">View All Catalog →</a>
+        </div>
+        <div id="relatedProductsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Injected dynamically by product-detail.js -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 py-12 text-zinc-500 text-xs">
+    <div class="container-custom flex flex-col sm:flex-row items-center justify-between gap-4">
+      <span class="font-serif text-lg font-bold text-zinc-900 dark:text-white uppercase">MONOGRAPH ATELIER</span>
+      <span>© 2026 MONOGRAPH. Certified Japanese & Italian master guild imports.</span>
+      <div class="flex space-x-4">
+        <a href="catalog.html" class="hover:underline">Catalog</a>
+        <a href="box-builder.html" class="hover:underline">Box Builder</a>
+        <a href="account.html" class="hover:underline">Account</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Drawers & Modals -->
+  <div id="cartDrawerBackdrop" onclick="closeCartDrawer()" class="drawer-backdrop"></div>
+  <aside id="cartDrawer" class="side-drawer">
+    <div class="drawer-header">
+      <div><h3 class="drawer-title">Atelier Cart</h3><span class="text-[10px] text-zinc-400 font-mono tracking-wider"><span class="cart-count-badge">2</span> INSTRUMENTS</span></div>
+      <button onclick="closeCartDrawer()" class="drawer-close-btn">✕</button>
+    </div>
+    <div class="px-6 pt-4">
+      <div class="free-shipping-card">
+        <div id="freeShippingMsg" class="text-xs text-zinc-700 dark:text-zinc-300">Complimentary express shipping available</div>
+        <div class="free-shipping-bar"><div id="freeShippingFill" class="free-shipping-fill" style="width: 50%;"></div></div>
+      </div>
+    </div>
+    <div id="cartDrawerItemsList" class="drawer-content"></div>
+    <div class="drawer-footer">
+      <div class="coupon-box">
+        <input type="text" id="cartCouponInput" placeholder="Promo code (MONO10)" class="coupon-input">
+        <button onclick="applyCoupon(document.getElementById('cartCouponInput').value)" class="btn-secondary text-[11px] py-1.5 px-3">Apply</button>
+      </div>
+      <div class="drawer-subtotal-row">
+        <span class="text-xs font-bold uppercase tracking-wider text-zinc-500">Subtotal Amount</span>
+        <span id="cartDrawerSubtotal" class="drawer-subtotal-val">$0.00</span>
+      </div>
+      <a href="checkout.html" class="btn-primary w-full py-3.5 justify-center text-xs">Proceed To Express Checkout</a>
+    </div>
+  </aside>
+
+  <div id="wishlistDrawerBackdrop" onclick="closeWishlistDrawer()" class="drawer-backdrop"></div>
+  <aside id="wishlistDrawer" class="side-drawer">
+    <div class="drawer-header">
+      <div><h3 class="drawer-title">Saved Wishlist</h3><span class="text-[10px] text-zinc-400 font-mono tracking-wider"><span class="wishlist-count-badge">2</span> SAVED ITEMS</span></div>
+      <button onclick="closeWishlistDrawer()" class="drawer-close-btn">✕</button>
+    </div>
+    <div id="wishlistDrawerItemsList" class="drawer-content"></div>
+    <div class="drawer-footer">
+      <a href="catalog.html" onclick="closeWishlistDrawer()" class="btn-secondary w-full py-3 justify-center text-xs">Continue Browsing Catalog</a>
+    </div>
+  </aside>
+
+  <div id="searchModal" class="search-modal-backdrop" onclick="if(event.target === this) closeSearchModal();">
+    <div class="search-modal-card">
+      <div class="search-input-header">
+        <svg class="w-5 h-5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        <input type="text" id="searchModalInput" placeholder="Search instruments..." class="search-field" oninput="handleSearchInput(this.value)">
+        <button onclick="closeSearchModal()" class="text-zinc-400 text-lg">✕</button>
+      </div>
+      <div id="searchResultsContainer" class="search-results-list"></div>
+    </div>
+  </div>
+
+  <div id="mobileDrawerBackdrop" onclick="toggleMobileMenu()" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden lg:hidden"></div>
+  <aside id="mobileNavDrawer" class="mobile-nav-drawer p-6 overflow-y-auto space-y-6">
+    <div class="flex items-center justify-between pb-4 border-b border-zinc-200 dark:border-zinc-800">
+      <span class="font-serif text-xl font-bold uppercase">MONOGRAPH</span>
+      <button onclick="toggleMobileMenu()" class="text-zinc-400 text-xl">✕</button>
+    </div>
+    <div class="space-y-2">
+      <a href="index.html" class="block py-2 text-sm font-semibold">Storefront Home</a>
+      <a href="archival-notebooks.html" class="block py-2 text-sm font-semibold">Archival Notebooks</a>
+      <a href="fountain-pens.html" class="block py-2 text-sm font-semibold">Fountain & Fine Pens</a>
+      <a href="desk-objects.html" class="block py-2 text-sm font-semibold">Aesthetic Desk Items</a>
+      <a href="curated-gifts.html" class="block py-2 text-sm font-semibold">Curated Gift Sets</a>
+      <a href="catalog.html" class="block py-2 text-sm font-semibold">Full Catalog</a>
+    </div>
+  </aside>
+
+  <div id="toast"></div>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/product-detail.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initProductDetailPage();
+    });
+  </script>
+</body>
+</html>

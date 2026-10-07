@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed — MONOGRAPH Atelier</title>
+  <meta name="description" content="Thank you for your order. Your bespoke stationery is being prepared by our atelier artisans.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body class="bg-[#FAF8F5] dark:bg-[#0D0D11] text-zinc-900 dark:text-zinc-100 min-h-screen flex flex-col antialiased">
+
+  <div id="cur"></div>
+  <div id="cur2"></div>
+
+  <!-- Announcement Bar -->
+  <div class="bg-zinc-950 text-white text-[11px] py-2 px-4 text-center font-mono tracking-wider">
+    ✨ ATELIER DISPATCH CONFIRMED • TRACKING NOTIFICATION DISPATCHED TO YOUR EMAIL
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container-custom">
+      <div class="nav-container justify-between">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-mark">
+            <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+          </div>
+          <div class="brand-text">
+            <h1>MONOGRAPH</h1>
+            <span>Atelier Stationery</span>
+          </div>
+        </a>
+
+        <div class="flex items-center gap-3">
+          <a href="catalog.html" class="btn-primary text-xs py-2 px-4">Browse More Instruments</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Success Main -->
+  <main class="flex-grow py-16 flex items-center justify-center">
+    <div class="container-custom max-w-2xl">
+      
+      <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8 sm:p-12 shadow-xl text-center space-y-6">
+        
+        <!-- Big Green Check -->
+        <div class="w-16 h-16 mx-auto rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shadow-lg border border-emerald-300">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+        </div>
+
+        <div class="space-y-2">
+          <span class="badge-tag highlight">Order Successful</span>
+          <h1 class="font-serif text-3xl sm:text-4xl font-bold">Thank You For Your Patronage</h1>
+          <p class="text-xs sm:text-sm text-zinc-500 max-w-md mx-auto">
+            Your order has been recorded in our Kyoto & Milan ateliers. Our bookbinders and machinists are preparing your instruments with ceremonial care.
+          </p>
+        </div>
+
+        <!-- Tracking Timeline -->
+        <div class="p-6 rounded-2xl bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200 dark:border-zinc-800 space-y-4">
+          <div class="flex flex-wrap items-center justify-between text-xs font-mono font-bold border-b border-zinc-200 dark:border-zinc-700/60 pb-3">
+            <span>ORDER NUMBER: <span id="confirmedOrderId" class="text-amber-700 dark:text-amber-400">MG-89421</span></span>
+            <span class="text-zinc-400" id="confirmedOrderDate">October 7, 2026</span>
+          </div>
+
+          <div class="grid grid-cols-4 gap-2 pt-2 text-[10px] font-bold text-center">
+            <div class="space-y-1">
+              <div class="w-6 h-6 mx-auto rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold">✓</div>
+              <span class="text-zinc-900 dark:text-zinc-200">Confirmed</span>
+            </div>
+            <div class="space-y-1">
+              <div class="w-6 h-6 mx-auto rounded-full bg-amber-500 text-white flex items-center justify-center font-bold animate-pulse">2</div>
+              <span class="text-amber-700 dark:text-amber-400">Artisan Guild</span>
+            </div>
+            <div class="space-y-1">
+              <div class="w-6 h-6 mx-auto rounded-full bg-zinc-200 dark:bg-zinc-700 text-zinc-400 flex items-center justify-center font-bold">3</div>
+              <span class="text-zinc-400">Dispatched</span>
+            </div>
+            <div class="space-y-1">
+              <div class="w-6 h-6 mx-auto rounded-full bg-zinc-200 dark:bg-zinc-700 text-zinc-400 flex items-center justify-center font-bold">4</div>
+              <span class="text-zinc-400">Delivered</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Receipt Summary Box -->
+        <div class="text-left bg-zinc-50 dark:bg-zinc-800/30 rounded-2xl p-6 border border-zinc-200 dark:border-zinc-800 space-y-3 text-xs">
+          <span class="font-bold uppercase tracking-wider text-[11px] block">Receipt Breakdown</span>
+          <div id="confirmedItemsContainer" class="space-y-2">
+            <!-- Injected dynamically -->
+          </div>
+          <div class="flex justify-between items-baseline pt-3 border-t border-zinc-200 dark:border-zinc-700 font-bold">
+            <span class="text-sm">Total Paid:</span>
+            <span id="confirmedOrderTotal" class="font-mono text-xl text-amber-700 dark:text-amber-400">$0.00</span>
+          </div>
+          <div class="pt-2 text-[11px] text-zinc-500">
+            <span class="font-bold text-zinc-700 dark:text-zinc-300">Shipping Destination: </span>
+            <span id="confirmedShippingAddress">744 Montgomery St, Floor 4, San Francisco, CA 94111</span>
+          </div>
+        </div>
+
+        <!-- Action Links -->
+        <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+          <a href="catalog.html" class="btn-primary text-xs py-3 px-6">
+            Continue Exploring Catalog
+          </a>
+          <a href="account.html" class="btn-secondary text-xs py-3 px-6">
+            View In Member Dashboard
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 py-8 text-zinc-500 text-xs text-center">
+    <span>© 2026 MONOGRAPH Atelier. Order verification & receipt transmission.</span>
+  </footer>
+
+  <div id="toast"></div>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/store.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let lastOrder = null;
+      try {
+        lastOrder = JSON.parse(localStorage.getItem('monograph_last_order'));
+      } catch(e) {}
+
+      if (!lastOrder) {
+        lastOrder = {
+          orderId: 'MG-89421',
+          date: 'March 18, 2026',
+          items: [
+            { title: 'Solid Matte Brass Fountain Pen', price: 48.00, qty: 1 },
+            { title: 'Smyth-Sewn Archival Leather Journal', price: 34.00, qty: 1, monogram: 'A.K.' }
+          ],
+          total: 82.00,
+          shippingAddress: '744 Montgomery St, Floor 4, San Francisco, CA 94111'
+        };
+      }
+
+      document.getElementById('confirmedOrderId').innerText = lastOrder.orderId;
+      document.getElementById('confirmedOrderDate').innerText = lastOrder.date;
+      document.getElementById('confirmedOrderTotal').innerText = formatPrice(lastOrder.total);
+      document.getElementById('confirmedShippingAddress').innerText = lastOrder.shippingAddress;
+
+      const container = document.getElementById('confirmedItemsContainer');
+      if (container && lastOrder.items) {
+        container.innerHTML = lastOrder.items.map(i => `
+          <div class="flex justify-between items-center text-zinc-600 dark:text-zinc-400">
+            <div>
+              <span class="font-semibold text-zinc-900 dark:text-zinc-100">${i.title}</span>
+              ${i.monogram ? `<span class="text-[10px] text-amber-600 block font-mono font-bold">Monogram: ${i.monogram}</span>` : ''}
+              <span class="text-zinc-400 ml-1">× ${i.qty || 1}</span>
+            </div>
+            <span class="font-mono font-bold text-zinc-900 dark:text-zinc-100">${formatPrice(i.price * (i.qty || 1))}</span>
+          </div>
+        `).join('');
+      }
+    });
+  </script>
+</body>
+</html>

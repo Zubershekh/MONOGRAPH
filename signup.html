@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Guild Account — MONOGRAPH Atelier</title>
+  <meta name="description"
+    content="Register your MONOGRAPH guild membership to enjoy complimentary shipping, custom foil monogramming, and early catalog releases.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+
+<body class="bg-[#FAF8F5] dark:bg-[#0D0D11] text-zinc-900 dark:text-zinc-100 min-h-screen flex flex-col antialiased">
+
+  <div id="cur"></div>
+  <div id="cur2"></div>
+
+  <!-- Announcement Ticker -->
+  <div class="ticker-wrap">
+    <div class="ticker-content">
+      <div class="ticker-item"><span>Join The Atelier Guild: Receive 150 Welcome Points</span><span
+          class="ticker-dot"></span></div>
+      <div class="ticker-item"><span>Complimentary Monogram Personalization On All First Orders</span><span
+          class="ticker-dot"></span></div>
+      <div class="ticker-item"><span>Complimentary Express Shipping Over $75</span><span class="ticker-dot"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container-custom">
+      <div class="nav-container">
+
+        <div class="flex items-center space-x-3">
+          <a href="index.html" class="brand-logo">
+            <div class="brand-mark">
+              <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+              </svg>
+            </div>
+            <div class="brand-text">
+              <h1>MONOGRAPH</h1>
+              <span>Atelier Stationery</span>
+            </div>
+          </a>
+        </div>
+
+        <nav class="hidden lg:flex items-center space-x-1">
+          <a href="index.html" class="nav-link">Storefront Home</a>
+          <a href="catalog.html" class="nav-link">Catalog</a>
+          <a href="archival-notebooks.html" class="nav-link">Notebooks</a>
+          <a href="fountain-pens.html" class="nav-link">Pens</a>
+          <a href="box-builder.html" class="nav-link">Gift Builder</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button onclick="toggleTheme()" class="nav-icon-btn"><svg class="w-4 h-4 text-zinc-700 dark:hidden"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            </svg><svg class="w-4 h-4 text-amber-400 hidden dark:block" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+              </path>
+            </svg></button>
+          <button onclick="toggleCartDrawer()"
+            class="relative p-2.5 rounded-full bg-zinc-950 dark:bg-white text-white dark:text-zinc-950"><svg
+              class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+            </svg><span class="nav-icon-badge bg-amber-500 cart-count-badge">2</span></button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Signup Form Main -->
+  <main class="flex-grow py-16 flex items-center justify-center">
+    <div class="container-custom max-w-md">
+
+      <div class="form-card space-y-6">
+
+        <div class="text-center space-y-2">
+          <span class="badge-tag highlight">+150 Welcome Points</span>
+          <h1 class="font-serif text-3xl font-bold text-zinc-950 dark:text-white">Join The Atelier Guild</h1>
+          <p class="text-xs text-zinc-500">Create your account for archival order history & bespoke benefits.</p>
+        </div>
+
+        <form onsubmit="handleSignupForm(event)" class="space-y-4">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" id="signupNameInput" required placeholder="e.g. Elena Rostova" class="form-input">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" id="signupEmailInput" required placeholder="elena.rostova@studio.com"
+              class="form-input">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <div class="relative">
+              <input type="password" id="signupPasswordInput" required placeholder="At least 8 characters"
+                class="form-input pr-10">
+              <button type="button" onclick="togglePasswordVisibility('signupPasswordInput', this)"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-700 p-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                  </path>
+                </svg>
+              </button>
+            </div>
+            <!-- Strength meter -->
+            <div class="flex gap-1 mt-2">
+              <span class="h-1 flex-1 rounded-full bg-amber-500"></span>
+              <span class="h-1 flex-1 rounded-full bg-amber-500"></span>
+              <span class="h-1 flex-1 rounded-full bg-zinc-200 dark:bg-zinc-800"></span>
+            </div>
+          </div>
+
+          <div class="space-y-2 text-xs text-zinc-600 dark:text-zinc-400">
+            <label class="flex items-start gap-2 cursor-pointer">
+              <input type="checkbox" checked class="accent-amber-600 rounded mt-0.5">
+              <span>Subscribe to Atelier Dispatch for early releases & calligraphy workshops.</span>
+            </label>
+            <label class="flex items-start gap-2 cursor-pointer">
+              <input type="checkbox" required class="accent-amber-600 rounded mt-0.5">
+              <span>I agree to the Terms of Patronage and Privacy Policy.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-primary w-full py-3.5 text-xs justify-center font-bold tracking-wider">
+            Create Member Account
+          </button>
+        </form>
+
+        <div class="text-center pt-4 border-t border-zinc-100 dark:border-zinc-800 text-xs text-zinc-500">
+          Already a guild patron?
+          <a href="login.html" class="text-amber-700 dark:text-amber-400 font-bold hover:underline ml-1">Sign In
+            Here</a>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer
+    class="bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 py-8 text-zinc-500 text-xs text-center">
+    <span>© 2026 MONOGRAPH Atelier. Handcrafted stationery for the contemplative mind.</span>
+  </footer>
+
+  <!-- Drawers & Modals -->
+  <div id="cartDrawerBackdrop" onclick="closeCartDrawer()" class="drawer-backdrop"></div>
+  <aside id="cartDrawer" class="side-drawer">
+    <div class="drawer-header">
+      <div>
+        <h3 class="drawer-title">Atelier Cart</h3><span class="text-[10px] text-zinc-400 font-mono tracking-wider"><span
+            class="cart-count-badge">2</span> INSTRUMENTS</span>
+      </div>
+      <button onclick="closeCartDrawer()" class="drawer-close-btn">✕</button>
+    </div>
+    <div id="cartDrawerItemsList" class="drawer-content"></div>
+    <div class="drawer-footer">
+      <div class="drawer-subtotal-row">
+        <span class="text-xs font-bold uppercase tracking-wider text-zinc-500">Subtotal Amount</span>
+        <span id="cartDrawerSubtotal" class="drawer-subtotal-val">$0.00</span>
+      </div>
+      <a href="checkout.html" class="btn-primary w-full py-3.5 justify-center text-xs">Proceed To Express Checkout</a>
+    </div>
+  </aside>
+
+  <div id="toast"></div>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+
+</html>

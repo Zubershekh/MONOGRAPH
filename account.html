@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member Dashboard — MONOGRAPH Atelier</title>
+  <meta name="description" content="View your order history, tracking statuses, atelier patronage points, and saved addresses.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body class="bg-[#FAF8F5] dark:bg-[#0D0D11] text-zinc-900 dark:text-zinc-100 min-h-screen flex flex-col antialiased">
+
+  <div id="cur"></div>
+  <div id="cur2"></div>
+
+  <!-- Announcement Ticker -->
+  <div class="ticker-wrap">
+    <div class="ticker-content">
+      <div class="ticker-item"><span>Atelier Guild Patron Level Active</span><span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span>Complimentary Express Shipping On All Future Orders</span><span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span>Exclusive Invitation To Kyoto Winter Ink Drop</span><span class="ticker-dot"></span></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container-custom">
+      <div class="nav-container">
+        
+        <div class="flex items-center space-x-3">
+          <a href="index.html" class="brand-logo">
+            <div class="brand-mark">
+              <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+              </svg>
+            </div>
+            <div class="brand-text">
+              <h1>MONOGRAPH</h1>
+              <span>Atelier Stationery</span>
+            </div>
+          </a>
+        </div>
+
+        <nav class="hidden lg:flex items-center space-x-1">
+          <a href="index.html" class="nav-link">Storefront Home</a>
+          <a href="catalog.html" class="nav-link">Catalog</a>
+          <a href="archival-notebooks.html" class="nav-link">Notebooks</a>
+          <a href="fountain-pens.html" class="nav-link">Pens</a>
+          <a href="box-builder.html" class="nav-link">Gift Builder</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button onclick="toggleTheme()" class="nav-icon-btn"><svg class="w-4 h-4 text-zinc-700 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg><svg class="w-4 h-4 text-amber-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg></button>
+          <button onclick="toggleCartDrawer()" class="relative p-2.5 rounded-full bg-zinc-950 dark:bg-white text-white dark:text-zinc-950"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg><span class="nav-icon-badge bg-amber-500 cart-count-badge">2</span></button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Dashboard Main Layout -->
+  <main class="flex-grow py-12">
+    <div class="container-custom max-w-4xl space-y-8">
+      
+      <!-- Profile Header Card -->
+      <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-md flex flex-col sm:flex-row items-center sm:items-start justify-between gap-6">
+        <div class="flex items-center gap-5 text-center sm:text-left flex-col sm:flex-row">
+          <div id="accountProfileAvatar" class="w-20 h-20 rounded-full bg-amber-600 text-white font-serif font-bold text-2xl flex items-center justify-center shadow-lg border-2 border-amber-300">
+            AK
+          </div>
+          <div>
+            <div class="flex items-center gap-2 justify-center sm:justify-start">
+              <h1 id="accountProfileName" class="font-serif text-3xl font-bold">Ayesha Khan</h1>
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            </div>
+            <p id="accountProfileEmail" class="text-xs text-zinc-500 mt-0.5">ayesha.khan@monograph.com</p>
+            <div class="flex items-center gap-3 mt-3 justify-center sm:justify-start">
+              <span id="accountProfileTier" class="badge-tag highlight text-[10px]">Atelier Guild Patron</span>
+              <span class="text-xs font-mono font-bold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded">
+                Reward Balance: <span id="accountProfilePoints">480 pts</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <button onclick="handleLogout()" class="btn-secondary text-xs py-2 px-4 text-zinc-500 hover:text-red-600">
+          Sign Out
+        </button>
+      </div>
+
+      <!-- Dashboard Navigation Tabs -->
+      <div class="flex gap-2 border-b border-zinc-200 dark:border-zinc-800 pb-2 text-xs overflow-x-auto">
+        <button id="tabBtn_orders" onclick="switchAccountTab('orders')" class="account-tab-btn px-4 py-2 rounded-xl font-bold transition bg-zinc-950 text-white dark:bg-white dark:text-zinc-950">
+          Order History & Receipts
+        </button>
+        <button id="tabBtn_address" onclick="switchAccountTab('address')" class="account-tab-btn px-4 py-2 rounded-xl font-bold transition bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
+          Saved Studio Address
+        </button>
+        <button id="tabBtn_points" onclick="switchAccountTab('points')" class="account-tab-btn px-4 py-2 rounded-xl font-bold transition bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
+          Guild Rewards & Perks
+        </button>
+      </div>
+
+      <!-- TAB 1: ORDER HISTORY -->
+      <div id="accountTab_orders" class="account-tab-content space-y-4">
+        <h3 class="font-serif text-2xl font-bold">Recent Bespoke Orders</h3>
+        <div id="accountOrdersContainer" class="space-y-4">
+          <!-- Injected dynamically by auth.js -->
+        </div>
+      </div>
+
+      <!-- TAB 2: SAVED ADDRESS -->
+      <div id="accountTab_address" class="account-tab-content hidden space-y-4">
+        <h3 class="font-serif text-2xl font-bold">Studio Delivery Address</h3>
+        <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-2 text-xs">
+          <div class="flex justify-between items-center pb-2 border-b border-zinc-100 dark:border-zinc-800">
+            <span class="font-bold text-amber-700 uppercase tracking-wider text-[10px]">Default Shipping Location</span>
+            <span class="badge-tag">Verified</span>
+          </div>
+          <p class="font-bold text-sm text-zinc-900 dark:text-zinc-100">Ayesha Khan — Design Atelier</p>
+          <p class="text-zinc-600 dark:text-zinc-400">744 Montgomery St, Floor 4 (Studio A)</p>
+          <p class="text-zinc-600 dark:text-zinc-400">San Francisco, CA 94111, United States</p>
+          <p class="text-zinc-500 font-mono">+1 (415) 890-3412</p>
+        </div>
+      </div>
+
+      <!-- TAB 3: GUILD POINTS & REWARDS -->
+      <div id="accountTab_points" class="account-tab-content hidden space-y-4">
+        <h3 class="font-serif text-2xl font-bold">Guild Patron Rewards Program</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-5 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-2">
+            <span class="font-serif font-bold text-lg text-amber-700 dark:text-amber-400 block">✦ Complimentary 24k Gold Foil</span>
+            <p class="text-xs text-zinc-500 leading-relaxed">Free debossing on all future journals and brass pens.</p>
+            <span class="text-[10px] text-emerald-600 font-bold">Status: Active & Unlocked</span>
+          </div>
+          <div class="p-5 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-2">
+            <span class="font-serif font-bold text-lg text-amber-700 dark:text-amber-400 block">✦ 500 Points Reward</span>
+            <p class="text-xs text-zinc-500 leading-relaxed">Redeem for a complimentary 5-pack of Kyoto Washi Tape rolls at 500 points.</p>
+            <span class="text-[10px] text-amber-600 font-bold">Current Progress: 480 / 500</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 py-8 text-zinc-500 text-xs text-center">
+    <span>© 2026 MONOGRAPH Atelier. Member dashboard & orders tracking.</span>
+  </footer>
+
+  <!-- Drawers & Modals -->
+  <div id="cartDrawerBackdrop" onclick="closeCartDrawer()" class="drawer-backdrop"></div>
+  <aside id="cartDrawer" class="side-drawer">
+    <div class="drawer-header">
+      <div><h3 class="drawer-title">Atelier Cart</h3><span class="text-[10px] text-zinc-400 font-mono tracking-wider"><span class="cart-count-badge">2</span> INSTRUMENTS</span></div>
+      <button onclick="closeCartDrawer()" class="drawer-close-btn">✕</button>
+    </div>
+    <div id="cartDrawerItemsList" class="drawer-content"></div>
+    <div class="drawer-footer">
+      <div class="drawer-subtotal-row">
+        <span class="text-xs font-bold uppercase tracking-wider text-zinc-500">Subtotal Amount</span>
+        <span id="cartDrawerSubtotal" class="drawer-subtotal-val">$0.00</span>
+      </div>
+      <a href="checkout.html" class="btn-primary w-full py-3.5 justify-center text-xs">Proceed To Express Checkout</a>
+    </div>
+  </aside>
+
+  <div id="toast"></div>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initAccountDashboard();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Catalog — MONOGRAPH Fine Stationery & Desk Objects</title>
+  <meta name="description" content="Browse our complete catalog of archival notebooks, brass fountain pens, solid walnut desk organizers, and curated gifts.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body class="bg-[#FAF8F5] dark:bg-[#0D0D11] text-zinc-900 dark:text-zinc-100 min-h-screen flex flex-col antialiased">
+
+  <div id="cur"></div>
+  <div id="cur2"></div>
+
+  <!-- Top Controller Bar -->
+  <div class="demo-bar">
+    <div class="flex items-center space-x-2">
+      <span class="inline-block w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+      <span class="font-bold tracking-widest uppercase text-[10px] text-zinc-300">Complete Atelier Catalog</span>
+      <span class="text-zinc-700">|</span>
+      <span class="text-[11px] font-mono text-amber-400 font-bold">All 19+ Curated Masterpieces</span>
+    </div>
+    <div class="flex items-center space-x-2 flex-wrap">
+      <div class="relative group">
+        <button class="currency-select-btn">
+          <span class="currency-current-label">USD ($)</span>
+          <svg class="w-3 h-3 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="absolute right-0 top-full pt-1 w-28 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all z-50">
+          <div class="bg-zinc-900 border border-zinc-700 rounded-xl p-1.5 space-y-1 shadow-2xl text-[10px]">
+            <button onclick="setCurrency('USD')" class="w-full text-left px-2 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex justify-between"><span>USD</span> <span class="text-amber-400 font-mono">$</span></button>
+            <button onclick="setCurrency('EUR')" class="w-full text-left px-2 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex justify-between"><span>EUR</span> <span class="text-amber-400 font-mono">€</span></button>
+            <button onclick="setCurrency('GBP')" class="w-full text-left px-2 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex justify-between"><span>GBP</span> <span class="text-amber-400 font-mono">£</span></button>
+            <button onclick="setCurrency('JPY')" class="w-full text-left px-2 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex justify-between"><span>JPY</span> <span class="text-amber-400 font-mono">¥</span></button>
+            <button onclick="setCurrency('INR')" class="w-full text-left px-2 py-1 text-zinc-200 hover:bg-zinc-800 rounded font-bold transition flex justify-between"><span>INR</span> <span class="text-amber-400 font-mono">₹</span></button>
+          </div>
+        </div>
+      </div>
+      <a href="index.html" class="px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-[10px] font-semibold transition">Storefront</a>
+      <a href="box-builder.html" class="px-2 py-0.5 rounded bg-amber-600 hover:bg-amber-500 text-white text-[10px] font-bold transition shadow-sm">Gift Builder</a>
+      <a href="gift-quiz.html" class="px-2 py-0.5 rounded bg-amber-700 hover:bg-amber-600 text-white text-[10px] font-bold transition shadow-sm">Gift Quiz</a>
+      <button onclick="toggleWishlistDrawer()" class="px-2 py-0.5 rounded bg-rose-900/60 text-rose-200 text-[10px] font-bold">Wishlist (<span class="wishlist-count-badge">2</span>)</button>
+      <button onclick="toggleCartDrawer()" class="px-2 py-0.5 rounded bg-amber-900/60 text-amber-200 text-[10px] font-bold">Cart (<span class="cart-count-badge">2</span>)</button>
+    </div>
+  </div>
+
+  <!-- Announcement Ticker -->
+  <div class="ticker-wrap">
+    <div class="ticker-content">
+      <div class="ticker-item"><span>Complimentary Express Shipping On Orders Over $75</span><span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span>100% Genuine Certified Japanese & Korean Atelier Imports</span><span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span>Complimentary 24k Gold Leaf Monogram Debossing</span><span class="ticker-dot"></span></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container-custom">
+      <div class="nav-container">
+        
+        <div class="flex items-center space-x-3">
+          <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+          <a href="index.html" class="brand-logo">
+            <div class="brand-mark">
+              <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+            </div>
+            <div class="brand-text">
+              <h1>MONOGRAPH</h1>
+              <span>Atelier Stationery</span>
+            </div>
+          </a>
+        </div>
+
+        <nav class="hidden lg:flex items-center space-x-1">
+          <a href="index.html" class="nav-link">Storefront Home</a>
+          
+          <div class="nav-dropdown-wrapper group">
+            <button class="nav-link flex items-center space-x-1">
+              <span>Shop Collections</span>
+              <svg class="w-3.5 h-3.5 text-zinc-400 group-hover:text-amber-600 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="archival-notebooks.html" class="nav-dropdown-item"><span>Archival Notebooks</span><span class="item-badge">4 Items</span></a>
+              <a href="fountain-pens.html" class="nav-dropdown-item"><span>Fountain & Fine Pens</span><span class="item-badge">4 Items</span></a>
+              <a href="desk-objects.html" class="nav-dropdown-item"><span>Aesthetic Desk Items</span><span class="item-badge">4 Items</span></a>
+              <a href="curated-gifts.html" class="nav-dropdown-item"><span>Curated Gift Sets</span><span class="item-badge">3 Bundles</span></a>
+              <a href="international-finds.html" class="nav-dropdown-item"><span>International Finds</span><span class="item-badge">Import</span></a>
+            </div>
+          </div>
+
+          <div class="nav-dropdown-wrapper group">
+            <button class="nav-link flex items-center space-x-1">
+              <span>Atelier Features</span>
+              <svg class="w-3.5 h-3.5 text-zinc-400 group-hover:text-amber-600 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="box-builder.html" class="nav-dropdown-item"><span>Gift Box Builder</span></a>
+              <a href="gift-quiz.html" class="nav-dropdown-item"><span>Gift Finder Quiz</span></a>
+              <a href="desk-setup.html" class="nav-dropdown-item"><span>Desk Setup Hotspots</span></a>
+            </div>
+          </div>
+
+          <a href="catalog.html" class="nav-link active">Full Catalog</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button onclick="openSearchModal()" class="nav-icon-btn"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+          <button onclick="toggleTheme()" class="nav-icon-btn"><svg class="w-4 h-4 text-zinc-700 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg><svg class="w-4 h-4 text-amber-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg></button>
+          <button onclick="toggleWishlistDrawer()" class="nav-icon-btn text-rose-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg><span class="nav-icon-badge bg-rose-500 wishlist-count-badge">2</span></button>
+          <a href="account.html" class="flex items-center space-x-1.5 px-3 py-2 rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 hover:border-zinc-950 transition"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg><span class="nav-account-label text-[11px] font-bold uppercase tracking-wider hidden sm:inline">Sign In</span></a>
+          <button onclick="toggleCartDrawer()" class="relative p-2.5 rounded-full bg-zinc-950 dark:bg-white text-white dark:text-zinc-950"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg><span class="nav-icon-badge bg-amber-500 cart-count-badge">2</span></button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Header Banner & Category Filter Pills -->
+  <section class="bg-gradient-to-b from-[#F3EFEA] to-[#FAF8F5] dark:from-[#13131A] dark:to-[#0D0D11] py-12 border-b border-zinc-200 dark:border-zinc-800">
+    <div class="container-custom space-y-6">
+      <div class="max-w-2xl space-y-2">
+        <h1 class="font-serif text-4xl sm:text-5xl font-bold text-zinc-950 dark:text-white">Full Stationery Catalog</h1>
+        <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400">Discover all 19+ curated fine instruments, archival volumes, desk items, and bespoke atelier bundles.</p>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none text-xs">
+        <button onclick="filterByCategory('all')" data-cat="all" class="cat-pill-btn px-4 py-2 rounded-full font-bold uppercase tracking-wider transition bg-zinc-950 text-white dark:bg-white dark:text-zinc-950">
+          All Products
+        </button>
+        <button onclick="filterByCategory('notebooks')" data-cat="notebooks" class="cat-pill-btn px-4 py-2 rounded-full font-bold uppercase tracking-wider transition bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
+          Archival Notebooks
+        </button>
+        <button onclick="filterByCategory('pens')" data-cat="pens" class="cat-pill-btn px-4 py-2 rounded-full font-bold uppercase tracking-wider transition bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
+          Fountain & Fine Pens
+        </button>
+        <button onclick="filterByCategory('desk')" data-cat="desk" class="cat-pill-btn px-4 py-2 rounded-full font-bold uppercase tracking-wider transition bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
+          Aesthetic Desk Items
+        </button>
+        <button onclick="filterByCategory('gifts')" data-cat="gifts" class="cat-pill-btn px-4 py-2 rounded-full font-bold uppercase tracking-wider transition bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
+          Curated Gift Sets
+        </button>
+        <button onclick="filterByCategory('international')" data-cat="international" class="cat-pill-btn px-4 py-2 rounded-full font-bold uppercase tracking-wider transition bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
+          International Finds
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalog Main -->
+  <main class="flex-grow py-12">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        
+        <!-- Filter Sidebar -->
+        <aside class="lg:col-span-1">
+          <div class="filter-sidebar space-y-6">
+            <div class="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
+              <span class="font-serif text-lg font-bold">Filters & Refine</span>
+              <button onclick="resetCatalogFilters()" class="text-[11px] text-amber-700 dark:text-amber-400 font-bold hover:underline">Reset All</button>
+            </div>
+
+            <!-- Keyword Search -->
+            <div class="filter-section">
+              <div class="filter-title">Search Instruments</div>
+              <input 
+                type="text" 
+                id="catalogSearchInput" 
+                placeholder="Filter by keyword (e.g. brass, washi)..." 
+                class="form-input text-xs py-2"
+              >
+            </div>
+
+            <!-- Price Slider -->
+            <div class="filter-section">
+              <div class="flex items-center justify-between mb-2">
+                <span class="filter-title mb-0">Max Budget</span>
+                <span id="priceRangeDisplay" class="font-mono text-xs font-bold text-amber-700 dark:text-amber-400">$150.00</span>
+              </div>
+              <input type="range" id="priceRangeSlider" min="15" max="150" step="5" value="150" class="price-slider-input">
+            </div>
+
+            <!-- Origin Filter -->
+            <div class="filter-section">
+              <div class="filter-title">Country of Origin</div>
+              <label class="filter-check-item">
+                <input type="checkbox" value="Japan" onchange="toggleOriginFilter(this)">
+                <span>Japan (Kyoto & Tokyo)</span>
+              </label>
+              <label class="filter-check-item">
+                <input type="checkbox" value="Italy" onchange="toggleOriginFilter(this)">
+                <span>Italy (Florence & Murano)</span>
+              </label>
+              <label class="filter-check-item">
+                <input type="checkbox" value="Germany" onchange="toggleOriginFilter(this)">
+                <span>Germany (Munich & Nuremberg)</span>
+              </label>
+              <label class="filter-check-item">
+                <input type="checkbox" value="Korea" onchange="toggleOriginFilter(this)">
+                <span>Korea (Seoul Studios)</span>
+              </label>
+              <label class="filter-check-item">
+                <input type="checkbox" value="USA" onchange="toggleOriginFilter(this)">
+                <span>USA (Oregon Woodcraft)</span>
+              </label>
+            </div>
+
+            <!-- Foil Personalization Callout -->
+            <div class="p-4 rounded-xl bg-amber-50/60 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/60 text-xs space-y-1">
+              <span class="font-bold text-amber-900 dark:text-amber-300 block">✦ Complimentary Personalization</span>
+              <p class="text-[11px] text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                Add 24k Gold Leaf or Blind Deboss initials to notebooks and brass pens directly on any product page.
+              </p>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Product Grid -->
+        <div class="lg:col-span-3 space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-zinc-200 dark:border-zinc-800">
+            <span id="catalogResultsCount" class="text-xs font-mono font-bold text-zinc-500 uppercase tracking-wider">Loading Catalog...</span>
+            
+            <div class="flex items-center space-x-3">
+              <span class="text-xs text-zinc-500 font-bold uppercase tracking-wider">Sort:</span>
+              <select id="catalogSortSelect" class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-xs rounded-lg px-3 py-1.5 font-semibold outline-none">
+                <option value="featured">Featured Editions</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Highest Rated</option>
+                <option value="name">Alphabetical</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="catalogProductGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Dynamic cards injected via catalog.js -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 py-12 text-zinc-500 text-xs">
+    <div class="container-custom flex flex-col sm:flex-row items-center justify-between gap-4">
+      <span class="font-serif text-lg font-bold text-zinc-900 dark:text-white uppercase">MONOGRAPH ATELIER</span>
+      <span>© 2026 MONOGRAPH. All archival stationery certified acid-free.</span>
+      <div class="flex space-x-4">
+        <a href="archival-notebooks.html" class="hover:underline">Notebooks</a>
+        <a href="fountain-pens.html" class="hover:underline">Pens</a>
+        <a href="box-builder.html" class="hover:underline">Box Builder</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Drawers & Modals -->
+  <div id="cartDrawerBackdrop" onclick="closeCartDrawer()" class="drawer-backdrop"></div>
+  <aside id="cartDrawer" class="side-drawer">
+    <div class="drawer-header">
+      <div><h3 class="drawer-title">Atelier Cart</h3><span class="text-[10px] text-zinc-400 font-mono tracking-wider"><span class="cart-count-badge">2</span> INSTRUMENTS</span></div>
+      <button onclick="closeCartDrawer()" class="drawer-close-btn">✕</button>
+    </div>
+    <div class="px-6 pt-4">
+      <div class="free-shipping-card">
+        <div id="freeShippingMsg" class="text-xs text-zinc-700 dark:text-zinc-300">Complimentary express shipping available</div>
+        <div class="free-shipping-bar"><div id="freeShippingFill" class="free-shipping-fill" style="width: 50%;"></div></div>
+      </div>
+    </div>
+    <div id="cartDrawerItemsList" class="drawer-content"></div>
+    <div class="drawer-footer">
+      <div class="coupon-box">
+        <input type="text" id="cartCouponInput" placeholder="Promo code (MONO10)" class="coupon-input">
+        <button onclick="applyCoupon(document.getElementById('cartCouponInput').value)" class="btn-secondary text-[11px] py-1.5 px-3">Apply</button>
+      </div>
+      <div class="drawer-subtotal-row">
+        <span class="text-xs font-bold uppercase tracking-wider text-zinc-500">Subtotal Amount</span>
+        <span id="cartDrawerSubtotal" class="drawer-subtotal-val">$0.00</span>
+      </div>
+      <a href="checkout.html" class="btn-primary w-full py-3.5 justify-center text-xs">Proceed To Express Checkout</a>
+    </div>
+  </aside>
+
+  <div id="wishlistDrawerBackdrop" onclick="closeWishlistDrawer()" class="drawer-backdrop"></div>
+  <aside id="wishlistDrawer" class="side-drawer">
+    <div class="drawer-header">
+      <div><h3 class="drawer-title">Saved Wishlist</h3><span class="text-[10px] text-zinc-400 font-mono tracking-wider"><span class="wishlist-count-badge">2</span> SAVED ITEMS</span></div>
+      <button onclick="closeWishlistDrawer()" class="drawer-close-btn">✕</button>
+    </div>
+    <div id="wishlistDrawerItemsList" class="drawer-content"></div>
+    <div class="drawer-footer">
+      <a href="catalog.html" onclick="closeWishlistDrawer()" class="btn-secondary w-full py-3 justify-center text-xs">Continue Browsing Catalog</a>
+    </div>
+  </aside>
+
+  <div id="searchModal" class="search-modal-backdrop" onclick="if(event.target === this) closeSearchModal();">
+    <div class="search-modal-card">
+      <div class="search-input-header">
+        <svg class="w-5 h-5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        <input type="text" id="searchModalInput" placeholder="Search instruments..." class="search-field" oninput="handleSearchInput(this.value)">
+        <button onclick="closeSearchModal()" class="text-zinc-400 text-lg">✕</button>
+      </div>
+      <div id="searchResultsContainer" class="search-results-list"></div>
+    </div>
+  </div>
+
+  <div id="mobileDrawerBackdrop" onclick="toggleMobileMenu()" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden lg:hidden"></div>
+  <aside id="mobileNavDrawer" class="mobile-nav-drawer p-6 overflow-y-auto space-y-6">
+    <div class="flex items-center justify-between pb-4 border-b border-zinc-200 dark:border-zinc-800">
+      <span class="font-serif text-xl font-bold uppercase">MONOGRAPH</span>
+      <button onclick="toggleMobileMenu()" class="text-zinc-400 text-xl">✕</button>
+    </div>
+    <div class="space-y-2">
+      <a href="index.html" class="block py-2 text-sm font-semibold">Storefront Home</a>
+      <a href="archival-notebooks.html" class="block py-2 text-sm font-semibold">Archival Notebooks</a>
+      <a href="fountain-pens.html" class="block py-2 text-sm font-semibold">Fountain & Fine Pens</a>
+      <a href="desk-objects.html" class="block py-2 text-sm font-semibold">Aesthetic Desk Items</a>
+      <a href="curated-gifts.html" class="block py-2 text-sm font-semibold">Curated Gift Sets</a>
+      <a href="catalog.html" class="block py-2 text-sm font-semibold text-amber-600 font-bold">Full Catalog</a>
+    </div>
+  </aside>
+
+  <div id="toast"></div>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/catalog.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initCatalog('all');
+    });
+  </script>
+</body>
+</html>
